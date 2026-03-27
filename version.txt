@@ -1,5 +1,6 @@
 ## 0.0.5 - Build Image
 - added in a build workflow to push the container to ghcr.io
+- added in dockerfile
 
 ## 0.0.4 - Module names
 - refactored JamiecHuman into Jamie
