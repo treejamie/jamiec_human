@@ -1,3 +1,10 @@
+## 0.0.5 - Build Image
+- added in a build workflow to push the container to ghcr.io
+- added in dockerfile (mix phx.gen.release --docker)
+
+## 0.0.4 - Module names
+- refactored JamiecHuman into Jamie
+
 ## 0.0.3 - Demolish UI
 - Ripped out stock UI
 - Added todo.txt
