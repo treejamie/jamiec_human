@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :jamiec_human, Jamie.Repo,
+config :jamie, Jamie.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -16,7 +16,7 @@ config :jamiec_human, Jamie.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :jamiec_human, JamieWeb.Endpoint,
+config :jamie, JamieWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
@@ -25,8 +25,8 @@ config :jamiec_human, JamieWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "Vsttsqs8wzBD/eWRA64t06VOqTdVStWpyPm+7luCQm/ENUBy3ebnwYA6BBmZoF3T",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:jamiec_human, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:jamiec_human, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:jamie, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:jamie, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -53,7 +53,7 @@ config :jamiec_human, JamieWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :jamiec_human, JamieWeb.Endpoint,
+config :jamie, JamieWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
@@ -64,7 +64,7 @@ config :jamiec_human, JamieWeb.Endpoint,
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :jamiec_human, dev_routes: true
+config :jamie, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :default_formatter, format: "[$level] $message\n"

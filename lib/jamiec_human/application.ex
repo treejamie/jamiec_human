@@ -10,7 +10,7 @@ defmodule Jamie.Application do
     children = [
       JamieWeb.Telemetry,
       Jamie.Repo,
-      {DNSCluster, query: Application.get_env(:jamiec_human, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:jamie, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Jamie.PubSub},
       # Start a worker by calling: Jamie.Worker.start_link(arg)
       # {Jamie.Worker, arg},

@@ -3,7 +3,7 @@ defmodule JamiecHuman.Release do
   Used for executing DB release tasks when run in production without Mix
   installed.
   """
-  @app :jamiec_human
+  @app :jamie
 
   def migrate do
     load_app()
