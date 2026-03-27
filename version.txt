@@ -1,3 +1,7 @@
+## 0.0.8
+- added in a step to run migrations to compose
+- corrected the atom application names that I missed when refactoring app name
+
 ## 0.0.7
  - added in missing environment variables to compose file
 
