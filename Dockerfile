@@ -1,92 +1,86 @@
 # Find eligible builder and runner images on Docker Hub. We use Ubuntu/Debian
 # instead of Alpine to avoid DNS resolution issues in production.
 #
-# https://hub.docker.com/r/hexpm/elixir/tags?page=1&name=ubuntu
-# https://hub.docker.com/_/ubuntu?tab=tags
+# https://hub.docker.com/r/hexpm/elixir/tags?name=ubuntu
+# https://hub.docker.com/_/ubuntu/tags
 #
 # This file is based on these images:
 #
 #   - https://hub.docker.com/r/hexpm/elixir/tags - for the build image
-#   - https://hub.docker.com/_/debian?tab=tags&page=1&name=bullseye-20230612-slim - for the release image
+#   - https://hub.docker.com/_/debian/tags?name=trixie-20260316-slim - for the release image
 #   - https://pkgs.org/ - resource for finding needed packages
-#   - Ex: hexpm/elixir:1.15.7-erlang-26.1.2-debian-bullseye-20230612-slim
+#   - Ex: docker.io/hexpm/elixir:1.18.3-erlang-27.3.4-debian-trixie-20260316-slim
 #
-ARG ELIXIR_VERSION=1.19.5
-ARG OTP_VERSION=28.4.1
-ARG DEBIAN_VERSION=bookworm-20250113-slim
+ARG ELIXIR_VERSION=1.18.3
+ARG OTP_VERSION=27.3.4
+ARG DEBIAN_VERSION=trixie-20260316-slim
 
+ARG BUILDER_IMAGE="docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
+ARG RUNNER_IMAGE="docker.io/debian:${DEBIAN_VERSION}"
 
-ARG BUILDER_IMAGE="elixir:1.19.5-otp-28-slim"
-
-#ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
-ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
-
-FROM ${BUILDER_IMAGE} as builder
+FROM ${BUILDER_IMAGE} AS builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git \
-  && apt-get clean && rm -f /var/lib/apt/lists/*_*
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends build-essential git \
+  && rm -rf /var/lib/apt/lists/*
 
 # prepare build dir
 WORKDIR /app
 
 # install hex + rebar
-RUN mix local.hex --force && \
-  mix local.rebar --force
+RUN mix local.hex --force \
+  && mix local.rebar --force
 
 # set build ENV
 ENV MIX_ENV="prod"
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
-RUN --mount=type=cache,target=/root/.hex \
-  --mount=type=cache,target=/root/.mix \
-  mix deps.get --only $MIX_ENV
+RUN mix deps.get --only $MIX_ENV
 RUN mkdir config
 
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
 # to be re-compiled.
 COPY config/config.exs config/${MIX_ENV}.exs config/
-RUN --mount=type=cache,target=_build,sharing=locked \
-  mix deps.compile
+RUN mix deps.compile
+
+RUN mix assets.setup
 
 COPY priv priv
 
 COPY lib lib
 
+# Compile the release
+RUN mix compile
+
 COPY assets assets
 
 # compile assets
-RUN --mount=type=cache,target=_build,sharing=locked \
-  mix assets.deploy
-
-# Compile the release
-RUN --mount=type=cache,target=_build,sharing=locked \
-  mix compile
+RUN mix assets.deploy
 
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/
 
 COPY rel rel
-RUN --mount=type=cache,target=_build,sharing=locked \
-  mix release && \
-  cp -r _build/${MIX_ENV}/rel/jamiec /app/release
+RUN mix release
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM ${RUNNER_IMAGE}
+FROM ${RUNNER_IMAGE} AS final
 
-RUN apt-get update -y && \
-  apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates curl \
-  && apt-get clean && rm -f /var/lib/apt/lists/*_*
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends libstdc++6 openssl libncurses6 locales ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
 
 # Set the locale
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+  && locale-gen
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 WORKDIR "/app"
 RUN chown nobody /app
@@ -95,7 +89,7 @@ RUN chown nobody /app
 ENV MIX_ENV="prod"
 
 # Only copy the final release from the build stage
-COPY --from=builder --chown=nobody:root /app/release ./
+COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/jamiec_human ./
 
 USER nobody
 
@@ -103,11 +97,5 @@ USER nobody
 # advised to add an init process such as tini via `apt-get install`
 # above and adding an entrypoint. See https://github.com/krallin/tini for details
 # ENTRYPOINT ["/tini", "--"]
-
-RUN chmod +x /app/bin/server
-
-# Health check for Coolify and Docker
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:4000/health || exit 1
 
 CMD ["/app/bin/server"]
