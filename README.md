@@ -1,18 +1,18 @@
-# JamiecHuman
+# Personal Website
 
-To start your Phoenix server:
+I tried a couple of pure AI builds [1][0], [2][0] and it worked, but it didn't feel right. To 
+me a personal website is a hand crafted experience. You should know every "nook and cranny" of it.
+In fact, every nook and cranny should be an exemplar of your work as a professional. It's like a 
+toolcase of old - yes, it's a container to store your tools, but it's also crafted to show off your
+level.
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## AI policy
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+I fully intend on using AI to assist in me in building this but once again in the capacity of a 
+"sythetic partner" and to fix all YAML. I have no time for YAML.
 
-## Learn more
 
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+
+[0]: https://github.com/treejamie/jamiec_ts
+[1]: https://github.com/treejamie/jamiec_ai
