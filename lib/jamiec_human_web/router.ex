@@ -1,11 +1,11 @@
-defmodule JamiecHumanWeb.Router do
-  use JamiecHumanWeb, :router
+defmodule JamieWeb.Router do
+  use JamieWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {JamiecHumanWeb.Layouts, :root}
+    plug :put_root_layout, html: {JamieWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,14 +14,14 @@ defmodule JamiecHumanWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", JamiecHumanWeb do
+  scope "/", JamieWeb do
     pipe_through :browser
 
     get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", JamiecHumanWeb do
+  # scope "/api", JamieWeb do
   #   pipe_through :api
   # end
 
@@ -37,7 +37,7 @@ defmodule JamiecHumanWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: JamiecHumanWeb.Telemetry
+      live_dashboard "/dashboard", metrics: JamieWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

@@ -1,4 +1,4 @@
-defmodule JamiecHumanWeb.CoreComponents do
+defmodule JamieWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -27,7 +27,7 @@ defmodule JamiecHumanWeb.CoreComponents do
 
   """
   use Phoenix.Component
-  use Gettext, backend: JamiecHumanWeb.Gettext
+  use Gettext, backend: JamieWeb.Gettext
 
   alias Phoenix.LiveView.JS
 
@@ -457,9 +457,9 @@ defmodule JamiecHumanWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(JamiecHumanWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(JamieWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(JamiecHumanWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(JamieWeb.Gettext, "errors", msg, opts)
     end
   end
 

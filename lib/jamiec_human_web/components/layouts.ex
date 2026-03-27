@@ -1,9 +1,9 @@
-defmodule JamiecHumanWeb.Layouts do
+defmodule JamieWeb.Layouts do
   @moduledoc """
   This module holds layouts and related functionality
   used by your application.
   """
-  use JamiecHumanWeb, :html
+  use JamieWeb, :html
 
   # Embed all files in layouts/* within this module.
   # The default root.html.heex file contains the HTML

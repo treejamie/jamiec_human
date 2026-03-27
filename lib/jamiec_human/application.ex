@@ -1,4 +1,4 @@
-defmodule JamiecHuman.Application do
+defmodule Jamie.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,19 +8,19 @@ defmodule JamiecHuman.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      JamiecHumanWeb.Telemetry,
-      JamiecHuman.Repo,
+      JamieWeb.Telemetry,
+      Jamie.Repo,
       {DNSCluster, query: Application.get_env(:jamiec_human, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: JamiecHuman.PubSub},
-      # Start a worker by calling: JamiecHuman.Worker.start_link(arg)
-      # {JamiecHuman.Worker, arg},
+      {Phoenix.PubSub, name: Jamie.PubSub},
+      # Start a worker by calling: Jamie.Worker.start_link(arg)
+      # {Jamie.Worker, arg},
       # Start to serve requests, typically the last entry
-      JamiecHumanWeb.Endpoint
+      JamieWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: JamiecHuman.Supervisor]
+    opts = [strategy: :one_for_one, name: Jamie.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -28,7 +28,7 @@ defmodule JamiecHuman.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    JamiecHumanWeb.Endpoint.config_change(changed, removed)
+    JamieWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

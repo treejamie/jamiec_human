@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :jamiec_human, JamiecHuman.Repo,
+config :jamiec_human, Jamie.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -16,7 +16,7 @@ config :jamiec_human, JamiecHuman.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :jamiec_human, JamiecHumanWeb.Endpoint,
+config :jamiec_human, JamieWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
@@ -53,7 +53,7 @@ config :jamiec_human, JamiecHumanWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :jamiec_human, JamiecHumanWeb.Endpoint,
+config :jamiec_human, JamieWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
