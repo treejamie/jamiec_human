@@ -1,4 +1,4 @@
-defmodule JamiecHuman.Release do
+defmodule Jamie.Release do
   @moduledoc """
   Used for executing DB release tasks when run in production without Mix
   installed.
