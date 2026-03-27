@@ -82,10 +82,10 @@ defmodule Jamie.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind jamiec_human", "esbuild jamiec_human"],
+      "assets.build": ["compile", "tailwind jamie", "esbuild jamie"],
       "assets.deploy": [
-        "tailwind jamiec_human --minify",
-        "esbuild jamiec_human --minify",
+        "tailwind jamie --minify",
+        "esbuild jamie --minify",
         "phx.digest"
       ],
       precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]
