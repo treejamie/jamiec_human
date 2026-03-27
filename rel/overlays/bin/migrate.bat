@@ -1,1 +1,1 @@
-call "%~dp0\jamiec_human" eval JamiecHuman.Release.migrate
+call "%~dp0\jamie" eval Jamie.Release.migrate

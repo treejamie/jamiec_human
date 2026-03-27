@@ -2,4 +2,4 @@
 set -eu
 
 cd -P -- "$(dirname -- "$0")"
-exec ./jamiec_human eval JamiecHuman.Release.migrate
+exec ./jamie eval Jamie.Release.migrate

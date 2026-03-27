@@ -1,6 +1,15 @@
 services:
+    migrate:
+        image: ghcr.io/treejamie/jamie:latest
+        command: /app/bin/myapp eval "Jamie.Release.migrate()"
+        depends_on:
+            db:
+                condition: service_healthy
     web:
         image: ghcr.io/treejamie/jamie:latest
+        depends_on:
+            migrate:
+                condition: service_completed_successfully
         pull_policy: always
         ports:
             - "4000:4000"
