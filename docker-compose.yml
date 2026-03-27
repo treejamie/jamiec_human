@@ -1,7 +1,7 @@
 services:
     migrate:
         image: ghcr.io/treejamie/jamie:latest
-        command: /app/bin/myapp eval "Jamie.Release.migrate()"
+        command: /app/bin/jamie eval "Jamie.Release.migrate()"
         depends_on:
             db:
                 condition: service_healthy

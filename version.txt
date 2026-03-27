@@ -1,3 +1,6 @@
+## 0.0.10
+- update docker compose file to run migrations in jamie, not myapp
+
 ## 0.0.9
 - more name based fixes
 
