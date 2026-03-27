@@ -1,12 +1,9 @@
 services:
     migrate:
-        image: ghcr.io/treejamie/jamie:latest
+        image: ghcr.io/treejamie/jamiec_human:latest
         command: /app/bin/jamie eval "Jamie.Release.migrate()"
-        depends_on:
-            db:
-                condition: service_healthy
     web:
-        image: ghcr.io/treejamie/jamie:latest
+        image: ghcr.io/treejamie/jamiec_human:latest
         depends_on:
             migrate:
                 condition: service_completed_successfully
