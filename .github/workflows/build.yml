@@ -1,11 +1,11 @@
 name: Docker Build and Push
 
 on:
-  push
-  # push:
-  #   branches:
-  #     - main
-  # workflow_dispatch:
+  # push
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -21,11 +21,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v3
-      #   with:
-      #     platforms: arm64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
