@@ -1,3 +1,10 @@
+## 0.0.7
+ - added in missing environment variables to compose file
+
+## 0.0.6 - Docker compose
+- copied over file from typescript version
+
+
 ## 0.0.5 - Build Image
 - added in a build workflow to push the container to ghcr.io
 - added in dockerfile (mix phx.gen.release --docker)
