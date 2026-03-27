@@ -2,6 +2,16 @@ services:
     migrate:
         image: ghcr.io/treejamie/jamiec_human:latest
         command: /app/bin/jamie eval "Jamie.Release.migrate()"
+        environment:
+            # Required environment variables
+            PHX_SERVER: "true"
+            DATABASE_URL: ${DATABASE_URL:-ecto://postgres:postgres@host.docker.internal:5432/jamiec_dev}
+            SECRET_KEY_BASE: ${SECRET_KEY_BASE:-Lv0w0wb2y/Pl48w2QZwl1/Uqooosvuc85FpPs3bX2QMO9aZoeF+QYTg0pENw91PL}
+
+            # Optional environment variables
+            PHX_HOST: ${PHX_HOST:-localhost}
+            PORT: ${PORT:-4000}
+            POOL_SIZE: ${POOL_SIZE:-10}
     web:
         image: ghcr.io/treejamie/jamiec_human:latest
         depends_on:
@@ -20,12 +30,6 @@ services:
             PHX_HOST: ${PHX_HOST:-localhost}
             PORT: ${PORT:-4000}
             POOL_SIZE: ${POOL_SIZE:-10}
-
-            # Uncomment if you need IPv6
-            # ECTO_IPV6: "false"
-
-            # Uncomment for DNS cluster support
-            # DNS_CLUSTER_QUERY: ""
 
         # Health check matching the Dockerfile
         healthcheck:
