@@ -8,18 +8,18 @@
 import Config
 
 config :jamiec_human,
-  ecto_repos: [JamiecHuman.Repo],
+  ecto_repos: [Jamie.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :jamiec_human, JamiecHumanWeb.Endpoint,
+config :jamiec_human, JamieWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: JamiecHumanWeb.ErrorHTML, json: JamiecHumanWeb.ErrorJSON],
+    formats: [html: JamieWeb.ErrorHTML, json: JamieWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: JamiecHuman.PubSub,
+  pubsub_server: Jamie.PubSub,
   live_view: [signing_salt: "ztvDy8aq"]
 
 # Configures the mailer
@@ -29,7 +29,7 @@ config :jamiec_human, JamiecHumanWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :jamiec_human, JamiecHuman.Mailer, adapter: Swoosh.Adapters.Local
+config :jamiec_human, Jamie.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

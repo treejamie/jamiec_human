@@ -1,4 +1,4 @@
-defmodule JamiecHumanWeb.Endpoint do
+defmodule JamieWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :jamiec_human
 
   # The session will be stored in the cookie and signed,
@@ -24,7 +24,7 @@ defmodule JamiecHumanWeb.Endpoint do
     at: "/",
     from: :jamiec_human,
     gzip: not code_reloading?,
-    only: JamiecHumanWeb.static_paths()
+    only: JamieWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -50,5 +50,5 @@ defmodule JamiecHumanWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug JamiecHumanWeb.Router
+  plug JamieWeb.Router
 end

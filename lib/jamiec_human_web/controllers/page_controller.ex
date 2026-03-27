@@ -1,5 +1,5 @@
-defmodule JamiecHumanWeb.PageController do
-  use JamiecHumanWeb, :controller
+defmodule JamieWeb.PageController do
+  use JamieWeb, :controller
 
   def home(conn, _params) do
     render(conn, :home)

@@ -1,5 +1,5 @@
-defmodule JamiecHumanWeb.PageControllerTest do
-  use JamiecHumanWeb.ConnCase
+defmodule JamieWeb.PageControllerTest do
+  use JamieWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

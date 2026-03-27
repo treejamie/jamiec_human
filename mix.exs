@@ -1,4 +1,4 @@
-defmodule JamiecHuman.MixProject do
+defmodule Jamie.MixProject do
   use Mix.Project
 
   def project do
@@ -20,7 +20,7 @@ defmodule JamiecHuman.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {JamiecHuman.Application, []},
+      mod: {Jamie.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

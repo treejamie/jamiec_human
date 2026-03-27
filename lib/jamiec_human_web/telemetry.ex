@@ -1,4 +1,4 @@
-defmodule JamiecHumanWeb.Telemetry do
+defmodule JamieWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -87,7 +87,7 @@ defmodule JamiecHumanWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {JamiecHumanWeb, :count_users, []}
+      # {JamieWeb, :count_users, []}
     ]
   end
 end
