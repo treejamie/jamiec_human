@@ -1,3 +1,7 @@
+## 0.0.3 - Demolish UI
+- Ripped out stock UI
+- Added todo.txt
+
 ## 0.0.2 - Basic Infra
 
 - Added in github ci action to run code quality on push
