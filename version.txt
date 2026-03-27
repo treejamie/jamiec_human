@@ -1,6 +1,6 @@
 ## 0.0.2 - Basic Infra
 
-- run code quality checks on push
+- Added in github ci action to run code quality on push
 
 
 ## 0.0.1 - Intention
@@ -12,5 +12,3 @@
 ## 0.0.0 - undeployable
 
 - stock codebase from phx.gen
-
-
