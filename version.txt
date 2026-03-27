@@ -1,9 +1,16 @@
-0.0.1
+## 0.0.2 - Basic Infra
+
+- run code quality checks on push
 
 
 ## 0.0.1 - Intention
 
+- Update readme with intention and basic AI policy.
+- Added in version.txt
+
+
 ## 0.0.0 - undeployable
 
+- stock codebase from phx.gen
 
 
