@@ -59,7 +59,7 @@ config :jamie, JamieWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/jamiec_human_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
+      ~r"lib/jamie_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
     ]
   ]
 
