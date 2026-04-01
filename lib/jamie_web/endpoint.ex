@@ -6,7 +6,7 @@ defmodule JamieWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_jamiec_human_key",
+    key: "_jamie_key",
     signing_salt: "abAygut0",
     same_site: "Lax"
   ]
