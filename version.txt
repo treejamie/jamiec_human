@@ -1,3 +1,6 @@
+## 0.1.2 
+- blog posts are now a thing.
+
 ## 0.0.11
 - more compose updates to remove depends on for migrate
 
