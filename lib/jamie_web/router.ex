@@ -17,7 +17,9 @@ defmodule JamieWeb.Router do
   scope "/", JamieWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live_session :current_user do
+      live "/", BlogLive.Index, :index
+    end
   end
 
   # Other scopes may use custom stacks.

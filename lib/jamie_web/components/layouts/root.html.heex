@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
@@ -30,7 +36,92 @@
       })();
     </script>
   </head>
-  <body>
-    {@inner_content}
+  <body
+    class={["h-full flex flex-col", assigns[:body_class]]}
+    id={assigns[:body_id] || ""}
+  >
+    <div class="layout">
+      <header class="navbar px-4 sm:px-6 lg:px-8"></header>
+
+      <main>
+        {@inner_content}
+      </main>
+
+      <footer class="border-t border-base-content/10 bg-base-200 pt-8 pb-8 md:min-h-screen">
+        <div class="p-16 about flex flex-col sm:flex-row border-b border-base-content/10 bg-base-200 pt-8 pb-8 ">
+          <div class="text w-full sm:w-2/3 text-sm p-8">
+            <!-- <p>
+            Hello there, I'm Jamie Curle and you're reading my blog. Ten points.
+          </p>
+          <p>
+            I've been working in technology since 1998. I came in as a designer but quickly
+            moved to engineering exclusively at somepoint around 2007. I consider myself an
+            outside-in engineer because the design of the user experience comes first.
+          </p>
+          <p>
+            Typically, if there's no clear leadership, I end up leading people because it tends 
+            to happen naturally. I used to shy away from that fact, now I embrace it. If there's
+            solid leadership I'm excellent at following.  Leadership is about ensuring the team
+            is focused on it's goals, as distraction free as possible and that each member has
+            a clear line of sight on success. I cannot take them to it, but I can set up their
+            journey.
+          </p> -->
+            <h1>Hello, I'm Jamie Curle &hellip;</h1>
+            <p>
+              I started out in technology in 1998 as a web designer. Design forms the basis for
+              my undergrad and postgrad qualifications. Design is deeper that appearance or shape.
+            </p>
+            <p>
+              Professionally, I'm an outside-in software engineer. I can lead and I can be led.
+              My professional practice is informed by a solid grounding in infosec, privacy,
+              and teaching.
+            </p>
+            <p>
+              Very early on in my life I was fortunate to have exposure to exceptional teachers.
+              They've impacted my life deeply and put me on a lifelong journey to be a well rounded
+              human being.
+            </p>
+            <p>
+              On my quest to be a well rounded human being, I spent time as a drummer, olympic weightlifter,
+              arborist, teacher and an avid cook / bread baker. I always come back to software and building.
+            </p>
+            <p>
+              I've been meditating on and off for a decade. It's insightful on
+              an existential level and very useful in managing distraction and especially cultivating attention.
+            </p>
+            <p>
+              Whilst I may use AI to gather my thoughts, I don't use AI to express them. The right
+              hemisphere is humanitys greatest asset. AI doesn't have a right hemisphere, only a
+              synthetic left one.
+            </p>
+          </div>
+
+          <div class="photo w-full sm:w-1/3">
+            <p class="mb-4">
+              <img
+                src="/images/jc_dark.jpg"
+                alt="An impromptu photograph of Jamie Curle from 2025 that somehow turned into his main profile picture."
+                width="300px"
+                class="hidden [[data-theme=dark]_&]:block rounded-[300px]"
+              />
+              <img
+                src="/images/jc_light.jpg"
+                alt="An impromptu photograph of Jamie Curle from 2025 that somehow turned into his main profile picture, but with a AI tweaked background colour."
+                width="300px"
+                class="block [[data-theme=dark]_&]:hidden rounded-[300px]"
+              />
+            </p>
+
+            <.theme_toggle />
+          </div>
+        </div>
+        <div class="smallprint p-8">
+          <p class="text-xs text-base-content/70 uppercase">
+            &copy; {Date.utc_today().year} Jamie Curle.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <.flash_group flash={@flash} />
   </body>
 </html>
