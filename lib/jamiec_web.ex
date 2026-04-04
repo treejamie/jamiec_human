@@ -50,7 +50,7 @@ defmodule JamieWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView
+      use Phoenix.LiveView, layout: {JamieWeb.Layouts, :app}
 
       unquote(html_helpers())
     end

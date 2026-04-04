@@ -1,3 +1,6 @@
+## 0.1.2
+- a homepage with a header, content and a footer
+
 ## 0.1.1
 - a homepage
 
