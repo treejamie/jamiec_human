@@ -21,6 +21,10 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
+  config :jamie, Jamie.Mailer,
+    adapter: Swoosh.Adapters.Postmark,
+    api_key: System.get_env("POSTMARK_API_KEY", "test")
+
   database_url =
     System.get_env("DATABASE_URL") ||
       raise """
@@ -50,7 +54,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  host = System.get_env("PHX_HOST") || "jamiecurle.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :jamie, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")

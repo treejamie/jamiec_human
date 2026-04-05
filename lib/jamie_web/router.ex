@@ -54,6 +54,7 @@ defmodule JamieWeb.Router do
     pipe_through [:browser]
 
     live_session :current_user,
+      root_layout: {JamieWeb.Layouts, :auth},
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new

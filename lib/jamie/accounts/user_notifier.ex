@@ -9,7 +9,7 @@ defmodule Jamie.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"Jamie", "contact@example.com"})
+      |> from({"JC DOT COM", "jamie@curle.io"})
       |> subject(subject)
       |> text_body(body)
 

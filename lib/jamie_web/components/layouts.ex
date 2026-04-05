@@ -12,7 +12,7 @@ defmodule JamieWeb.Layouts do
   embed_templates "layouts/*"
 
   @doc """
-  Renders your app layout.
+  Renders the default app layout.
 
   This function is typically invoked from every template,
   and it often contains your application menu, sidebar,
