@@ -25,7 +25,7 @@ services:
             PHX_SERVER: "true"
             DATABASE_URL: ${DATABASE_URL:-ecto://postgres:postgres@host.docker.internal:5432/jamiec_dev}
             SECRET_KEY_BASE: ${SECRET_KEY_BASE:-Lv0w0wb2y/Pl48w2QZwl1/Uqooosvuc85FpPs3bX2QMO9aZoeF+QYTg0pENw91PL}
-
+            POSTMARK_API_KEY: ${POSTMARK_API_KEY:-compose-default-check-config}
             # Optional environment variables
             PHX_HOST: ${PHX_HOST:-localhost}
             PORT: ${PORT:-4000}
