@@ -35,7 +35,8 @@ defmodule JamieWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    {@inner_content}
+    {render_slot(@inner_block)}
+    <.flash_group flash={@flash} />
     """
   end
 
