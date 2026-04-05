@@ -1,5 +1,12 @@
 import Config
 
+# email both configs available
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+# config :jamie, Jamie.Mailer,
+#   adapter: Swoosh.Adapters.Postmark,
+#   api_key: System.get_env("POSTMARK_API_KEY", "test")
+
 # Configure your database
 config :jamie, Jamie.Repo,
   username: "postgres",
@@ -83,6 +90,3 @@ config :phoenix_live_view,
   debug_attributes: true,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true
-
-# Disable swoosh api client as it is only required for production adapters.
-config :swoosh, :api_client, false

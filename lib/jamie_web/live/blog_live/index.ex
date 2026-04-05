@@ -1,13 +1,17 @@
 defmodule JamieWeb.BlogLive.Index do
   use JamieWeb, :live_view
 
+  @impl true
   def mount(_params, _session, socket) do
     {:ok, socket}
   end
 
+  @impl true
   def render(assigns) do
     ~H"""
-    Blog Index
+    <Layouts.app flash={@flash} current_scope={@current_scope}>
+      Blog Index
+    </Layouts.app>
     """
   end
 end

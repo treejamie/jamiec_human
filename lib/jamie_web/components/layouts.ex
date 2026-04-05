@@ -12,7 +12,7 @@ defmodule JamieWeb.Layouts do
   embed_templates "layouts/*"
 
   @doc """
-  Renders your app layout.
+  Renders the default app layout.
 
   This function is typically invoked from every template,
   and it often contains your application menu, sidebar,
@@ -35,7 +35,8 @@ defmodule JamieWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    {@inner_content}
+    {render_slot(@inner_block)}
+    <.flash_group flash={@flash} />
     """
   end
 

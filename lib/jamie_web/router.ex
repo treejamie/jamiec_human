@@ -1,6 +1,8 @@
 defmodule JamieWeb.Router do
   use JamieWeb, :router
 
+  import JamieWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule JamieWeb.Router do
     plug :put_root_layout, html: {JamieWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_scope_for_user
   end
 
   pipeline :api do
@@ -17,7 +20,8 @@ defmodule JamieWeb.Router do
   scope "/", JamieWeb do
     pipe_through :browser
 
-    live_session :current_user do
+    live_session :public,
+      on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
       live "/", BlogLive.Index, :index
     end
   end
@@ -42,5 +46,21 @@ defmodule JamieWeb.Router do
       live_dashboard "/dashboard", metrics: JamieWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", JamieWeb do
+    pipe_through [:browser]
+
+    live_session :current_user,
+      root_layout: {JamieWeb.Layouts, :auth},
+      on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
+      live "/users/log-in", UserLive.Login, :new
+      live "/users/log-in/:token", UserLive.Confirmation, :new
+    end
+
+    post "/users/log-in", UserSessionController, :create
+    delete "/users/log-out", UserSessionController, :delete
   end
 end
