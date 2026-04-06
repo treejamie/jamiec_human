@@ -1,63 +1,46 @@
 services:
-    migrate:
-        image: ghcr.io/treejamie/jamiec_human:latest
-        command: /app/bin/jamie eval "Jamie.Release.migrate()"
-        environment:
-            # Required environment variables
-            PHX_SERVER: "true"
-            DATABASE_URL: ${DATABASE_URL:-ecto://postgres:postgres@host.docker.internal:5432/jamiec_dev}
-            SECRET_KEY_BASE: ${SECRET_KEY_BASE:-Lv0w0wb2y/Pl48w2QZwl1/Uqooosvuc85FpPs3bX2QMO9aZoeF+QYTg0pENw91PL}
-
-            # Optional environment variables
-            PHX_HOST: ${PHX_HOST:-localhost}
-            PORT: ${PORT:-4000}
-            POOL_SIZE: ${POOL_SIZE:-10}
     web:
         image: ghcr.io/treejamie/jamiec_human:latest
-        depends_on:
-            migrate:
-                condition: service_completed_successfully
         pull_policy: always
         ports:
             - "4000:4000"
         environment:
-            # Required environment variables
             PHX_SERVER: "true"
-            DATABASE_URL: ${DATABASE_URL:-ecto://postgres:postgres@host.docker.internal:5432/jamiec_dev}
-            SECRET_KEY_BASE: ${SECRET_KEY_BASE:-Lv0w0wb2y/Pl48w2QZwl1/Uqooosvuc85FpPs3bX2QMO9aZoeF+QYTg0pENw91PL}
-            POSTMARK_API_KEY: ${POSTMARK_API_KEY:-compose-default-check-config}
-            # Optional environment variables
-            PHX_HOST: ${PHX_HOST:-localhost}
+            DATABASE_URL: ${DATABASE_URL}
+            SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+            POSTMARK_API_KEY: ${POSTMARK_API_KEY}
+            PHX_HOST: ${PHX_HOST}
             PORT: ${PORT:-4000}
             POOL_SIZE: ${POOL_SIZE:-10}
-
-        # Health check matching the Dockerfile
         healthcheck:
-            test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+            test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
             interval: 30s
             timeout: 3s
             start_period: 10s
             retries: 3
-
-        # Restart policy
-        restart: unless-stopped
-
+        deploy:
+            replicas: 1
+            update_config:
+                order: start-first
+                failure_action: rollback
+            restart_policy:
+                condition: on-failure
         networks:
             - jamiec
 
     cloudflared:
-        container_name: cloudflared-tunnel
         image: cloudflare/cloudflared:latest
         pull_policy: always
-        restart: unless-stopped
         command: tunnel --no-autoupdate run --url http://web:4000
         environment:
             TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
-        depends_on:
-            - web
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
         networks:
             - jamiec
 
 networks:
     jamiec:
-        driver: bridge
+        driver: overlay
