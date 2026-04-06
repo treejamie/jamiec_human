@@ -2,6 +2,8 @@ defmodule JamieWeb.PageController do
   use JamieWeb, :controller
 
   def health(conn, _params) do
-    render(conn, :health)
+    conn
+    |> put_root_layout(html: false)
+    |> render(:health)
   end
 end
