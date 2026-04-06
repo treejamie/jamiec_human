@@ -1,7 +1,6 @@
 services:
     web:
         image: ghcr.io/treejamie/jamiec_human:latest
-        pull_policy: always
         ports:
             - "4000:4000"
         environment:
@@ -30,7 +29,6 @@ services:
 
     cloudflared:
         image: cloudflare/cloudflared:latest
-        pull_policy: always
         command: tunnel --no-autoupdate run --url http://web:4000
         environment:
             TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
