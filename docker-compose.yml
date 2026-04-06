@@ -12,7 +12,15 @@ services:
             PORT: ${PORT:-4000}
             POOL_SIZE: ${POOL_SIZE:-10}
         healthcheck:
-            test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+            test:
+                [
+                    "CMD",
+                    "wget",
+                    "-q",
+                    "-O",
+                    "/dev/null",
+                    "http://localhost:4000/health",
+                ]
             interval: 30s
             timeout: 3s
             start_period: 10s
