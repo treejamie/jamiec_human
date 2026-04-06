@@ -1,7 +1,7 @@
 defmodule JamieWeb.PageController do
   use JamieWeb, :controller
 
-  def home(conn, _params) do
-    render(conn, :home)
+  def health(conn, _params) do
+    render(conn, :health)
   end
 end

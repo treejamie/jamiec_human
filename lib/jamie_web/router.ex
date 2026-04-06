@@ -20,6 +20,8 @@ defmodule JamieWeb.Router do
   scope "/", JamieWeb do
     pipe_through :browser
 
+    get "/health", PageController, :health
+
     live_session :public,
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
       live "/", BlogLive.Index, :index
