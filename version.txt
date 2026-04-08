@@ -1,5 +1,8 @@
-## 0.1.2
-- a homepage with a header, content and a footer
+## 0.1.4
+- now with a form to create and edit blog posts
+
+## 0.1.3
+- now with auth
 
 ## 0.1.1
 - a homepage
