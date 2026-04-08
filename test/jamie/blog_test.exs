@@ -3,7 +3,24 @@ defmodule Jamie.Blog.Test do
 
   alias Jamie.Support.BlogFixtures
   alias Jamie.Blog
+  alias Jamie.Blog.Post
   alias Jamie.Repo
+
+  describe "change_post/1" do
+    test "returns an empty changeset for a new post when no struct is given" do
+      %Ecto.Changeset{} = cs = Blog.change_post(%Post{})
+      refute cs.valid?
+    end
+
+    test "returns a loaded changeset for when an existing post is given" do
+      {:ok, post} =
+        BlogFixtures.blog_attrs()
+        |> Blog.create_post()
+
+      cs = Blog.change_post(post)
+      assert cs.valid?
+    end
+  end
 
   describe "create_post/1" do
     test "posts create with required fields" do
@@ -11,8 +28,8 @@ defmodule Jamie.Blog.Test do
       assert 0 == Repo.aggregate(Jamie.Blog.Post, :count)
 
       # now make one
-      attrs = BlogFixtures.blog_attrs()
-      Blog.create_post(attrs)
+      BlogFixtures.blog_attrs()
+      |> Blog.create_post()
 
       # now there is one
       assert 1 == Repo.aggregate(Jamie.Blog.Post, :count)
