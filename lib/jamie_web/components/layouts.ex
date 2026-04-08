@@ -12,6 +12,29 @@ defmodule JamieWeb.Layouts do
   embed_templates "layouts/*"
 
   @doc """
+  Renders the office app layout.
+
+      <Layouts.office flash={@flash}>
+        <h1>Content</h1>
+      </Layouts.office>
+
+  """
+  attr :flash, :map, required: true, doc: "the map of flash messages"
+
+  attr :current_scope, :map,
+    default: nil,
+    doc: "the current [scope](https://hexdocs.pm/phoenix/scopes.html)"
+
+  slot :inner_block, required: true
+
+  def office(assigns) do
+    ~H"""
+    {render_slot(@inner_block)}
+    <.flash_group flash={@flash} />
+    """
+  end
+
+  @doc """
   Renders the default app layout.
 
   This function is typically invoked from every template,

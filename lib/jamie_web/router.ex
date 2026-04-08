@@ -13,6 +13,10 @@ defmodule JamieWeb.Router do
     plug :fetch_current_scope_for_user
   end
 
+  pipeline :office do
+    plug :put_root_layout, html: {JamieWeb.Layouts, :office_root}
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -50,7 +54,17 @@ defmodule JamieWeb.Router do
     end
   end
 
-  ## Authentication routes
+  ## Authenticated routes
+  scope "/office", JamieWeb do
+    pipe_through [:browser, :require_authenticated_user, :office]
+
+    live_session :require_authenticated_user,
+      # live_session :foo,
+      on_mount: [{JamieWeb.UserAuth, :require_authenticated}] do
+      live "/posts/new", BlogLive.Form, :new
+      live "/posts/:id", BlogLive.Form, :edit
+    end
+  end
 
   scope "/", JamieWeb do
     pipe_through [:browser]

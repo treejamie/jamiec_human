@@ -2,14 +2,12 @@ defmodule Jamie.Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @statuses [:draft, :published, :hidden]
+  @required_fields [:status, :description, :title, :markdown]
+  @optional_fields [:html]
+
   schema "blog_posts" do
-    field :status, Ecto.Enum,
-      values: [
-        :draft,
-        :published,
-        :deleted
-      ],
-      default: :draft
+    field :status, Ecto.Enum, values: @statuses, default: :draft
 
     field :title, :string
     field :description, :string
@@ -19,8 +17,7 @@ defmodule Jamie.Blog.Post do
     timestamps()
   end
 
-  @required_fields [:status, :description, :title, :markdown]
-  @optional_fields [:html]
+  def statuses, do: @statuses
 
   @doc false
   def changeset(post, attrs) do
