@@ -1,6 +1,7 @@
 defmodule Jamie.Blog do
   alias Jamie.Repo
   alias Jamie.Blog.Post
+  import Ecto.Query
 
   @doc """
   returns a changeset for a post
@@ -34,5 +35,13 @@ defmodule Jamie.Blog do
     post
     |> Post.changeset(attrs)
     |> Repo.update()
+  end
+
+  @doc """
+  Gets published posts
+  """
+  def published_posts do
+    from(p in Post, where: p.status == :published)
+    |> Repo.all()
   end
 end
