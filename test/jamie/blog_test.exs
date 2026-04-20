@@ -6,6 +6,30 @@ defmodule Jamie.Blog.Test do
   alias Jamie.Blog.Post
   alias Jamie.Repo
 
+  describe "published_posts/0" do
+    test "only published posts are returned" do
+      {:ok, post1} =
+        BlogFixtures.blog_attrs(status: :published)
+        |> Blog.create_post()
+
+      {:ok, post2} =
+        BlogFixtures.blog_attrs(status: :draft)
+        |> Blog.create_post()
+
+      # we have two posts
+      assert 2 == Repo.aggregate(Post, :count)
+      assert post1.status == :published
+      assert post2.status == :draft
+
+      # published_posts/0 returns 1 post
+      assert 1 == Blog.published_posts() |> length()
+
+      # update post2 to published and we now have two
+      Blog.change_post(post2, %{status: :published}) |> Repo.update()
+      assert 2 == Blog.published_posts() |> length()
+    end
+  end
+
   describe "change_post/1" do
     test "returns an empty changeset for a new post when no struct is given" do
       %Ecto.Changeset{} = cs = Blog.change_post(%Post{})
