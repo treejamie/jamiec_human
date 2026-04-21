@@ -7,10 +7,21 @@ defmodule JamieWeb.BlogLive.Index do
   end
 
   @impl true
+  def handle_params(_params, _url, socket) do
+    socket =
+      socket
+      |> assign(:posts, Jamie.Blog.published_posts())
+
+    {:noreply, socket}
+  end
+
+  @impl true
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
-      Blog Index
+      <%= for post <- @posts do %>
+        {post.title}
+      <% end %>
     </Layouts.app>
     """
   end
