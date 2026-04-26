@@ -47,6 +47,9 @@ defmodule Jamie.Blog.Test do
   end
 
   describe "create_post/1" do
+    test "post gets a slug" do
+    end
+
     test "posts create with required fields" do
       # there are no blog posts
       assert 0 == Repo.aggregate(Jamie.Blog.Post, :count)
