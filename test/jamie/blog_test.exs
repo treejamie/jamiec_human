@@ -13,7 +13,7 @@ defmodule Jamie.Blog.Test do
         |> Blog.create_post()
 
       {:ok, post2} =
-        BlogFixtures.blog_attrs(status: :draft)
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
         |> Blog.create_post()
 
       # we have two posts
@@ -47,6 +47,9 @@ defmodule Jamie.Blog.Test do
   end
 
   describe "create_post/1" do
+    test "post gets a slug" do
+    end
+
     test "posts create with required fields" do
       # there are no blog posts
       assert 0 == Repo.aggregate(Jamie.Blog.Post, :count)
