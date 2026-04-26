@@ -1,4 +1,4 @@
-defmodule JamieWeb.BlogLive.Index do
+defmodule JamieWeb.BlogLive.Post do
   use JamieWeb, :live_view
 
   @impl true
@@ -7,10 +7,10 @@ defmodule JamieWeb.BlogLive.Index do
   end
 
   @impl true
-  def handle_params(_params, _url, socket) do
+  def handle_params(%{"slug" => slug}, _url, socket) do
     socket =
       socket
-      |> assign(:posts, Jamie.Blog.published_posts())
+      |> assign(:post, Jamie.Blog.get_post!(slug))
 
     {:noreply, socket}
   end
@@ -19,11 +19,10 @@ defmodule JamieWeb.BlogLive.Index do
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <%= for post <- @posts do %>
-        <.link href={~p"/posts/#{post.slug}"}>
-          {post.title}
-        </.link>
-      <% end %>
+      <h1>{@post.title}</h1>
+      <p>
+        {raw(@post.html)}
+      </p>
     </Layouts.app>
     """
   end

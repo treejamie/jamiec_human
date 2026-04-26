@@ -29,7 +29,7 @@ defmodule JamieWeb.Router do
     live_session :public,
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
       live "/", BlogLive.Index, :index
-      live "/posts/:slug", BlogLive.Index, :index
+      live "/posts/:slug", BlogLive.Post, :post
     end
   end
 
