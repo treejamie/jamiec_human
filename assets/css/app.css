@@ -27,7 +27,7 @@
   default: false;
   prefersdark: true;
   color-scheme: "dark";
-  --color-base-100: oklch(30.33% 0.016 252.42);
+  --color-base-100: oklch(25% 0 0); 
   --color-base-200: oklch(25.26% 0.014 253.1);
   --color-base-300: oklch(20.15% 0.012 254.09);
   --color-base-content: oklch(97.807% 0.029 256.847);
@@ -62,34 +62,49 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(98% 0 0);
-  --color-base-200: oklch(96% 0.001 286.375);
-  --color-base-300: oklch(92% 0.004 286.32);
-  --color-base-content: oklch(21% 0.006 285.885);
-  --color-primary: oklch(70% 0.213 47.604);
-  --color-primary-content: oklch(98% 0.016 73.684);
-  --color-secondary: oklch(55% 0.027 264.364);
-  --color-secondary-content: oklch(98% 0.002 247.839);
-  --color-accent: oklch(0% 0 0);
-  --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(44% 0.017 285.786);
-  --color-neutral-content: oklch(98% 0 0);
-  --color-info: oklch(62% 0.214 259.815);
+
+  /* BACKGROUNDS — lightest to darkest */
+  --color-base-100: oklch(98% 0 0);              /* main page background (near white) */
+  --color-base-200: oklch(96% 0.001 286.375);    /* cards, sidebars, subtle sections */
+  --color-base-300: oklch(92% 0.004 286.32);     /* borders, inputs, dividers */
+
+  --color-base-content: oklch(21% 0.006 285.885);/* default body text (near black) */
+
+  /* PRIMARY — main brand colour (warm orange) */
+  --color-primary: oklch(70% 0.213 47.604);      /* buttons, links, highlights */
+  --color-primary-content: oklch(98% 0.016 73.684); /* text ON primary bg */
+
+  /* SECONDARY — muted blue-grey */
+  --color-secondary: oklch(55% 0.027 264.364);   /* secondary buttons, badges */
+  --color-secondary-content: oklch(98% 0.002 247.839); /* text ON secondary bg */
+
+  /* ACCENT — pure black */
+  --color-accent: oklch(0% 0 0);                 /* accent elements, bold highlights */
+  --color-accent-content: oklch(100% 0 0);       /* text ON accent bg (pure white) */
+
+  /* NEUTRAL — mid grey */
+  --color-neutral: oklch(44% 0.017 285.786);     /* neutral badges, ghost elements */
+  --color-neutral-content: oklch(98% 0 0);       /* text ON neutral bg */
+
+  /* SEMANTIC COLOURS */
+  --color-info: oklch(62% 0.214 259.815);        /* info alerts (blue) */
   --color-info-content: oklch(97% 0.014 254.604);
-  --color-success: oklch(70% 0.14 182.503);
+  --color-success: oklch(70% 0.14 182.503);      /* success alerts (teal/green) */
   --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
+  --color-warning: oklch(66% 0.179 58.318);      /* warning alerts (amber) */
   --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
+  --color-error: oklch(58% 0.253 17.585);        /* error alerts (red) */
   --color-error-content: oklch(96% 0.015 12.422);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.21875rem;
-  --size-field: 0.21875rem;
-  --border: 1.5px;
-  --depth: 1;
-  --noise: 0;
+
+  /* SHAPE & BORDER */
+  --radius-selector: 0.25rem;   /* radios, checkboxes */
+  --radius-field: 0.25rem;      /* inputs, selects */
+  --radius-box: 0.5rem;         /* cards, modals, dropdowns */
+  --size-selector: 0.21875rem;  /* size of radio/checkbox */
+  --size-field: 0.21875rem;     /* size of input fields */
+  --border: 1.5px;              /* default border width */
+  --depth: 1;                   /* shadow/depth effect (1 = on) */
+  --noise: 0;                   /* grain texture overlay (0 = off) */
 }
 
 /* Add variants based on LiveView classes */
@@ -109,8 +124,8 @@
 }
 
 @theme {
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-serif: "EB Garamond", serif;
+  --font-sans: "Helvetica Neue", sans-serif;
+  --font-serif: "Times New Roman", serif;
   --font-size-h1: 2.667rem;
   --font-size-h2: 2rem;
   --font-size-h3: 1.556rem;
@@ -120,11 +135,23 @@
 }
 
 @layer base {
-  html { font-size: 18px; }
+  html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 18px; 
+}
 
   body { @apply font-sans; }
 
-  h1, h2, h3, h4, h5, h6 { @apply font-serif; margin-bottom: 1.5rem;}
+  h1, h2, h3, h4, h5, h6 { 
+    @apply font-sans;
+     margin-bottom: 1.5rem;
+     font-weight: 900;
+     text-transform: uppercase;
+     letter-spacing: -2px;
+  }
+
 
   h1 { font-size: var(--font-size-h1); line-height: 1.1; }
   h2 { font-size: var(--font-size-h2); line-height: 1.2; }
@@ -132,17 +159,30 @@
   h4 { font-size: var(--font-size-h4); line-height: 1.4; }
   h5 { font-size: var(--font-size-h5); line-height: 1.4; }
   h6 { font-size: var(--font-size-h6); line-height: 1.4; }
-  p { line-height: 1.7; margin-bottom: 1.5rem; }
+  p { line-height: 1.7; margin-bottom: 1.5rem; font-weight: 500 }
 
-  ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
-  ul { list-style-type: disc; }
-  ol { list-style-type: decimal; }
-  li { line-height: 1.7; margin-bottom: 0.5rem; }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; font-weight: 500 }
+  ul { list-style-type: disc; font-weight: 500 }
+  ol { list-style-type: decimal; font-weight: 500 }
+  li { line-height: 1.7; margin-bottom: 0.5rem; font-weight: 500 }
 }
 
 @layer components {
-  .layout {
+
+
+
+
+  /* main layout */
+  
+  .content-width {
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
     width: 100%;
+  }
+  
+  .layout {
+      width: 100%;
     min-height: 100%;
     display: grid;
     grid: "header" auto "main" 1fr "footer" auto / 1fr;
@@ -153,4 +193,50 @@
   .layout > main   { grid-area: main; }
   .layout > footer { grid-area: footer; }
 
+  /* blog post specific stuff */
+
+    .post-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: "prose" "sidebar";
+      gap: 2rem;
+      width: 100%;
+      max-width: 76rem;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+  @media (min-width: 1024px) {
+    .post-layout {
+      grid-template-columns: 1fr 260px;
+      grid-template-areas: "prose sidebar";
+    }
+  }
+
+  .post-prose header h1{
+    font-size: calc(var(--font-size-h1) * 2.5);
+    letter-spacing: -8px;
+  }
+  .post-prose header p{
+    font-size: calc(var(--font-size-h3) * 1) !important;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -1px;
+  }
+  .post-prose span{
+    text-transform: uppercase;
+    font-style: italic;
+
+  }
+
+  .post-prose  { grid-area: prose; min-width: 0; }
+  .post-sidebar { grid-area: sidebar; }
+
+  .sidebar-sticky {
+    position: sticky;
+    top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }

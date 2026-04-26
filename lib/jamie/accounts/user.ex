@@ -62,4 +62,11 @@ defmodule Jamie.Accounts.User do
     change(user, confirmed_at: now)
   end
 
+  @doc """
+  For seeds only
+  """
+  def seed_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :confirmed_at])
+  end
 end

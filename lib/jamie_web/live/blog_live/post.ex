@@ -1,5 +1,6 @@
 defmodule JamieWeb.BlogLive.Post do
   use JamieWeb, :live_view
+  import JamieWeb.BlogComponents
 
   @impl true
   def mount(_params, _session, socket) do
@@ -9,21 +10,45 @@ defmodule JamieWeb.BlogLive.Post do
   @impl true
   def handle_params(%{"slug" => slug}, _url, socket) do
     socket =
-      socket
-      |> assign(:post, Jamie.Blog.get_post!(slug))
+      with post <- Jamie.Blog.get_post_by_slug!(slug) do
+        socket
+        |> assign(:post, post)
+        |> assign(:toc, toc(post.markdown))
+      end
 
     {:noreply, socket}
   end
 
-  @impl true
-  def render(assigns) do
-    ~H"""
-    <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <h1>{@post.title}</h1>
-      <p>
-        {raw(@post.html)}
-      </p>
-    </Layouts.app>
-    """
+  defp toc(markdown) do
+    {:ok, doc} = MDEx.parse_document(markdown)
+
+    doc
+    |> Enum.reduce([], fn
+      %MDEx.Heading{level: level, nodes: children}, acc ->
+        text = extract_text(children)
+        anchor = slugify(text)
+        [{level, text, anchor} | acc]
+
+      _node, acc ->
+        acc
+    end)
+    |> Enum.reverse()
+  end
+
+  defp extract_text(nodes) do
+    Enum.map_join(nodes, fn
+      %MDEx.Text{literal: text} -> text
+      %MDEx.Code{literal: text} -> text
+      %{nodes: children} -> extract_text(children)
+      _ -> ""
+    end)
+  end
+
+  defp slugify(text) do
+    text
+    |> String.downcase()
+    |> String.replace(~r/[^\w\s-]/, "")
+    |> String.replace(~r/\s+/, "-")
+    |> String.trim("-")
   end
 end

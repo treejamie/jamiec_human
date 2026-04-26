@@ -23,11 +23,14 @@ defmodule Jamie.Blog do
   @doc """
   Gets a post by slug
   """
-  def get_post!(slug) when is_binary(slug) do
+  def get_post_by_slug!(slug) do
     Post
     |> Repo.get_by!(slug: slug)
   end
 
+  @doc """
+  Gets a post by id
+  """
   def get_post!(id) do
     Post
     |> Repo.get!(id)
