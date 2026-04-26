@@ -27,6 +27,7 @@ defmodule Jamie.Blog.Post do
     |> validate_required(@required_fields)
     |> convert_markdown_to_html()
     |> slugify()
+    |> unique_constraint(:slug)
   end
 
   defp slugify(changeset) do
