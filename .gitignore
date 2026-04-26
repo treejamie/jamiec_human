@@ -35,3 +35,5 @@ jamiec_human-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# every time. Everytime.
+.DS_Store
