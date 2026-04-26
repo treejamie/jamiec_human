@@ -13,7 +13,7 @@ defmodule Jamie.Blog.Test do
         |> Blog.create_post()
 
       {:ok, post2} =
-        BlogFixtures.blog_attrs(status: :draft)
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
         |> Blog.create_post()
 
       # we have two posts
