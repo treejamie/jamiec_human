@@ -23,6 +23,7 @@ img, video, svg {
   --unit-2-1: 12px;   
   --unit-2-2: 15px;   
   --unit-3: 18px;  /* base */
+  --unit-3-1: 24px;  /* base */
   --unit-4: 36px;  /* double */
   --unit-5: 54px;  /* triple */
   --unit-6: 72px;  /* quad */
@@ -37,6 +38,9 @@ img, video, svg {
   --colour-dark-0: #010001;
   --colour-dark-1: #1E1E1E;
   --colour-dark-2: #2E2E2E;
+
+  --colour-mid-1: #8E8E8E;
+  --colour-mid-0: #DBD5D5;
   
   --colour-light-1: #FFFFFF;
   --colour-light-2: #F5F4F4;
@@ -75,8 +79,9 @@ header.primary p {
 }
 
 main {
-  max-width: 90ch;
+  max-width: 120ch;
   margin-left: var(--unit-3);
+  margin-right: var(--unit-3);
   padding: var(--unit-4);
   border: 1px solid var(--colour-border-1);
   background-color: var(--colour-light-1); 
@@ -109,4 +114,29 @@ footer {
 .footer__social {
   display: flex;
   gap: 18px;
+}
+
+/* post */
+article {
+  max-width: 90ch;
+  margin-left: calc(var(--unit-5) * 2) ;
+}
+article header h1{
+  font-size: var(--unit-6);
+  color: var(--colour-dark-1);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+article header p{
+  font-size: var(--unit-3-1);
+  font-weight: 700;
+  max-width: 45ch;
+  color: var(--colour-mid-1);
+  padding-left: var(--unit-5);
+  margin-left: calc(var(--unit-4) * -1);
+  margin-top: var(--unit-5);
+  margin-bottom: var(--unit-5);
+  border-left: var(--unit-3) solid var(--colour-mid-0);
+   transform: rotate(-1deg);
 }
