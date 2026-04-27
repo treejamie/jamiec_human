@@ -1,38 +1,38 @@
-<div class="post-layout">
-  <article class="post-prose">
+<div>
+  <article>
     <%!-- Post header --%>
-    <header class="mb-8 pb-8 border-b border-b-4 border-base-300 dark:border-base-300 ">
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="text-xs text-base-content/50 dark:text-base-content/50">
+    <header>
+      <div>
+        <span>
           Published {@post.published_on} // <.reading_time content={@post.markdown} />
         </span>
       </div>
-      <h1 class="mb-4">{@post.title}</h1>
-      <p class="text-xl text-base-content/40 dark:text-base-content/50 leading-relaxed">
+      <h1>{@post.title}</h1>
+      <p>
         {@post.description}
       </p>
     </header>
 
     <%!-- Post body --%>
-    <div class="prose-content">
+    <div>
       {raw(@post.html)}
     </div>
   </article>
 
-  <aside class="post-sidebar">
-    <div class="sidebar-sticky">
+  <aside>
+    <div>
       <%!-- TOC card --%>
-      <div class="border border-base-200 dark:border-base-700 rounded-lg p-4">
-        <h2 class="text-sm font-medium uppercase tracking-wide text-base-500 dark:text-base-400 mb-4">
+      <div>
+        <h2>
           Contents
         </h2>
         <nav>
-          <ol class="flex flex-col gap-1 text-sm">
+          <ol>
             <%= for {i, heading, anchor} <- @toc do %>
               <li>
                 <a
                   href={"##{anchor}"}
-                  class="transition-colors leading-snug block py-0.5"
+                  class=""
                 >
                   {heading}
                 </a>

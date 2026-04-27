@@ -5,11 +5,12 @@ alias Jamie.Blog.Post
 
 [
   %{
-    title: "A blog post",
+    title: "A nice title of a sufficient length",
     status: :published,
-    description: " a description of the blog post",
+    description:
+      " a description of the blog post that spans a deal of space and a given length that's going to look nice at a certain length",
     markdown:
-      "# My First Post\n\nThis is a short introduction paragraph with some **bold** and *italic* text.\n\n## A Subheading\n\nHere's a list of things:\n\n- Item one\n- Item two\n- Item three\n\nAnd a bit of `inline code` for good measure."
+      "My First Post\n\nThis is a short introduction paragraph with some **bold** and *italic* text.\n\n## A Subheading\n\nHere's a list of things:\n\n- Item one\n- Item two\n- Item three\n\nAnd a bit of `inline code` for good measure."
   }
 ]
 |> Enum.each(fn attrs ->

@@ -33,7 +33,7 @@ config :jamie, JamieWeb.Endpoint,
   secret_key_base: "Vsttsqs8wzBD/eWRA64t06VOqTdVStWpyPm+7luCQm/ENUBy3ebnwYA6BBmZoF3T",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:jamie, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:jamie, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:css, ~w(--watch)]}
   ]
 
 # ## SSL Support
