@@ -85,9 +85,12 @@ header.primary{
 
 header.primary a svg path {
   transition: fill 0.2s ease;
+   transition: transform 0.4s ease;
+   transform-origin: center;
 }
 header.primary a:hover svg path{
   fill: var(--colour-accent); 
+  transform: scaleX(-1);
 }
 header.primary p {
   text-transform: uppercase;
