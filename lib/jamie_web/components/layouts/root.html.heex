@@ -38,58 +38,63 @@
   </head>
   <body>
     <header class="primary">
-      <a href="/"><img src="/images/lambda.svg" alt="Lambda - Jamie Curle" /></a>
+      <a href="/">
+        <.lambda_icon />
+      </a>
       <p>Jamie Curle</p>
     </header>
 
     <main>
       {@inner_content}
     </main>
-    <footer>
-      <footer>
-        <div class="footer__grid">
-          <div class="footer__bio">
-            <p>
-              Jamie Curle is a well rounded human being living and operating in Northumberland, UK. He spends his time between software, woodland management, his workshop and many "nearly finished" DIY projects.
-            </p>
-          </div>
-          <nav class="footer__nav">
-            <div>
-              <h5>Treeworld</h5>
-              <ul>
-                <li><a href="#">YouTube</a></li>
-                <li><a href="#">Life Of Treedom</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3>Techworld</h3>
-              <ul>
-                <li><a href="#">Exercism</a></li>
-                <li><a href="#">CodeCrafters</a></li>
-                <li><a href="#">Github</a></li>
-                <li><a href="#">LinkedIn</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3>Navigation</h3>
-              <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Privacy</a></li>
-              </ul>
-            </div>
-          </nav>
-          <div class="footer__contact">
-            <p>
-              He would be very interested in working with you, <a href="#">drop him a line</a>.
-            </p>
-          </div>
-          <div class="footer__social">
-            <!-- svgs here -->
-          </div>
-        </div>
-      </footer>
+    <footer class="primary">
+      <div class="bio">
+        <p>
+          Jamie Curle is a well rounded human being living and
+          operating in Northumberland, UK. He spends his time between
+          software, woodland management, his workshop and many
+          "nearly finished" DIY projects.
+        </p>
+        <p>
+          He would be very interested in working with you, <a href="#">drop him a line</a>.
+        </p>
+      </div>
+      <div class="treeworld universe">
+        <h6>Treeworld</h6>
+        <ul>
+          <li><a href="https://www.youtube.com/@treejamie/videos">YouTube</a></li>
+          <li><a href="https://lifeoftreedom.com/">Life Of Treedom</a></li>
+        </ul>
+      </div>
+
+      <div class="techworld universe">
+        <h6>Techworld</h6>
+        <ul>
+          <li><a href="https://exercism.org/profiles/treejamie">Exercism</a></li>
+          <li><a href="https://app.codecrafters.io/users/treejamie">CodeCrafters</a></li>
+          <li><a href="https://github.com/treejamie">Github</a></li>
+          <li><a href="https://www.linkedin.com/in/jamie-curle/">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="thisworld universe">
+        <h6>Navigation</h6>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="icon">
+        <img src="/images/LI.svg" alt="Linked" />
+      </div>
+      <div class="icon">
+        <img src="/images/GH.svg" alt="gihub" />
+      </div>
+      <div class="icon">
+        <img src="/images/RSS.svg" alt="RSS" />
+      </div>
     </footer>
 
     <button onclick="

@@ -39,12 +39,14 @@ img, video, svg {
   --colour-dark-0: #010001;
   --colour-dark-1: #1E1E1E;
   --colour-dark-2: #2E2E2E;
+  --colour-dark-3: #484e4e;
 
   --colour-mid-1: #8E8E8E;
   --colour-mid-0: #DBD5D5;
   
   --colour-light-1: #FFFFFF;
   --colour-light-2: #F5F4F4;
+  --colour-light-3: #E1E1E1;
   
 
   --colour-accent: #FF1412;
@@ -65,7 +67,14 @@ body{
   color: var(--colour-light-3);
 
 }
+/* typography */
+a{
+  color: var(--colour-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
+/* main sections */
 header.primary{
   padding: var(--unit-5); 
   padding-left: calc(var(--unit-2) + var(--unit-5)) ;
@@ -73,10 +82,18 @@ header.primary{
   align-items: center;
   gap: var(--unit-3);
 }
+
+header.primary a svg path {
+  transition: fill 0.2s ease;
+}
+header.primary a:hover svg path{
+  fill: var(--colour-accent); 
+}
 header.primary p {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: var(--unit-2-2)
+  font-size: var(--unit-2-2);
+  color: var(--colour-dark-3)
 }
 
 main {
@@ -90,31 +107,45 @@ main {
 }
 
 footer {
-  min-height: 100dvh;
   display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--unit-4);
   background-color: var(--colour-dark-2);
   color: var(--colour-light-3);
   place-items: center;
+  align-items: start;
+  min-height: 100dvh;
+  padding: var(--unit-5);
 }
 
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 36px;
-  padding: 54px;
-  width: 100%;
-}
+  div.bio{
+    grid-row: span 2;
+    font-size: var(--unit-4);
+    color: var(--colour-light-3);
+    font-weight: 600;
+    line-height: var(--unit-4);
+  }
 
-.footer__nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 36px;
-}
+  div.universe{
+    text-align: right
+  }
+  div.universe h6{
+    text-transform: uppercase;
+  }
+  div.universe ul{
+    list-style-type: none;
+  }
+  div.universe ul a{
+    color: var(--colour-mid-1)
+  }
+  div.universe ul a:hover{
+    color: var(--colour-light-1)
+  }
 
-.footer__social {
-  display: flex;
-  gap: 18px;
+div.icon img{
+  width: calc(var(--unit-5) * 2);
+
 }
 
 /* post */
