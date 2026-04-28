@@ -24,6 +24,7 @@ img, video, svg {
   --unit-2-2: 15px;   
   --unit-3: 18px;  /* base */
   --unit-3-1: 24px;  /* base */
+  --unit-3-2: 27px;  /* base */
   --unit-4: 36px;  /* double */
   --unit-5: 54px;  /* triple */
   --unit-6: 72px;  /* quad */
@@ -59,7 +60,7 @@ body{
   min-height: 100dvh;
   font-family: var(--font-base);
   font-size: var(--unit-3) ;
-  line-height: var(--leading-base);
+  line-height: var(--unit-3-2);
   background-color: var(--colour-light-2);
   color: var(--colour-light-3);
 
@@ -118,20 +119,24 @@ footer {
 
 /* post */
 article {
-  max-width: 90ch;
+ 
   margin-left: calc(var(--unit-5) * 2) ;
 }
 article header h1{
+   max-width: 10ch;
   font-size: var(--unit-6);
   color: var(--colour-dark-1);
   text-transform: uppercase;
   font-weight: 900;
+  line-height: calc(var(--unit-6) - 9px);
 }
 
 article header p{
   font-size: var(--unit-3-1);
-  font-weight: 700;
-  max-width: 45ch;
+  line-height: var(--unit-4);
+  font-weight: 600;
+  max-width: 41ch;
+  letter-spacing: -0.5px;
   color: var(--colour-mid-1);
   padding-left: var(--unit-5);
   margin-left: calc(var(--unit-4) * -1);
@@ -139,4 +144,8 @@ article header p{
   margin-bottom: var(--unit-5);
   border-left: var(--unit-3) solid var(--colour-mid-0);
    transform: rotate(-1deg);
+}
+
+article div.post-body{
+  max-width: 60ch
 }
