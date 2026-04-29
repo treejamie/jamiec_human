@@ -1,6 +1,6 @@
 defmodule JamieWeb.BlogLive.Post do
   use JamieWeb, :live_view
-  import JamieWeb.BlogComponents
+  # import JamieWeb.BlogComponents
 
   @impl true
   def mount(_params, _session, socket) do
