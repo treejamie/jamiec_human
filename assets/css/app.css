@@ -110,28 +110,39 @@ main {
 }
 
 footer {
+  background-color: var(--colour-dark-2);
+  color: var(--colour-light-3);
+  min-height: 100dvh;
+  padding: var(--unit-5);
+  display: flex;
+  align-items: center;
+}
+
+footer div.footer-content{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: var(--unit-4);
   background-color: var(--colour-dark-2);
   color: var(--colour-light-3);
-  place-items: center;
   align-items: start;
-  min-height: 100dvh;
-  padding: var(--unit-5);
+
+  padding: var(--unit-5); 
 }
 
   div.bio{
     grid-row: span 2;
+     align-self: center; 
     font-size: var(--unit-4);
     color: var(--colour-light-3);
     font-weight: 600;
     line-height: var(--unit-4);
   }
 
-  div.universe{
-    text-align: right
+  div.universe,
+  div.icon{
+    text-align: right;
+    justify-self: end;
   }
   div.universe h6{
     text-transform: uppercase;
