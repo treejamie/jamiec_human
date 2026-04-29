@@ -1,4 +1,7 @@
 defmodule JamieWeb.UserAuth do
+  @moduledoc """
+  User authentication module for the web application.
+  """
   use JamieWeb, :verified_routes
 
   import Plug.Conn

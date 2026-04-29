@@ -1,10 +1,10 @@
 defmodule Jamie.Blog.Test do
   use Jamie.DataCase, async: true
 
-  alias Jamie.Support.BlogFixtures
   alias Jamie.Blog
   alias Jamie.Blog.Post
   alias Jamie.Repo
+  alias Jamie.Support.BlogFixtures
 
   describe "published_posts/0" do
     test "only published posts are returned" do

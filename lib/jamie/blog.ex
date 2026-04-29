@@ -1,6 +1,10 @@
 defmodule Jamie.Blog do
-  alias Jamie.Repo
+  @moduledoc """
+  The blog context boundary.
+  """
+
   alias Jamie.Blog.Post
+  alias Jamie.Repo
   import Ecto.Query
 
   @doc """

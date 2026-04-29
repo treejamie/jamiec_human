@@ -1,10 +1,10 @@
 defmodule JamieWeb.UserAuthTest do
   use JamieWeb.ConnCase, async: true
 
-  alias Phoenix.LiveView
   alias Jamie.Accounts
   alias Jamie.Accounts.Scope
   alias JamieWeb.UserAuth
+  alias Phoenix.LiveView
 
   import Jamie.AccountsFixtures
 
