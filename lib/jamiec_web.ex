@@ -82,14 +82,14 @@ defmodule JamieWeb do
       # Translation
       use Gettext, backend: JamieWeb.Gettext
 
+      import JamieWeb.CoreComponents
+      alias JamieWeb.Layouts
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components
-      import JamieWeb.CoreComponents
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS
-      alias JamieWeb.Layouts
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

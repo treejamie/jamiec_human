@@ -10,6 +10,7 @@ defmodule Jamie.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      dialyzer: [plt_add_apps: [:ex_unit]],
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader]
     ]
@@ -27,7 +28,7 @@ defmodule Jamie.MixProject do
 
   def cli do
     [
-      preferred_envs: [precommit: :test]
+      preferred_envs: [precommit: :test, check: :test]
     ]
   end
 

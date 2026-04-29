@@ -1,8 +1,12 @@
 defmodule Jamie.Accounts.UserNotifier do
+  @moduledoc """
+  Notifier for user-related emails.
+  """
+
   import Swoosh.Email
 
-  alias Jamie.Mailer
   alias Jamie.Accounts.User
+  alias Jamie.Mailer
 
   # Delivers the email using the application mailer.
   defp deliver(recipient, subject, body) do

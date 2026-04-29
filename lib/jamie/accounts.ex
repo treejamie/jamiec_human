@@ -4,9 +4,9 @@ defmodule Jamie.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Jamie.Repo
 
-  alias Jamie.Accounts.{User, UserToken, UserNotifier}
+  alias Jamie.Accounts.{User, UserNotifier, UserToken}
+  alias Jamie.Repo
 
   ## Database getters
 
