@@ -1,3 +1,6 @@
+## 0.2.0
+- now with a nicer front end design
+
 ## 0.1.4
 - now with a form to create and edit blog posts
 
