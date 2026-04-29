@@ -22,9 +22,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: jamiec_human_test
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s
           --health-retries 5
 
     steps:
@@ -56,5 +54,5 @@ jobs:
       - name: Compile with warnings as errors
         run: mix compile --warnings-as-errors
 
-      - name: Run tests
-        run: mix test
+      - name: Run checks
+        run: mix check
