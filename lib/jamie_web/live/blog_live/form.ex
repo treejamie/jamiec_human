@@ -15,40 +15,42 @@ defmodule JamieWeb.BlogLive.Form do
         phx-debounce="1500"
         phx-submit="save"
         phx-hook="SaveShortcut"
-        class="flex flex-col h-full"
       >
-        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 flex flex-col flex-1 w-full">
-          <legend class="fieldset-legend text-lg">{@page_title}</legend>
+        <.input
+          field={@form[:title]}
+          label="Title"
+          type="text-naked"
+          placeholder="Post title"
+          required
+        />
 
-          <.input field={@form[:title]} label="Title" placeholder="Post title" required />
+        <.input
+          field={@form[:status]}
+          type="select-naked"
+          label="Status"
+          options={Enum.map(Blog.Post.statuses(), &{String.capitalize(to_string(&1)), &1})}
+        />
 
-          <.input
-            field={@form[:status]}
-            type="select"
-            label="Status"
-            options={Enum.map(Blog.Post.statuses(), &{String.capitalize(to_string(&1)), &1})}
-          />
+        <.input
+          type="text-naked"
+          field={@form[:description]}
+          label="Description"
+          placeholder="Brief description"
+        />
 
-          <.input
-            field={@form[:description]}
-            label="Description"
-            placeholder="Brief description"
-          />
+        <.input
+          field={@form[:markdown]}
+          type="textarea-naked"
+          label="Content (Markdown)"
+          class="textarea w-full flex-1 font-mono min-h-96"
+          placeholder="Write your post in markdown..."
+        />
 
-          <.input
-            field={@form[:markdown]}
-            type="textarea"
-            label="Content (Markdown)"
-            class="textarea w-full flex-1 font-mono min-h-96"
-            placeholder="Write your post in markdown..."
-          />
-
-          <div class="mt-4">
-            <button type="submit" class="btn btn-primary" phx-disable-with="Saving...">
-              Save Post
-            </button>
-          </div>
-        </fieldset>
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary" phx-disable-with="Saving...">
+            Save Post
+          </button>
+        </div>
       </.form>
     </Layouts.office>
     """
