@@ -1,0 +1,92 @@
+/* the reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    line-height: 1.5;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* tokens */
+:root {
+    --font-base: "Inter", sans-serif;
+    --unit-1: 6px; /* third */
+    --unit-2: 9px; /* half */
+    --unit-2-1: 12px;
+    --unit-2-2: 15px;
+    --unit-3: 18px; /* base */
+    --unit-3-1: 24px; /* base */
+    --unit-3-2: 27px; /* base */
+    --unit-4: 36px; /* double */
+    --unit-5: 54px; /* triple */
+    --unit-6: 72px; /* quad */
+
+    --line-height-1: 1.333;
+    --line-height-2: 1.666;
+    --line-height-3: 1.999;
+    --line-height-4: 2.333;
+
+    --colour-border-1: #e8e8e8;
+
+    --colour-dark-0: #010001;
+    --colour-dark-1: #1e1e1e;
+    --colour-dark-2: #2e2e2e;
+    --colour-dark-3: #484e4e;
+
+    --colour-mid-1: #8e8e8e;
+    --colour-mid-0: #dbd5d5;
+
+    --colour-light-1: #ffffff;
+    --colour-light-2: #f5f4f4;
+    --colour-light-3: #e1e1e1;
+
+    --colour-accent: #ff1412;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    font-family: var(--font-base);
+    font-size: var(--unit-3);
+    line-height: var(--unit-3-2);
+    background-color: var(--colour-light-2);
+    color: var(--colour-light-3);
+}
+
+.layout,
+.layout > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/*the base styles*/
+form {
+    width: 100%;
+}
+
+form#post-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+form#post-form textarea {
+    flex: 1;
+    resize: none;
+    font-family: var(--font-base);
+}
+form input,
+form textarea {
+    width: 100%;
+    font-size: var(--unit-3);
+    border: 0;
+    border-bottom: 1px solid var(--colour-mid-1);
+    padding: var(--unit-3);
+    outline: 0;
+}

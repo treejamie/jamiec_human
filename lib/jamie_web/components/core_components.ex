@@ -164,7 +164,8 @@ defmodule JamieWeb.CoreComponents do
   attr :type, :string,
     default: "text",
     values: ~w(checkbox color date datetime-local email file month number password
-               search select tel text textarea time url week)
+               search select tel text textarea time url week
+               textarea-naked text-naked select-naked)
 
   attr :field, Phoenix.HTML.FormField,
     doc: "a form field struct retrieved from the form, for example: @form[:email]"
@@ -240,6 +241,22 @@ defmodule JamieWeb.CoreComponents do
     """
   end
 
+  def input(%{type: "select-naked"} = assigns) do
+    ~H"""
+    <select
+      id={@id}
+      name={@name}
+      class={[@class || "w-full select", @errors != [] && (@error_class || "select-error")]}
+      multiple={@multiple}
+      {@rest}
+    >
+      <option :if={@prompt} value="">{@prompt}</option>
+      {Phoenix.HTML.Form.options_for_select(@options, @value)}
+    </select>
+    <.error :for={msg <- @errors}>{msg}</.error>
+    """
+  end
+
   def input(%{type: "textarea"} = assigns) do
     ~H"""
     <div class="fieldset mb-2">
@@ -257,6 +274,38 @@ defmodule JamieWeb.CoreComponents do
       </label>
       <.error :for={msg <- @errors}>{msg}</.error>
     </div>
+    """
+  end
+
+  def input(%{type: "textarea-naked"} = assigns) do
+    ~H"""
+    <textarea
+      id={@id}
+      name={@name}
+      class={[
+        @class || "w-full textarea",
+        @errors != [] && (@error_class || "textarea-error")
+      ]}
+      {@rest}
+    >{Phoenix.HTML.Form.normalize_value("textarea", @value)}</textarea>
+    <.error :for={msg <- @errors}>{msg}</.error>
+    """
+  end
+
+  def input(%{type: "text-naked"} = assigns) do
+    ~H"""
+    <input
+      type={@type}
+      name={@name}
+      id={@id}
+      value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+      class={[
+        @class || "w-full input",
+        @errors != [] && (@error_class || "input-error")
+      ]}
+      {@rest}
+    />
+    <.error :for={msg <- @errors}>{msg}</.error>
     """
   end
 
