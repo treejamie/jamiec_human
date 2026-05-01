@@ -62,6 +62,9 @@ defmodule Jamie.MixProject do
       {:dns_cluster, "~> 0.2.0"},
       {:hackney, "~> 1.9"},
       {:bandit, "~> 1.5"},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:sweet_xml, "~> 0.6"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]

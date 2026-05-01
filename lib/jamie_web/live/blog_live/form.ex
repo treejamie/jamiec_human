@@ -44,6 +44,8 @@ defmodule JamieWeb.BlogLive.Form do
           label="Content (Markdown)"
           class="textarea w-full flex-1 font-mono min-h-96"
           placeholder="Write your post in markdown..."
+          phx-hook="SignImageUrl"
+          phx-debounce="1500"
         />
 
         <div class="mt-4">
@@ -64,6 +66,26 @@ defmodule JamieWeb.BlogLive.Form do
   @impl true
   def handle_params(params, _url, socket) do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
+
+  @impl true
+  def handle_event("sign-image-url", %{"name" => name}, socket) do
+    bucket = Application.get_env(:ex_aws, :s3)[:bucket]
+    key = Ecto.UUID.generate() <> Path.extname(name)
+
+    {:ok, url} =
+      :s3
+      |> ExAws.Config.new([])
+      |> ExAws.S3.presigned_url(:put, bucket, key)
+
+    public_url = "https://media.jamiecurle.com/#{key}"
+
+    {:noreply,
+     push_event(socket, "page-loading-stop", %{
+       name: name,
+       url: url,
+       public_url: public_url
+     })}
   end
 
   @impl true

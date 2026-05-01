@@ -20,6 +20,18 @@ if System.get_env("PHX_SERVER") do
   config :jamie, JamieWeb.Endpoint, server: true
 end
 
+config :ex_aws, :s3,
+  access_key_id: System.get_env("CF_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("CF_SECRET_ACCESS_KEY"),
+  bucket: System.get_env("CF_BUCKET"),
+  host:
+    System.get_env("CF_ENDPOINT")
+    |> String.replace_prefix("https://", "")
+    |> String.replace_prefix("http://", "")
+    |> String.trim_trailing("/"),
+  region: "auto",
+  path_style: true
+
 if config_env() == :prod do
   config :jamie, Jamie.Mailer,
     adapter: Swoosh.Adapters.Postmark,

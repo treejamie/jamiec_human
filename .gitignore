@@ -37,3 +37,5 @@ npm-debug.log
 
 # every time. Everytime.
 .DS_Store
+
+.env
