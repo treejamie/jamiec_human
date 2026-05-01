@@ -1,52 +1,49 @@
 services:
-    web:
-        image: ghcr.io/treejamie/jamiec_human:latest
-        ports:
-            - "4000:4000"
-        environment:
-            PHX_SERVER: "true"
-            DATABASE_URL: ${DATABASE_URL}
-            SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-            POSTMARK_API_KEY: ${POSTMARK_API_KEY}
-            PHX_HOST: ${PHX_HOST}
-            PORT: ${PORT:-4000}
-            POOL_SIZE: ${POOL_SIZE:-10}
-        healthcheck:
-            test:
-                [
-                    "CMD",
-                    "wget",
-                    "-q",
-                    "-O",
-                    "/dev/null",
-                    "http://localhost:4000/health",
-                ]
-            interval: 30s
-            timeout: 3s
-            start_period: 10s
-            retries: 3
-        deploy:
-            replicas: 1
-            update_config:
-                order: start-first
-                failure_action: rollback
-            restart_policy:
-                condition: on-failure
-        networks:
-            - jamiec
+  web:
+    image: ghcr.io/treejamie/jamiec_human:latest
+    ports:
+      - "4000:4000"
+    environment:
+      CF_ACCESS_KEY_ID: ${CF_ACCESS_KEY_ID}
+      CF_SECRET_ACCESS_KEY: ${CF_SECRET_ACCESS_KEY}
+      CF_BUCKET: ${CF_BUCKET}
+      CF_HOST: ${CF_HOST}
+      PHX_SERVER: "true"
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      POSTMARK_API_KEY: ${POSTMARK_API_KEY}
+      PHX_HOST: ${PHX_HOST}
+      PORT: ${PORT:-4000}
+      POOL_SIZE: ${POOL_SIZE:-10}
+    healthcheck:
+      test:
+        ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 3s
+      start_period: 10s
+      retries: 3
+    deploy:
+      replicas: 1
+      update_config:
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+    networks:
+      - jamiec
 
-    cloudflared:
-        image: cloudflare/cloudflared:latest
-        command: tunnel --no-autoupdate run --url http://web:4000
-        environment:
-            TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
-        deploy:
-            replicas: 1
-            restart_policy:
-                condition: on-failure
-        networks:
-            - jamiec
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --url http://web:4000
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - jamiec
 
 networks:
-    jamiec:
-        driver: overlay
+  jamiec:
+    driver: overlay

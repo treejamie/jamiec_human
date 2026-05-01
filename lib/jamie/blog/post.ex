@@ -67,8 +67,21 @@ defmodule Jamie.Blog.Post do
             parse: [smart: true],
             render: [unsafe_: true]
           )
+          |> rewrite_image_urls()
 
         put_change(changeset, :html, html)
     end
+  end
+
+  # Rewrites <img src="https://media.jamiecurle.com/<key>"> to route through
+  # Cloudflare's on-the-fly resizer. Skips already-transformed URLs.
+  defp rewrite_image_urls(html) do
+    [host: host, transform: transform] = Application.get_env(:jamie, :images)
+
+    Regex.replace(
+      ~r{(<img[^>]*src=")https://#{host}/(?!cdn-cgi/)([^"]+)},
+      html,
+      "\\1https://#{host}/#{transform}/\\2"
+    )
   end
 end

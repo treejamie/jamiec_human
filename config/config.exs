@@ -35,6 +35,10 @@ config :jamie, JamieWeb.Endpoint,
   pubsub_server: Jamie.PubSub,
   live_view: [signing_salt: "ztvDy8aq"]
 
+config :jamie, :images,
+  host: "media.jamiecurle.com",
+  transform: "cdn-cgi/image/width=1200,format=auto,quality=85"
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -49,7 +53,7 @@ config :esbuild,
   version: "0.25.4",
   jamie: [
     args:
-      ~w(js/app.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/* --alias:@=.),
+      ~w(js/app.js js/office.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/* --alias:@=.),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => [Path.expand("../deps", __DIR__), Mix.Project.build_path()]}
   ],
