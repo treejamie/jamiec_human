@@ -1,3 +1,6 @@
+## 0.2.1
+- now with image uploads
+
 ## 0.2.0
 - now with a nicer front end design
 
@@ -10,7 +13,7 @@
 ## 0.1.1
 - a homepage
 
-## 0.1.0 
+## 0.1.0
 - blog posts are now a thing.
 =======
 
