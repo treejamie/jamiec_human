@@ -60,15 +60,11 @@ li a {
 }
 
 /* header */
-body > header div.header-content {
-    background-color: var(--c-accent-dark-6);
-}
-
 body > header .header-content svg path {
-    fill: var(--colour-light-1);
+    fill: var(--c-accent-dark-6);
 }
-body > header .header-content p {
-    color: var(--colour-light-1);
+body > header .header-content span {
+    color: var(--c-accent-dark-6);
 }
 
 /* footer structure */
@@ -109,6 +105,16 @@ footer div.colophon {
 
 /* hover states */
 @media (hover: hover) {
+    body > header div.header-content a:hover {
+        background-color: var(--c-accent-dark-6);
+    }
+    body > header div.header-content a:hover svg path {
+        fill: var(--colour-light-1);
+    }
+    body > header div.header-content a:hover span {
+        color: var(--colour-light-1);
+    }
+
     p a:hover,
     li a:hover {
         background: var(--c-accent-light-6);

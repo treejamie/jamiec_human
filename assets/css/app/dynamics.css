@@ -5,5 +5,20 @@ footer nav.urgh-words a {
 }
 
 footer nav.ooh-pictures a svg path {
-    transition: fill 150ms ease;
+    transition: fill var(--duration-2) ease;
+}
+
+body > header div.header-content a {
+    transition:
+        background-color var(--duration-2) ease,
+        transform var(--duration-3) ease;
+}
+body > header div.header-content a > * {
+    transition: transform var(--duration-3) ease;
+}
+body > header div.header-content a svg path {
+    transition: fill var(--duration-3) ease;
+}
+body > header div.header-content a span {
+    transition: color var(--duration-3) ease;
 }

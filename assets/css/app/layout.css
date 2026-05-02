@@ -10,7 +10,6 @@ body > footer {
     padding: var(--unit-4);
 }
 
-body > header .header-content,
 main,
 .footer-content {
     max-width: 120ch;
