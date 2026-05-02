@@ -45,7 +45,7 @@
     --colour-light-5: #afafaf;
     --colour-light-6: #969696;
 
-    --c-accent-dark: #5d00b7;
+    --c-accent-dark: #00ffe8;
 
     --c-accent-dark-2: color-mix(in oklch, var(--c-accent-dark), white 60%);
     --c-accent-dark-3: color-mix(in oklch, var(--c-accent-dark), white 40%);
@@ -55,13 +55,13 @@
     --c-accent-dark-7: color-mix(in oklch, var(--c-accent-dark), black 40%);
     --c-accent-dark-8: color-mix(in oklch, var(--c-accent-dark), black 60%);
 
-    --c-accent-light: #ffd900;
+    --c-accent-light: #ff89ff;
 
     --c-accent-light-2: color-mix(in oklch, var(--c-accent-light), white 60%);
     --c-accent-light-3: color-mix(in oklch, var(--c-accent-light), white 40%);
     --c-accent-light-4: color-mix(in oklch, var(--c-accent-light), white 20%);
     --c-accent-light-5: var(--c-accent-light);
-    --c-accent-light-6: color-mix(in oklch, var(--c-accent-light), #8e009f 20%);
-    --c-accent-light-7: color-mix(in oklch, var(--c-accent-light), #8e009f 40%);
-    --c-accent-light-8: color-mix(in oklch, var(--c-accent-light), #8e009f 60%);
+    --c-accent-light-6: color-mix(in oklch, var(--c-accent-light), #f00 20%);
+    --c-accent-light-7: color-mix(in oklch, var(--c-accent-light), #f00 40%);
+    --c-accent-light-8: color-mix(in oklch, var(--c-accent-light), #f00 60%);
 }

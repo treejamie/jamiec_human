@@ -1,4 +1,9 @@
 p a,
-li a {
+li a,
+footer nav.urgh-words a {
     transition: box-shadow var(--duration-3) ease;
+}
+
+footer nav.ooh-pictures a svg path {
+    transition: fill 150ms ease;
 }

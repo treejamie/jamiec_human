@@ -1,9 +1,31 @@
 footer {
+    margin-top: var(--unit-6);
+    position: relative;
     background-color: var(--colour-dark-2);
     color: var(--colour-light-3);
     min-height: 100dvh;
     display: flex;
     align-items: center;
+    border-top: 1px solid var(--colour-dark-2);
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: calc(100vw * tan(1deg));
+    background: inherit;
+    border-top: 5px solid var(--colour-dark-2);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+footer div.bio {
+    font-size: var(--unit-3-2);
+    line-height: var(--unit-4);
+    font-weight: 600;
+    color: var(--colour-light-4);
 }
 
 footer h6 {
@@ -12,7 +34,6 @@ footer h6 {
 footer nav.urgh-words a,
 footer div.bio a {
     background: var(--c-accent-dark-6);
-    box-shadow: 0 var(--unit-0) var(--c-accent-dark-5);
 }
 footer nav.urgh-words a:not(:last-child)::after {
     content: ",";
@@ -26,14 +47,16 @@ footer nav div {
     margin-bottom: var(--unit-4);
 }
 footer nav.ooh-pictures {
+    margin-top: var(--unit-6);
+    margin-bottom: var(--unit-6);
     display: flex;
     flex-flow: row wrap;
 }
 footer nav.ooh-pictures a {
     display: block;
     flex-grow: 1;
-    height: calc(var(--unit-5) * 2);
-    width: calc(var(--unit-5) * 2);
+    height: calc(var(--unit-4) * 2);
+    width: calc(var(--unit-4) * 2);
     color: var(--colour-light-3);
 }
 footer nav.ooh-pictures a svg {
@@ -43,7 +66,6 @@ footer nav.ooh-pictures a svg {
 }
 footer nav.ooh-pictures a svg path {
     fill: var(--colour-light-6);
-    transition: fill 150ms ease;
 }
 
 @media (hover: hover) {
@@ -58,7 +80,8 @@ footer nav.ooh-pictures a svg path {
     }
     footer nav.urgh-words a:hover,
     footer div.bio a:hover {
-        background: var(--c-accent-4);
-        box-shadow: 0 var(--unit-0) var(--c-accent-dark-8);
+        cursor: pointer;
+        background: var(--c-accent-dark-5);
+        box-shadow: 0 var(--unit-0) var(--c-accent-dark-4);
     }
 }

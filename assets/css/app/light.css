@@ -1,10 +1,12 @@
 a {
     color: var(--c-accent);
 }
+
 p a,
 li a {
     display: inline-block;
     border-bottom-color: var(--colour-mid-0);
+    background: var(--c-accent-light-5);
 }
 
 @media (hover: hover) {

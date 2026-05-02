@@ -7,5 +7,5 @@ body {
 body > header,
 body > main,
 body > footer {
-    padding: var(--unit-2);
+    padding: var(--unit-4);
 }
