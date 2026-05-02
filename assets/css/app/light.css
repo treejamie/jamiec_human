@@ -17,6 +17,7 @@
     --colour-light-4: #c8c8c8;
     --colour-light-5: #afafaf;
     --colour-light-6: #969696;
+    --colour-light-7: #828282;
 
     --c-accent-dark: oklch(0.8441 0.1875 202.24 / 83.57%);
     --c-accent-dark-2: oklch(0.9353 0.071 202.24 / 93.43%);
@@ -48,9 +49,26 @@
     --colour-mid-0: var(--colour-light-5);
 }
 
-/* anchors */
+html,
+body {
+    background-color: var(--colour-dark-3);
+}
+main {
+    background-color: var(--colour-light-1);
+}
+
+/* typography colours */
 a {
     color: var(--colour-light-1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--colour-dark-2);
 }
 
 p a,
@@ -136,4 +154,11 @@ footer div.colophon {
     footer nav.ooh-pictures a.rss:hover svg path {
         fill: var(--colour-rss);
     }
+}
+
+/*posts*/
+
+article header p {
+    color: var(--colour-light-7);
+    border-left-color: var(--colour-light-3);
 }

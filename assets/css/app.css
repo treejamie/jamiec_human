@@ -10,3 +10,6 @@
 
 /* dark and light mode note: dark is todo */
 @import "./app/light.css";
+
+/* post specific rules */
+@import "./app/posts.css";
