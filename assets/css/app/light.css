@@ -107,6 +107,9 @@ footer div.bio a {
     color: var(--colour-dark-2);
     background: var(--c-accent-dark-5);
 }
+footer nav.urgh-words h6 {
+    color: var(--colour-light-4);
+}
 
 /* footer social icons */
 footer nav.ooh-pictures a {
