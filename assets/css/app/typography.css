@@ -1,0 +1,26 @@
+body {
+    font-family: var(--font-base);
+    font-size: var(--unit-3);
+    line-height: var(--unit-3-2);
+}
+
+p a,
+li a,
+footer nav.urgh-words a {
+    text-decoration: none;
+    padding-left: var(--unit-2);
+    padding-right: var(--unit-2);
+    border-radius: var(--unit-0);
+    background: var(--c-accent-light-2);
+    box-decoration-break: unset;
+    box-shadow: 0 var(--unit-0) var(--c-accent-light-5);
+    -webkit-box-decoration-break: unset;
+}
+
+@media (hover: hover) {
+    p a:hover,
+    li a:hover {
+        background: var(--c-accent-light-4);
+        box-shadow: 0 var(--unit-0) var(--c-accent-light-8);
+    }
+}

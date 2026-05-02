@@ -1,0 +1,64 @@
+footer {
+    background-color: var(--colour-dark-2);
+    color: var(--colour-light-3);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+}
+
+footer h6 {
+    text-transform: uppercase;
+}
+footer nav.urgh-words a,
+footer div.bio a {
+    background: var(--c-accent-dark-6);
+    box-shadow: 0 var(--unit-0) var(--c-accent-dark-5);
+}
+footer nav.urgh-words a:not(:last-child)::after {
+    content: ",";
+}
+
+footer nav.urgh-words a:last-child::after {
+    content: ".";
+}
+
+footer nav div {
+    margin-bottom: var(--unit-4);
+}
+footer nav.ooh-pictures {
+    display: flex;
+    flex-flow: row wrap;
+}
+footer nav.ooh-pictures a {
+    display: block;
+    flex-grow: 1;
+    height: calc(var(--unit-5) * 2);
+    width: calc(var(--unit-5) * 2);
+    color: var(--colour-light-3);
+}
+footer nav.ooh-pictures a svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+footer nav.ooh-pictures a svg path {
+    fill: var(--colour-light-6);
+    transition: fill 150ms ease;
+}
+
+@media (hover: hover) {
+    footer nav.ooh-pictures a.linkedin:hover svg path {
+        fill: var(--colour-linkedin);
+    }
+    footer nav.ooh-pictures a.github:hover svg path {
+        fill: var(--colour-light-1);
+    }
+    footer nav.ooh-pictures a.rss:hover svg path {
+        fill: var(--colour-rss);
+    }
+    footer nav.urgh-words a:hover,
+    footer div.bio a:hover {
+        background: var(--c-accent-4);
+        box-shadow: 0 var(--unit-0) var(--c-accent-dark-8);
+    }
+}

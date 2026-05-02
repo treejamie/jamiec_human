@@ -1,0 +1,16 @@
+a {
+    color: var(--c-accent);
+}
+p a,
+li a {
+    display: inline-block;
+    border-bottom-color: var(--colour-mid-0);
+}
+
+@media (hover: hover) {
+    p a:hover,
+    li a:hover {
+        display: inline-block;
+        border-bottom-color: var(--c-accent-5);
+    }
+}

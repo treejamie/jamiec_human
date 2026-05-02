@@ -1,0 +1,4 @@
+p a,
+li a {
+    transition: box-shadow var(--duration-3) ease;
+}

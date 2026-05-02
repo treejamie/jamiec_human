@@ -1,0 +1,67 @@
+:root {
+    --font-base: "Inter", sans-serif;
+    --font-code: "Inconsolata", fixed;
+    --unit-0: 3px; /* third */
+    --unit-1: 6px; /* third */
+    --unit-2: 9px; /* half */
+    --unit-2-1: 12px;
+    --unit-2-2: 15px;
+    --unit-3: 18px; /* base */
+    --unit-3-1: 24px; /* base */
+    --unit-3-2: 27px; /* base */
+    --unit-4: 36px; /* double */
+    --unit-5: 54px; /* triple */
+    --unit-6: 72px; /* quad */
+
+    --duration-1: 0.2s;
+    --duration-2: 0.4s;
+    --duration-3: 0.6s;
+    --duration-4: 0.8s;
+    --duration-5: 1s;
+
+    --line-height-1: 1.333;
+    --line-height-2: 1.666;
+    --line-height-3: 1.999;
+    --line-height-4: 2.333;
+
+    --colour-linkedin: #0072b1;
+
+    --colour-rss: #f26522;
+
+    --colour-border-1: #e8e8e8;
+
+    --colour-dark-0: #010001;
+    --colour-dark-1: #1e1e1e;
+    --colour-dark-2: #2e2e2e;
+    --colour-dark-3: #484e4e;
+    --colour-dark-4: #5e6464;
+    --colour-dark-5: #797f7f;
+    --colour-dark-6: #969696;
+
+    --colour-light-1: #ffffff;
+    --colour-light-2: #f5f4f4;
+    --colour-light-3: #e1e1e1;
+    --colour-light-4: #c8c8c8;
+    --colour-light-5: #afafaf;
+    --colour-light-6: #969696;
+
+    --c-accent-dark: #5d00b7;
+
+    --c-accent-dark-2: color-mix(in oklch, var(--c-accent-dark), white 60%);
+    --c-accent-dark-3: color-mix(in oklch, var(--c-accent-dark), white 40%);
+    --c-accent-dark-4: color-mix(in oklch, var(--c-accent-dark), white 20%);
+    --c-accent-dark-5: var(--c-accent-dark);
+    --c-accent-dark-6: color-mix(in oklch, var(--c-accent-dark), black 20%);
+    --c-accent-dark-7: color-mix(in oklch, var(--c-accent-dark), black 40%);
+    --c-accent-dark-8: color-mix(in oklch, var(--c-accent-dark), black 60%);
+
+    --c-accent-light: #ffd900;
+
+    --c-accent-light-2: color-mix(in oklch, var(--c-accent-light), white 60%);
+    --c-accent-light-3: color-mix(in oklch, var(--c-accent-light), white 40%);
+    --c-accent-light-4: color-mix(in oklch, var(--c-accent-light), white 20%);
+    --c-accent-light-5: var(--c-accent-light);
+    --c-accent-light-6: color-mix(in oklch, var(--c-accent-light), #8e009f 20%);
+    --c-accent-light-7: color-mix(in oklch, var(--c-accent-light), #8e009f 40%);
+    --c-accent-light-8: color-mix(in oklch, var(--c-accent-light), #8e009f 60%);
+}

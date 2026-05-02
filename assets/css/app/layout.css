@@ -1,0 +1,11 @@
+body {
+    /*display: grid;*/
+    /*grid-template-rows: auto 1fr auto;*/
+    min-height: 100dvh;
+}
+
+body > header,
+body > main,
+body > footer {
+    padding: var(--unit-2);
+}
