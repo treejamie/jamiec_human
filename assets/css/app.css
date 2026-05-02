@@ -2,6 +2,7 @@
 @import "./app/tokens.css";
 @import "./app/layout.css";
 @import "./app/typography.css";
+@import "./app/header.css";
 @import "./app/footer.css";
 
 /* any non-hover animations */

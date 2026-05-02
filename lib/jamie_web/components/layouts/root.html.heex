@@ -38,10 +38,23 @@
   </head>
   <body>
     <header>
-      <a href="/">
-        <.lambda_icon />
-      </a>
-      <p>Jamie Curle</p>
+      <div class="header-content">
+        <a href="/">
+          <svg
+            width="87"
+            height="110"
+            viewBox="0 0 87 110"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 110L30.1777 32.3356L27.5279 25.4698C26.7428 23.4519 25.9086 21.8523 25.0254 20.6711C24.1421 19.4407 23.1117 18.5548 21.934 18.0134C20.8054 17.472 19.4069 17.2013 17.7386 17.2013H8.46447V0C10.8198 0 13.2242 0 15.6777 0C18.1311 0 20.511 0 22.8173 0C26.8409 0 30.3739 0.66443 33.4162 1.99329C36.5076 3.32215 39.1819 5.38926 41.4391 8.19463C43.7453 10.9508 45.7081 14.4944 47.3274 18.8255L72.132 84.5302C72.868 86.4989 73.6041 88.0984 74.3401 89.3289C75.1252 90.5101 76.033 91.396 77.0635 91.9866C78.143 92.528 79.5415 92.7987 81.2589 92.7987H87V110C85.3316 110 83.6387 110 81.9213 110C80.2039 110 78.511 110 76.8426 110C72.819 110 69.286 109.336 66.2437 108.007C63.2504 106.678 60.6988 104.635 58.5888 101.879C56.4789 99.123 54.6878 95.5548 53.2157 91.1745L46.1497 71.4631C44.6777 66.9351 43.2547 62.3825 41.8807 57.8054C40.5068 53.179 39.2064 48.5526 37.9797 43.9262H44.0152C42.7394 48.5526 41.4146 53.179 40.0406 57.8054C38.6667 62.3825 37.2437 66.9351 35.7716 71.4631L22.7437 110H0Z"
+              fill="#DBD5D5"
+            />
+          </svg>
+        </a>
+        <p>Jamie Curle</p>
+      </div>
     </header>
     <main>
       {@inner_content}
@@ -59,6 +72,7 @@
             He would be very interested in working with you, <a href="#">drop him a line</a>.
           </p>
         </div>
+
         <nav class="urgh-words">
           <h6>Treeworld</h6>
           <div>
@@ -104,6 +118,20 @@
             </svg>
           </a>
         </nav>
+
+        <div class="colophon">
+          <p>
+            A (mostly) handrolled site designed and engineered by me in Elixir, making extensive use of Phoenix,
+            LiveView, Ecto and mdex. Built into a Docker image, ran in a Docker Compose file and deplo
+            deployed out to Hosted on a Docker swarm running on Raspberry Pi in a cupboard, served through
+            a Cloudflare tunnel. Project managed inside of Linear, with a four week cycle becasue it's a personal
+            project. <a href="https://github.com/treejamie/jamiec_human">Source on GitHub</a>.
+          </p>
+          <p>
+            Design &amp; content &copy; Jamie Curle 2026 all rights reserved. Source Code MIT. No reuse or reproduction
+            of content permitted for any non-personal usage, including for AI training purposes, except where allowed in <a href="/robots.txt">robots.txt</a>.
+          </p>
+        </div>
       </div>
     </footer>
   </body>

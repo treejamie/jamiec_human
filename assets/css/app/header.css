@@ -1,0 +1,18 @@
+body > header {
+    width: 100%;
+    padding:;
+}
+
+div.header-content {
+    padding: var(--unit-3);
+    display: flex;
+    align-items: center;
+}
+
+div.header-content a svg {
+    max-height: var(--unit-4);
+}
+div.header-content p {
+    font-weight: 600;
+    text-transform: uppercase;
+}

@@ -1,12 +1,10 @@
 footer {
     margin-top: var(--unit-6);
     position: relative;
-    background-color: var(--colour-dark-2);
-    color: var(--colour-light-3);
     min-height: 100dvh;
     display: flex;
     align-items: center;
-    border-top: 1px solid var(--colour-dark-2);
+    border-top: 1px solid;
 }
 
 footer::before {
@@ -16,8 +14,7 @@ footer::before {
     right: 0;
     bottom: 100%;
     height: calc(100vw * tan(1deg));
-    background: inherit;
-    border-top: 5px solid var(--colour-dark-2);
+    border-top: 5px solid;
     clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
@@ -25,16 +22,16 @@ footer div.bio {
     font-size: var(--unit-3-2);
     line-height: var(--unit-4);
     font-weight: 600;
-    color: var(--colour-light-4);
 }
 
 footer h6 {
     text-transform: uppercase;
 }
-footer nav.urgh-words a,
-footer div.bio a {
-    background: var(--c-accent-dark-6);
+
+footer nav.urgh-words a {
+    margin: var(--unit-1) var(--unit-2);
 }
+
 footer nav.urgh-words a:not(:last-child)::after {
     content: ",";
 }
@@ -57,31 +54,53 @@ footer nav.ooh-pictures a {
     flex-grow: 1;
     height: calc(var(--unit-4) * 2);
     width: calc(var(--unit-4) * 2);
-    color: var(--colour-light-3);
 }
 footer nav.ooh-pictures a svg {
     width: 100%;
     height: 100%;
     display: block;
 }
-footer nav.ooh-pictures a svg path {
-    fill: var(--colour-light-6);
-}
 
 @media (hover: hover) {
-    footer nav.ooh-pictures a.linkedin:hover svg path {
-        fill: var(--colour-linkedin);
-    }
-    footer nav.ooh-pictures a.github:hover svg path {
-        fill: var(--colour-light-1);
-    }
-    footer nav.ooh-pictures a.rss:hover svg path {
-        fill: var(--colour-rss);
-    }
     footer nav.urgh-words a:hover,
     footer div.bio a:hover {
         cursor: pointer;
-        background: var(--c-accent-dark-5);
-        box-shadow: 0 var(--unit-0) var(--c-accent-dark-4);
+    }
+}
+
+@media (min-width: 770px) {
+    footer div.footer-content {
+        display: grid;
+        grid-template-areas:
+            "bio words"
+            "pictures pictures"
+            "colophon colophon";
+        /*grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: auto auto;*/
+        gap: var(--unit-4);
+        align-items: start;
+        max-width: 120ch;
+        padding: var(--unit-5);
+    }
+
+    footer div.bio {
+        font-size: var(--unit-4);
+        grid-area: bio;
+        max-width: 20ch;
+    }
+    footer nav.urgh-words {
+        grid-area: words;
+    }
+    footer nav.ooh-pictures {
+        grid-area: pictures;
+        flex: auto;
+    }
+    footer div.colophon {
+        grid-area: colophon;
+    }
+
+    footer nav.ooh-pictures a {
+        height: calc(var(--unit-6) * 2);
+        width: calc(var(--unit-6) * 2);
     }
 }

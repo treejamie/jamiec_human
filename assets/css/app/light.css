@@ -1,18 +1,133 @@
+:root {
+    --colour-linkedin: #0072b1;
+    --colour-rss: oklch(0.8067 0.1924 72 / 97.3%);
+    --colour-border-1: #e8e8e8;
+
+    --colour-dark-0: #010001;
+    --colour-dark-1: #1e1e1e;
+    --colour-dark-2: #2e2e2e;
+    --colour-dark-3: #484e4e;
+    --colour-dark-4: #5e6464;
+    --colour-dark-5: #797f7f;
+    --colour-dark-6: #969696;
+
+    --colour-light-1: #ffffff;
+    --colour-light-2: #f5f4f4;
+    --colour-light-3: #e1e1e1;
+    --colour-light-4: #c8c8c8;
+    --colour-light-5: #afafaf;
+    --colour-light-6: #969696;
+
+    --c-accent-dark: oklch(0.8441 0.1875 202.24 / 83.57%);
+    --c-accent-dark-2: oklch(0.9353 0.071 202.24 / 93.43%);
+    --c-accent-dark-3: oklch(0.9029 0.1066 202.24 / 90.14%);
+    --c-accent-dark-4: oklch(0.8706 0.1421 202.24 / 86.86%);
+    --c-accent-dark-5: var(--c-accent-dark);
+    --c-accent-dark-6: oklch(0.7147 0.1702 202.24 / 86.9%);
+    --c-accent-dark-7: oklch(0.5029 0.1066 202.24 / 90.14%);
+    --c-accent-dark-8: oklch(0.3353 0.071 202.24 / 93.43%);
+
+    --c-accent-light: oklch(0.7 0.3471 10.59 / 83.57%);
+    --c-accent-light-2: oklch(0.88 0.1388 10.59 / 93.43%);
+    --c-accent-light-3: oklch(0.82 0.2083 10.59 / 90.14%);
+    --c-accent-light-4: oklch(0.76 0.2777 10.59 / 86.86%);
+    --c-accent-light-5: var(--c-accent-light);
+    --c-accent-light-6: oklch(0.6856 0.3292 14.32 / 86.86%);
+    --c-accent-light-7: oklch(0.6712 0.3113 18.05 / 90.14%);
+    --c-accent-light-8: oklch(0.6567 0.2934 21.77 / 93.43%);
+
+    /* theme aliases — dark.css will override these */
+    --c-accent: var(--c-accent-light);
+    --c-accent-2: var(--c-accent-light-2);
+    --c-accent-3: var(--c-accent-light-3);
+    --c-accent-4: var(--c-accent-light-4);
+    --c-accent-5: var(--c-accent-light-5);
+    --c-accent-6: var(--c-accent-light-6);
+    --c-accent-7: var(--c-accent-light-7);
+    --c-accent-8: var(--c-accent-light-8);
+    --colour-mid-0: var(--colour-light-5);
+}
+
+/* anchors */
 a {
-    color: var(--c-accent);
+    color: var(--colour-light-1);
 }
 
 p a,
 li a {
-    display: inline-block;
     border-bottom-color: var(--colour-mid-0);
     background: var(--c-accent-light-5);
 }
 
+/* header */
+body > header div.header-content {
+    background-color: var(--c-accent-dark-6);
+}
+
+body > header .header-content svg path {
+    fill: var(--colour-light-1);
+}
+body > header .header-content p {
+    color: var(--colour-light-1);
+}
+
+/* footer structure */
+footer {
+    background-color: var(--colour-dark-2);
+    color: var(--colour-light-3);
+    border-top-color: var(--colour-dark-2);
+}
+
+footer::before {
+    background: inherit;
+    border-top-color: var(--colour-dark-2);
+}
+
+footer div.bio {
+    color: var(--colour-light-3);
+}
+
+footer div.colophon a,
+footer nav.urgh-words a,
+footer div.bio a {
+    color: var(--colour-dark-2);
+    background: var(--c-accent-dark-5);
+}
+
+/* footer social icons */
+footer nav.ooh-pictures a {
+    color: var(--colour-light-3);
+}
+
+footer nav.ooh-pictures a svg path {
+    fill: var(--colour-light-6);
+}
+
+footer div.colophon {
+    color: var(--colour-light-6);
+}
+
+/* hover states */
 @media (hover: hover) {
     p a:hover,
     li a:hover {
-        display: inline-block;
-        border-bottom-color: var(--c-accent-5);
+        background: var(--c-accent-light-6);
+        box-shadow: 0 var(--unit-0) var(--colour-dark-1);
+    }
+
+    footer nav.urgh-words a:hover,
+    footer div.bio a:hover {
+        background: var(--c-accent-dark-5);
+        box-shadow: 0 var(--unit-0) var(--colour-light-1);
+    }
+
+    footer nav.ooh-pictures a.linkedin:hover svg path {
+        fill: var(--colour-linkedin);
+    }
+    footer nav.ooh-pictures a.github:hover svg path {
+        fill: var(--colour-light-1);
+    }
+    footer nav.ooh-pictures a.rss:hover svg path {
+        fill: var(--colour-rss);
     }
 }
