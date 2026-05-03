@@ -10,16 +10,34 @@ pre code {
 }
 
 p a,
-li a,
-footer nav.urgh-words a {
+li a {
     display: inline-block;
     text-decoration: none;
     padding-left: var(--unit-1);
     padding-right: var(--unit-1);
 }
 
-footer div.colophon {
-    font-size: var(--unit-2-1);
-    line-height: var(--unit-2-2);
-    font-weight: 500;
+ul,
+ol {
+    padding-left: var(--unit-3);
+    margin-left: var(--unit-1);
+}
+li {
+    padding-left: var(--unit-1);
+    margin-bottom: var(--unit-2-1);
+}
+
+blockquote {
+    margin-left: 0;
+    font-size: var(--unit-3-2);
+    line-height: var(--unit-3-2);
+    font-family: var(--font-serif);
+    border-left: var(--unit-3) solid black;
+    padding: var(--unit-2-2) 0 var(--unit-1) var(--unit-3);
+}
+blockquote em:last-of-type {
+    display: block;
+    margin-top: var(--unit-3);
+    font-family: var(--font-base);
+    font-size: var(--unit-2-2);
 }

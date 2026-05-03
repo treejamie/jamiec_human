@@ -1,6 +1,7 @@
 :root {
     --font-base: "Inter", sans-serif;
     --font-code: "Inconsolata", fixed;
+    --font-serif: "EB Garamond", serif;
     --unit-0: 3px; /* third */
     --unit-1: 6px; /* third */
     --unit-2: 9px; /* half */

@@ -130,7 +130,7 @@ footer div.footer-content {
     padding: var(--unit-5);
 }
 
-div.bio {
+/*div.bio {
     grid-row: span 2;
     align-self: center;
     font-size: var(--unit-4);
@@ -155,7 +155,7 @@ div.universe ul a {
 }
 div.universe ul a:hover {
     color: var(--colour-light-1);
-}
+}*/
 
 div.icon img {
     width: calc(var(--unit-5) * 2);

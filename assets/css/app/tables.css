@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--unit-4) 0;
+    font-size: var(--unit-3);
+}
+
+caption {
+    padding-bottom: var(--unit-2);
+    text-align: left;
+    font-weight: 600;
+}
+
+th,
+td {
+    padding: var(--unit-2) var(--unit-3);
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid;
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--unit-2-2);
+    letter-spacing: 0.04em;
+}

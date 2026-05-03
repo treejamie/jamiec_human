@@ -1,14 +1,34 @@
+/* reset */
 @import "./app/reset.css";
+
+/* tokens */
 @import "./app/tokens.css";
+
+/* main layout */
 @import "./app/layout.css";
+
+/* typographical stuff */
 @import "./app/typography.css";
-@import "./app/header.css";
-@import "./app/footer.css";
+
+/* code blocks are technically typography but there's some extra
+stuff to make it "look nice" */
+@import "./app/code.css";
+
+/*tables*/
+@import "./app/tables.css";
 
 /* any non-hover animations */
 @import "./app/dynamics.css";
 
-/* dark and light mode note: dark is todo */
+/*the main parts of the layout*/
+@import "./app/header.css";
+@import "./app/main.css";
+@import "./app/footer.css";
+
+/* dark and light mode note: dark is todo
+important: this file contains ONLY colours and no other files
+contain any colour.
+*/
 @import "./app/light.css";
 
 /* post specific rules */

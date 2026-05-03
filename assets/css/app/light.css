@@ -3,6 +3,8 @@
     --colour-rss: oklch(0.8067 0.1924 72 / 97.3%);
     --colour-border-1: #e8e8e8;
 
+    --colour-code: oklch(0.9585 0.1603 117.4);
+
     --colour-dark-0: #010001;
     --colour-dark-1: #1e1e1e;
     --colour-dark-2: #2e2e2e;
@@ -53,7 +55,11 @@ html,
 body {
     background-color: var(--colour-dark-3);
 }
-main {
+body > main {
+    background-color: var(--colour-light-1);
+    border-bottom-color: var(--colour-light-1);
+}
+main::after {
     background-color: var(--colour-light-1);
 }
 
@@ -75,6 +81,19 @@ p a,
 li a {
     border-bottom-color: var(--colour-mid-0);
     background: var(--c-accent-light-5);
+}
+
+blockquote {
+    border-left-color: var(--colour-light-3);
+}
+
+:not(pre) > code {
+    border-color: var(--colour-light-3);
+    background-color: var(--colour-code);
+}
+
+a code {
+    color: var(--colour-dark-3);
 }
 
 /* header */
@@ -164,4 +183,19 @@ footer div.colophon {
 article header p {
     color: var(--colour-light-7);
     border-left-color: var(--colour-light-3);
+}
+
+/* tables */
+table caption {
+    color: var(--colour-light-7);
+}
+
+th,
+td {
+    border-color: var(--colour-dark-2);
+}
+
+thead {
+    background-color: var(--colour-dark-2);
+    color: var(--colour-light-1);
 }

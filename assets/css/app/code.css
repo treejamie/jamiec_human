@@ -1,0 +1,40 @@
+pre {
+    position: relative;
+    margin: var(--unit-4) 0;
+    padding: var(--unit-5) var(--unit-3) var(--unit-3);
+    background-color: var(--code-bg, #1e1e1e);
+    border-radius: var(--unit-1);
+    overflow-x: auto;
+    font-family: var(--font-code);
+}
+
+/* fake browser chrome — three traffic-light dots via one ::before + box-shadow */
+pre::before {
+    content: "";
+    position: absolute;
+    top: var(--unit-2-1);
+    left: var(--unit-3);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: oklch(0.7026 0.2368 41.16);
+    box-shadow:
+        20px 0 0 oklch(0.9408 0.2195 107.87),
+        40px 0 0 oklch(0.86 0.2195 170.34);
+}
+
+/* hairline separator between chrome and code body */
+pre::after {
+    content: "";
+    position: absolute;
+    top: var(--unit-4);
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgb(255 255 255 / 0.06);
+}
+
+:not(pre) > code {
+    padding: var(--unit-0);
+    font-family: var(--font-code);
+}
