@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Inconsolata:wght@500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
     <.live_title default="" suffix="  - Jamie Curle">
@@ -31,79 +32,107 @@
           setTheme(localStorage.getItem("phx:theme") || "system");
         }
         window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
-        
+
         window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
       })();
     </script>
   </head>
   <body>
-    <header class="primary">
-      <a href="/">
-        <.lambda_icon />
-      </a>
-      <p>Jamie Curle</p>
+    <header>
+      <div class="header-content">
+        <a href="/">
+          <svg
+            width="87"
+            height="110"
+            viewBox="0 0 87 110"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 110L30.1777 32.3356L27.5279 25.4698C26.7428 23.4519 25.9086 21.8523 25.0254 20.6711C24.1421 19.4407 23.1117 18.5548 21.934 18.0134C20.8054 17.472 19.4069 17.2013 17.7386 17.2013H8.46447V0C10.8198 0 13.2242 0 15.6777 0C18.1311 0 20.511 0 22.8173 0C26.8409 0 30.3739 0.66443 33.4162 1.99329C36.5076 3.32215 39.1819 5.38926 41.4391 8.19463C43.7453 10.9508 45.7081 14.4944 47.3274 18.8255L72.132 84.5302C72.868 86.4989 73.6041 88.0984 74.3401 89.3289C75.1252 90.5101 76.033 91.396 77.0635 91.9866C78.143 92.528 79.5415 92.7987 81.2589 92.7987H87V110C85.3316 110 83.6387 110 81.9213 110C80.2039 110 78.511 110 76.8426 110C72.819 110 69.286 109.336 66.2437 108.007C63.2504 106.678 60.6988 104.635 58.5888 101.879C56.4789 99.123 54.6878 95.5548 53.2157 91.1745L46.1497 71.4631C44.6777 66.9351 43.2547 62.3825 41.8807 57.8054C40.5068 53.179 39.2064 48.5526 37.9797 43.9262H44.0152C42.7394 48.5526 41.4146 53.179 40.0406 57.8054C38.6667 62.3825 37.2437 66.9351 35.7716 71.4631L22.7437 110H0Z"
+              fill="#DBD5D5"
+            />
+          </svg>
+          <span>Jamie Curle</span>
+        </a>
+      </div>
     </header>
-
     <main>
       {@inner_content}
     </main>
-    <footer class="primary">
+    <footer>
       <div class="footer-content">
         <div class="bio">
           <p>
             Jamie Curle is a well rounded human being living and
             operating in Northumberland, UK. He spends his time between
-            software, woodland management, his workshop and many
-            "nearly finished" DIY projects.
+            software, his workshop and restoring ancient woodland. He doesn't
+            like it when you bring up the topic of "nearly finished" DIY projects.
           </p>
           <p>
-            He would be very interested in working with you, <a href="#">drop him a line</a>.
+            If you'd like to work with him you can do that through <a href="#">jamiecurle.io</a>.
           </p>
         </div>
-        <div class="treeworld universe">
+
+        <nav class="urgh-words">
           <h6>Treeworld</h6>
-          <ul>
-            <li><a href="https://www.youtube.com/@treejamie/videos">YouTube</a></li>
-            <li><a href="https://lifeoftreedom.com/">Life Of Treedom</a></li>
-          </ul>
-        </div>
-
-        <div class="techworld universe">
+          <div>
+            <a href="https://www.youtube.com/@treejamie/videos">YouTube</a>
+            <a href="https://lifeoftreedom.com/">Life Of Treedom</a>
+          </div>
           <h6>Techworld</h6>
-          <ul>
-            <li><a href="https://exercism.org/profiles/treejamie">Exercism</a></li>
-            <li><a href="https://app.codecrafters.io/users/treejamie">CodeCrafters</a></li>
-            <li><a href="https://github.com/treejamie">Github</a></li>
-            <li><a href="https://www.linkedin.com/in/jamie-curle/">LinkedIn</a></li>
-          </ul>
-        </div>
-        <div class="thisworld universe">
+          <div>
+            <a href="https://exercism.org/profiles/treejamie">Exercism</a>
+            <a href="https://app.codecrafters.io/users/treejamie">CodeCrafters</a>
+            <a href="https://github.com/treejamie" title="Jamie Curle on Github">Github</a>
+            <a href="https://www.linkedin.com/in/jamie-curle/" title="Jamie Curle LinkedIn">
+              LinkedIn
+            </a>
+          </div>
           <h6>Navigation</h6>
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy</a></li>
-          </ul>
-        </div>
+          <div>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+          </div>
+        </nav>
 
-        <div class="icon">
-          <img src="/images/LI.svg" alt="Linked" />
-        </div>
-        <div class="icon">
-          <img src="/images/GH.svg" alt="gihub" />
-        </div>
-        <div class="icon">
-          <img src="/images/RSS.svg" alt="RSS" />
+        <nav class="ooh-pictures">
+          <a
+            href="https://www.linkedin.com/in/jamie-curle/"
+            class="linkedin"
+            title="Jamie Curle LinkedIn"
+          >
+            <svg viewBox="0 0 196 196" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M0 14.0385C0 6.28425 6.4435 0 14.3937 0H181.606C189.557 0 196 6.28425 196 14.0385V181.962C196 189.716 189.557 196 181.606 196H14.3937C6.4435 196 0 189.716 0 181.962V14.0385ZM60.5517 164.077V75.5703H31.1395V164.077H60.5517ZM45.8517 63.4795C56.105 63.4795 62.4872 56.693 62.4872 48.1915C62.3035 39.5063 56.1173 32.9035 46.0478 32.9035C35.9783 32.9035 29.4 39.5185 29.4 48.1915C29.4 56.693 35.7822 63.4795 45.6558 63.4795H45.8517ZM105.975 164.077V114.648C105.975 112.002 106.171 109.356 106.955 107.469C109.074 102.189 113.913 96.7138 122.047 96.7138C132.692 96.7138 136.943 104.823 136.943 116.73V164.077H166.355V113.312C166.355 86.1175 151.851 73.4755 132.496 73.4755C116.89 73.4755 109.895 82.0505 105.975 88.0898V88.396H105.779L105.975 88.0898V75.5703H76.5748C76.9423 83.8757 76.5748 164.077 76.5748 164.077H105.975Z" />
+            </svg>
+          </a>
+          <a href="https://github.com/treejamie" class="github" title="Jamie Curle on Github">
+            <svg viewBox="0 0 201 196" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M100.5 0C44.9737 0 0 44.9642 0 100.479C0 144.941 28.7681 182.495 68.7169 195.808C73.7419 196.687 75.6262 193.673 75.6262 191.035C75.6262 188.649 75.5006 180.736 75.5006 172.321C50.25 176.968 43.7175 166.167 41.7075 160.515C40.5769 157.626 35.6775 148.709 31.4062 146.322C27.8887 144.438 22.8638 139.791 31.2806 139.666C39.195 139.54 44.8481 146.95 46.7325 149.965C55.7775 165.162 70.2244 160.892 76.0031 158.254C76.8825 151.723 79.5206 147.327 82.41 144.815C60.0487 142.303 36.6825 133.637 36.6825 95.2037C36.6825 84.2766 40.5769 75.2335 46.9837 68.2C45.9787 65.688 42.4612 55.3889 47.9887 41.5731C47.9887 41.5731 56.4056 38.9355 75.6262 51.8722C83.6662 49.6114 92.2088 48.481 100.751 48.481C109.294 48.481 117.836 49.6114 125.876 51.8722C145.097 38.8099 153.514 41.5731 153.514 41.5731C159.041 55.3889 155.524 65.688 154.519 68.2C160.926 75.2335 164.82 84.151 164.82 95.2037C164.82 133.762 141.328 142.303 118.967 144.815C122.61 147.955 125.751 153.984 125.751 163.404C125.751 176.843 125.625 187.644 125.625 191.035C125.625 193.673 127.509 196.813 132.534 195.808C152.489 189.079 169.828 176.261 182.111 159.159C194.394 142.057 201 121.533 201 100.479C201 44.9642 156.026 0 100.5 0Z" />
+            </svg>
+          </a>
+          <a title="RSS Feed - todo" class="rss" href="#">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M164 0C183.882 0 200 16.1177 200 36V164C200 183.882 183.882 200 164 200H36C16.1177 200 0 183.882 0 164V36C0 16.1177 16.1177 0 36 0H164ZM54.5 122C40.969 122 30 132.969 30 146.5C30 160.031 40.969 171 54.5 171C68.031 171 79 160.031 79 146.5C79 132.969 68.031 122 54.5 122ZM54 81C47.9249 81 43 85.9249 43 92C43 98.0751 47.9249 103 54 103C70.6377 103 81.0955 107.152 87.4717 113.528C93.8479 119.905 98 130.362 98 147C98 153.075 102.925 158 109 158C115.075 158 120 153.075 120 147C120 126.971 114.985 109.929 103.028 97.9717C91.0712 86.0145 74.0289 81 54 81ZM54 37C47.9249 37 43 41.9249 43 48C43 54.0751 47.9249 59 54 59C85.3044 59 106.762 66.8188 120.472 80.5283C134.181 94.2378 142 115.696 142 147C142 153.075 146.925 158 153 158C159.075 158 164 153.075 164 147C164 112.304 155.319 84.2622 136.028 64.9717C116.738 45.6812 88.6956 37 54 37Z" />
+            </svg>
+          </a>
+        </nav>
+
+        <div class="colophon">
+          <p>
+            A (mostly) handrolled site designed and engineered by me in Elixir, making extensive use of Phoenix,
+            LiveView, Ecto and mdex. Built into a Docker image, ran in a Docker Compose file and
+            deployed out to a Docker swarm running on a Raspberry Pi in a cupboard somewhere in my house, served through
+            a Cloudflare tunnel. Yes, I can do the things. <a href="https://github.com/treejamie/jamiec_human">Source on GitHub</a>.
+          </p>
+          <p>
+            Design &amp; content &copy; Jamie Curle 2026 all rights reserved. Source Code MIT. No reuse or reproduction
+            of content permitted for any non-personal usage, including for AI training purposes, except where allowed in <a href="/robots.txt">robots.txt</a>.
+          </p>
         </div>
       </div>
     </footer>
-
-    <button onclick="
-  const t = document.documentElement.getAttribute('data-theme');
-  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'light' : 'dark');
-">
-      Toggle theme
-    </button>
   </body>
 </html>

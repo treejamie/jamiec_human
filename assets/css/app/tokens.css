@@ -1,0 +1,28 @@
+:root {
+    --font-base: "Inter", sans-serif;
+    --font-code: "Inconsolata", fixed;
+    --font-serif: "EB Garamond", serif;
+    --unit-0: 3px; /* third */
+    --unit-1: 6px; /* third */
+    --unit-2: 9px; /* half */
+    --unit-2-1: 12px;
+    --unit-2-2: 15px;
+    --unit-3: 18px; /* base */
+    --unit-3-1: 24px; /* base */
+    --unit-3-2: 27px; /* base */
+    --unit-4: 36px; /* double */
+    --unit-5: 54px; /* triple */
+    --unit-6: 72px; /* quad */
+    --unit-7: 90px; /* quad */
+
+    --duration-1: 0.2s;
+    --duration-2: 0.4s;
+    --duration-3: 0.6s;
+    --duration-4: 0.8s;
+    --duration-5: 1s;
+
+    --line-height-1: 1.333;
+    --line-height-2: 1.666;
+    --line-height-3: 1.999;
+    --line-height-4: 2.333;
+}

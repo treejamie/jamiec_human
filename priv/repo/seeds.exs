@@ -5,12 +5,11 @@ alias Jamie.Blog.Post
 
 [
   %{
-    title: "A nice title of a sufficient length",
+    title: "Test Post with all the Elements",
     status: :published,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.",
-    markdown:
-      "My First Post\n\nThis is a short introduction paragraph with some **bold** and *italic* text.\n\n## A Subheading\n\nHere's a list of things:\n\n- Item one\n- Item two\n- Item three\n\nAnd a bit of `inline code` for good measure."
+      "Elixir's pattern matching feature is introduced through practical code examples covering tuples, lists, and the pin operator. The post explains when pattern matching is most useful — in function heads, case expressions, and unpacking results — and includes a quick reference table of common syntax. It closes with pointers to further reading and a teaser for a follow-up post on with pipelines.",
+    markdown: File.read!("priv/repo/post.md")
   }
 ]
 |> Enum.each(fn attrs ->

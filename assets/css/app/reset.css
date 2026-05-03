@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    line-height: 1.5;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+img,
+video,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+dd {
+    margin-left: 0;
+}
