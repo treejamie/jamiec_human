@@ -83,6 +83,8 @@ defmodule JamieWeb do
       use Gettext, backend: JamieWeb.Gettext
 
       import JamieWeb.CoreComponents
+      import JamieWeb.SiteComponents
+
       alias JamieWeb.Layouts
       # HTML escaping functionality
       import Phoenix.HTML
