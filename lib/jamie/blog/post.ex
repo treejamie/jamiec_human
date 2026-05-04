@@ -29,7 +29,18 @@ defmodule Jamie.Blog.Post do
     |> validate_required(@required_fields)
     |> convert_markdown_to_html()
     |> slugify()
+    |> published_on()
     |> unique_constraint(:slug)
+  end
+
+  defp published_on(changeset) do
+    case get_change(changeset, :status) do
+      :published ->
+        put_change(changeset, :published_on, Date.utc_today())
+
+      _ ->
+        changeset
+    end
   end
 
   defp slugify(changeset) do
@@ -76,13 +87,15 @@ defmodule Jamie.Blog.Post do
 
   # Rewrites <img src="https://media.jamiecurle.com/<key>"> to route through
   # Cloudflare's on-the-fly resizer. Skips already-transformed URLs.
-  defp rewrite_image_urls(html) do
-    [host: host, transform: transform] = Application.get_env(:jamie, :images)
+  def rewrite_image_urls(html) do
+    host = Application.get_env(:jamie, :images)[:host]
+    transform = Application.get_env(:jamie, :images)[:transform]
 
     Regex.replace(
       ~r{(<img[^>]*src=")https://#{host}/(?!cdn-cgi/)([^"]+)},
       html,
       "\\1https://#{host}/#{transform}/\\2"
     )
+    |> IO.inspect()
   end
 end

@@ -1,3 +1,6 @@
+## 0.3.0
+- now with a nice UI
+
 ## 0.2.1
 - now with image uploads
 
