@@ -155,8 +155,10 @@ footer div.colophon {
         color: var(--colour-light-1);
     }
 
+    div.post-card a:hover,
     p a:hover,
     li a:hover {
+        color: var(--colour-light-1);
         background: var(--c-accent-light-6);
         box-shadow: 0 var(--unit-0) var(--colour-dark-1);
     }
@@ -198,4 +200,16 @@ td {
 thead {
     background-color: var(--colour-dark-2);
     color: var(--colour-light-1);
+}
+
+/*post index*/
+div.post-card a {
+    background-color: var(--light-0);
+    color: var(--colour-dark-0);
+}
+div.post-card p span {
+    color: var(--colour-light-7);
+}
+div.post-card p span strong {
+    color: var(--colour-dark-3);
 }

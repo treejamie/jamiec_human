@@ -62,7 +62,28 @@ article header p::before {
         margin-bottom: var(--unit-7);
         border-left-width: var(--unit-4);
     }
-    /*div.post-body {
-        max-width: 90ch;
-    }*/
+}
+
+/*index*/
+div.post-card {
+    font-weight: 600;
+    margin-bottom: var(--unit-4);
+}
+
+div.post-card p:first-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+div.post-card p.dates {
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: var(--unit-0);
+    margin-left: var(--unit-0);
+}
+
+div.post-card p.dates span {
+    font-size: var(--unit-2-1);
+    text-transform: uppercase;
+    font-weight: 600;
 }

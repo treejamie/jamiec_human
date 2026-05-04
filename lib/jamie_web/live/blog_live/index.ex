@@ -19,11 +19,16 @@ defmodule JamieWeb.BlogLive.Index do
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
-      <p :for={post <- @posts}>
-        <.link href={~p"/posts/#{post.slug}"}>
-          {post.title}
-        </.link>
-      </p>
+      <div :for={post <- @posts} class="post-card">
+        <p>
+          <.link href={~p"/posts/#{post.slug}"}>
+            {post.title}.
+          </.link>
+        </p>
+        <p class="dates">
+          <span>{post.published_on}</span>
+        </p>
+      </div>
     </Layouts.app>
     """
   end
