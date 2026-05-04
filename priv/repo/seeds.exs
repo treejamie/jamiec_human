@@ -32,16 +32,53 @@ words = ~w(
 
 post_content = File.read!("priv/repo/post.md")
 
-Enum.each(1..240, fn _x ->
-  attrs = %{
-    title: Enum.take_random(words, Enum.random(4..15)) |> Enum.join(" "),
-    status: Enum.random([:published, :published, :draft, :hidden, :published]),
-    description: Enum.take_random(words, Enum.random(20..45)) |> Enum.join(" "),
-    markdown: post_content
-  }
+Enum.each(1..288, fn x ->
+  # simulate six posts a month from now backwards
 
+  # 6 a months 6 * 12 == 72
+  year = NaiveDateTime.utc_now().year - div(x, 72)
+
+  # this gives us a month
+  month = rem(x, 12) + 1
+
+  # now make the published day as a random
+  # staggered dates is fine as I could start a post and finish it after I'd
+  # started and finisehed another one.
+  day = 1..Date.days_in_month(Date.new!(year, month, 1)) |> Enum.random()
+
+  # some posts will be edited - 25% chance
+
+  edited_on =
+    (Enum.map(1..4, fn _ -> nil end) ++
+       [Date.add(Date.new!(year, month, day), 3)])
+    |> Enum.random()
+
+  # attrs
+  attrs =
+    %{
+      title: Enum.take_random(words, Enum.random(4..15)) |> Enum.join(" ") |> String.capitalize(),
+      status: Enum.random([:published, :published, :draft, :hidden, :published]),
+      description:
+        Enum.take_random(words, Enum.random(20..45)) |> Enum.join(" ") |> String.capitalize(),
+      markdown: post_content,
+      published_on: Date.new!(year, month, day),
+      edited_on: edited_on
+    }
+    |> IO.inspect()
+
+  # Here is to your health
+  # I'm not Homeboy Sandman, I am someone else
+  # Who turned the corner cuz the New World Order needed help
+  # Who’s known to make it so that frozen water doesn't melt
+  # Born again, fostering the knowledge of the self
+  # Like everyone in Boston has the knowledge of the Celts
+  # Kicking in your door, but on the low like I'm an elf
+  # Now I’m in your house, reading every book that's on your shelf
+  # HIT IT!
   Post.changeset(%Post{}, attrs)
   |> Jamie.Repo.insert(on_conflict: :nothing, conflict_target: :slug)
+
+  # |> IO.inspect()
 end)
 
 #
