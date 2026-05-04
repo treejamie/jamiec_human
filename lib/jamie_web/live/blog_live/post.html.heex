@@ -1,12 +1,6 @@
 <div class="post-layout">
   <article>
-    <%!-- Post header --%>
     <header>
-      <div>
-        <%!-- <span>
-          Published {@post.published_on} // <.reading_time content={@post.markdown} />
-        </span> --%>
-      </div>
       <h1>{@post.title}</h1>
       <p>
         {@post.description}
@@ -18,29 +12,4 @@
       {raw(@post.html)}
     </div>
   </article>
-
-  <%!-- <aside>
-    <div class="toc">
-
-      <div>
-        <h2>
-          Contents
-        </h2>
-        <nav>
-          <ol>
-            <%= for {i, heading, anchor} <- @toc do %>
-              <li>
-                <a
-                  href={"##{anchor}"}
-                  class=""
-                >
-                  {heading}
-                </a>
-              </li>
-            <% end %>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </aside> --%>
 </div>
