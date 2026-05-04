@@ -9,11 +9,11 @@ div.header-content a {
     gap: var(--unit-2);
     width: fit-content;
     text-decoration: none;
-    transform: skewX(1deg) rotate(-2deg) translateY(1px);
+    /*transform: skewX(1deg) rotate(-2deg) translateY(1px);*/
 }
 
 div.header-content a > * {
-    transform: skewX(-1deg);
+    /*transform: skewX(-1deg);*/
 }
 
 div.header-content a svg {
@@ -26,10 +26,10 @@ div.header-content span {
 }
 
 @media (hover: hover) {
-    div.header-content a:hover {
+    /*div.header-content a:hover {
         transform: skewX(-1deg) rotate(2deg) translateY(-1px);
     }
     div.header-content a:hover > * {
         transform: skewX(1deg);
-    }
+    }*/
 }

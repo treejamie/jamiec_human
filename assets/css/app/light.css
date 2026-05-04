@@ -155,7 +155,7 @@ footer div.colophon {
         color: var(--colour-light-1);
     }
 
-    div.post-card a:hover,
+    li.post-card a:hover,
     p a:hover,
     li a:hover {
         color: var(--colour-light-1);
@@ -203,7 +203,7 @@ thead {
 }
 
 /*post index*/
-div.post-card a {
+li.post-card a {
     background-color: var(--light-0);
     color: var(--colour-dark-0);
 }
