@@ -1,10 +1,10 @@
 # Getting Started with Elixir Pattern Matching
 
-[Pattern matching][1] is one of [Elixir's][1] most powerful features — and also one of the first things that trips up [developers coming from object-oriented languages][3]. This post walks through the essentials.
+[Pattern matching][1] is one of [Elixir's][1] most powerful features — and also one of the first things that trips up [developers coming from object-oriented languages][2]. This post walks through the essentials.
 
 ## What Is Pattern Matching?
 
-In most languages, `=` means assignment. In Elixir, it's a **match operator**. The runtime tries to make the left side equal the right side, and raises an error if it can't.
+In most languages[^1], `=` means assignment. In Elixir, it's a **match operator**. The runtime tries to make the left side equal the right side, and raises an error if it can't.
 
 > "In Elixir, the equals sign is not an assignment. Instead it's like an assertion."
 > — Dave Thomas, *Programming Elixir*
@@ -46,7 +46,7 @@ x = 5
 
 ## When to Use It
 
-Pattern matching shines in several scenarios:
+Pattern matching[^2] shines in several scenarios:
 
 - **Function heads** — define multiple clauses that match on argument shape
 - **`case` expressions** — branch cleanly without nested `if/else`
@@ -97,3 +97,9 @@ Pattern matching isn't just a feature — it's a mindset shift. Once it clicks, 
 [0]: https://hexdocs.pm/elixir/pattern-matching.html
 [1]: https://elixir-lang.org/docs.html
 [2]: https://en.wikipedia.org/wiki/Object-oriented_programming
+
+
+[^1]: Obvioulsy, this is a mistake.
+[^2]: And when there's more to add into a footnote, like a crazy amount of details
+  it's customary to use an indent to get the footnote to span many many lines of
+  text.

@@ -64,7 +64,6 @@ Enum.each(1..288, fn x ->
       published_on: Date.new!(year, month, day),
       edited_on: edited_on
     }
-    |> IO.inspect()
 
   # Here is to your health
   # I'm not Homeboy Sandman, I am someone else
@@ -77,8 +76,6 @@ Enum.each(1..288, fn x ->
   # HIT IT!
   Post.changeset(%Post{}, attrs)
   |> Jamie.Repo.insert(on_conflict: :nothing, conflict_target: :slug)
-
-  # |> IO.inspect()
 end)
 
 #

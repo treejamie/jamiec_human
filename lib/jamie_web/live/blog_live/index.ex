@@ -10,7 +10,7 @@ defmodule JamieWeb.BlogLive.Index do
 
   @impl true
   def handle_params(_params, _url, socket) do
-    archive = Jamie.Blog.published_posts() |> group_archive()
+    archive = Jamie.Blog.published_posts() |> archive()
 
     socket =
       socket
@@ -24,7 +24,7 @@ defmodule JamieWeb.BlogLive.Index do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
       <div class="archive">
-        <h1>The Archive</h1>
+        <h1 class="title">Archive</h1>
         <section :for={{year, months} <- @archive} class="archive-year">
           <h2 class="archive-year-label">{year}</h2>
           <div class="archive-year-months">
@@ -33,6 +33,7 @@ defmodule JamieWeb.BlogLive.Index do
               <ul class="archive-posts">
                 <li :for={post <- posts} class="post-card">
                   <.link href={~p"/posts/#{post.slug}"}>{post.title}</.link>
+                  <time datetime="{post.published_on}">{human_date(post.published_on)}</time>
                 </li>
               </ul>
             </section>
@@ -43,7 +44,18 @@ defmodule JamieWeb.BlogLive.Index do
     """
   end
 
-  defp group_archive(posts) do
+  defp human_date(date) do
+    Calendar.strftime(date, "%a %-d") <> format(date.day)
+  end
+
+  def format(number) when rem(number, 100) in [11, 12, 13], do: "th"
+  def format(number) when rem(number, 10) in [11, 12, 13], do: "th"
+  def format(number) when rem(number, 10) == 1, do: "st"
+  def format(number) when rem(number, 10) == 2, do: "nd"
+  def format(number) when rem(number, 10) == 3, do: "rd"
+  def format(_number), do: "th"
+
+  defp archive(posts) do
     posts
     |> Enum.group_by(& &1.published_on.year)
     |> Enum.sort_by(fn {year, _} -> year end, :desc)

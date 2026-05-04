@@ -207,9 +207,11 @@ li.post-card a {
     background-color: var(--light-0);
     color: var(--colour-dark-0);
 }
-div.post-card p span {
-    color: var(--colour-light-7);
+li.post-card time {
+    color: var(--colour-dark-4);
 }
-div.post-card p span strong {
-    color: var(--colour-dark-3);
+
+.archive-year-label,
+.archive-month-label {
+    background-color: var(--colour-light-1);
 }

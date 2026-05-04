@@ -60,6 +60,7 @@ defmodule Jamie.Blog.Post do
               strikethrough: true,
               tagfilter: true,
               table: true,
+              footnotes: true,
               autolink: true,
               tasklist: true,
               header_ids: ""

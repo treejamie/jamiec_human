@@ -67,25 +67,13 @@ article header p::before {
 /*index*/
 li.post-card {
     font-weight: 600;
+    font-size: var(--unit-3-2);
     margin-bottom: var(--unit-4);
 }
-
-/*div.post-card p:first-child {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}*/
-
-/*div.post-card p.dates {
-    margin-top: 0;
-    padding-top: 0;
-    padding-left: var(--unit-0);
-    margin-left: var(--unit-0);
-}*/
-
-div.post-card p.dates span {
-    font-size: var(--unit-2-1);
-    text-transform: uppercase;
-    font-weight: 600;
+li.post-card time {
+    display: block;
+    font-size: var(--unit-2-2);
+    padding-left: var(--unit-1);
 }
 
 /* archive index */
@@ -97,6 +85,8 @@ div.post-card p.dates span {
 }
 .archive-month-label {
     top: var(--unit-3-2);
+    padding-bottom: var(--unit-3);
+    margin-bottom: var(--unit-3);
 }
 
 .archive-posts {
@@ -105,15 +95,34 @@ div.post-card p.dates span {
     margin: 0;
 }
 
+section.archive-year h2,
+section.archive-year h3 {
+    font-size: var(--unit-3-2);
+    text-transform: uppercase;
+}
+section.archive-year h2 {
+    z-index: 10000;
+}
+section.archive-year h3 {
+    z-index: 1000;
+}
 @media (min-width: 770px) {
     .archive-year,
     .archive-month {
         display: grid;
-        grid-template-columns: 5rem 1fr;
+        grid-template-columns: 6rem 1fr;
         gap: var(--unit-1);
         align-items: start;
     }
     .archive-month-label {
         top: 0;
+        /*padding-bottom: var(--unit-3);
+        margin-bottom: var(--unit-3);*/
+    }
+
+    section.archive-year h2,
+    section.archive-year h3 {
+        font-size: var(--unit-4);
+        text-transform: uppercase;
     }
 }

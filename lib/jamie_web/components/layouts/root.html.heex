@@ -40,7 +40,7 @@
   <body>
     <header>
       <div class="header-content">
-        #{home()}
+        <.home current_path={@conn.request_path} />
       </div>
     </header>
     <main>
@@ -54,9 +54,6 @@
             operating in Northumberland, UK. He spends his time between
             software, his workshop and restoring ancient woodland. He doesn't
             like it when you bring up the topic of "nearly finished" DIY projects.
-          </p>
-          <p>
-            If you'd like to work with him you can do that through <a href="#">jamiecurle.io</a>.
           </p>
         </div>
 

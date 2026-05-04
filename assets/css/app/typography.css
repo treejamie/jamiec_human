@@ -41,3 +41,17 @@ blockquote em:last-of-type {
     font-family: var(--font-base);
     font-size: var(--unit-2-2);
 }
+
+h1 {
+    font-size: var(--unit-5);
+    line-height: calc(var(--unit-5) - var(--unit-1));
+    text-transform: uppercase;
+    font-weight: 900;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
