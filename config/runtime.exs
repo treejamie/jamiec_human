@@ -20,12 +20,14 @@ if System.get_env("PHX_SERVER") do
   config :jamie, JamieWeb.Endpoint, server: true
 end
 
+config :jamie, :images, host: System.get_env("CF_HOST", "media.jamiecurle.com")
+
 config :ex_aws, :s3,
   access_key_id: System.get_env("CF_ACCESS_KEY_ID", "AKIAIOSFODNN7EXAMPLE"),
   secret_access_key:
     System.get_env("CF_SECRET_ACCESS_KEY", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"),
   bucket: System.get_env("CF_BUCKET", "test-bucket"),
-  host: System.get_env("CF_HOST", "2134567890example.r2.cloudflarestorage.com"),
+  host: System.get_env("CF_S3_HOST", "2134567890example.r2.cloudflarestorage.com"),
   region: "auto",
   path_style: true
 

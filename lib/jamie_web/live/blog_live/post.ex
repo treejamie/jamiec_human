@@ -19,6 +19,8 @@ defmodule JamieWeb.BlogLive.Post do
     {:noreply, socket}
   end
 
+  # NOTE: you may come back to the TOC stuff so you decided to leave it
+  #       in - saves you having to go and do it again.
   defp toc(markdown) do
     {:ok, doc} = MDEx.parse_document(markdown)
 

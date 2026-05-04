@@ -56,4 +56,13 @@ defmodule Jamie.Blog do
     from(p in Post, where: p.status == :published)
     |> Repo.all()
   end
+
+  @doc """
+  Gets all posts order by date descending
+  """
+  def all_posts do
+    from(p in Post)
+    |> order_by(desc: :id)
+    |> Repo.all()
+  end
 end

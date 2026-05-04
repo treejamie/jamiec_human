@@ -70,7 +70,7 @@ defmodule JamieWeb.BlogLive.Form do
 
   @impl true
   def handle_event("sign-image-url", %{"name" => name}, socket) do
-    image_host = Application.get_env(:jamie, :image)[:host]
+    host = Application.get_env(:jamie, :images)[:host]
     bucket = Application.get_env(:ex_aws, :s3)[:bucket]
     key = Ecto.UUID.generate() <> Path.extname(name)
 
@@ -83,7 +83,7 @@ defmodule JamieWeb.BlogLive.Form do
      push_event(socket, "page-loading-stop", %{
        name: name,
        url: url,
-       public_url: "https://#{image_host}/#{key}"
+       public_url: "https://#{host}/#{key}"
      })}
   end
 

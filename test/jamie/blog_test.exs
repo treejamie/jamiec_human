@@ -6,6 +6,22 @@ defmodule Jamie.Blog.Test do
   alias Jamie.Repo
   alias Jamie.Support.BlogFixtures
 
+  describe "publishing_posts for the first time gives them a published date" do
+    test "when a post is published, the published date is is filled in" do
+      # new post, draft status
+      {:ok, post} =
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
+        |> Blog.create_post()
+
+      # there is no published on
+      refute post.published_on
+
+      # now save as published and there's a published date
+      {:ok, post} = Blog.update_post(post, %{status: :published})
+      assert post.published_on
+    end
+  end
+
   describe "published_posts/0" do
     test "only published posts are returned" do
       {:ok, post1} =

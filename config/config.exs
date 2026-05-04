@@ -35,9 +35,7 @@ config :jamie, JamieWeb.Endpoint,
   pubsub_server: Jamie.PubSub,
   live_view: [signing_salt: "ztvDy8aq"]
 
-config :jamie, :images,
-  host: "media.jamiecurle.com",
-  transform: "cdn-cgi/image/width=1200,format=auto,quality=85"
+config :jamie, :images, transform: "cdn-cgi/image/width=1200,format=auto,quality=85"
 
 # Configures the mailer
 #
