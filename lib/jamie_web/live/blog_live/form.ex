@@ -78,7 +78,6 @@ defmodule JamieWeb.BlogLive.Form do
       :s3
       |> ExAws.Config.new([])
       |> ExAws.S3.presigned_url(:put, bucket, key)
-      |> IO.inspect()
 
     {:noreply,
      push_event(socket, "page-loading-stop", %{

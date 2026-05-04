@@ -96,6 +96,5 @@ defmodule Jamie.Blog.Post do
       html,
       "\\1https://#{host}/#{transform}/\\2"
     )
-    |> IO.inspect()
   end
 end
