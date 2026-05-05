@@ -1,15 +1,14 @@
-<div class="post-layout">
+<header>
+  <h1 class="page-title">{@post.title}</h1>
+  <p>
+    {@post.description}
+  </p>
+</header>
+<section class="page-content">
   <article>
-    <header>
-      <h1>{@post.title}</h1>
-      <p>
-        {@post.description}
-      </p>
-    </header>
-
     <%!-- Post body --%>
     <div class="post-body">
       {raw(@post.html)}
     </div>
   </article>
-</div>
+</section>

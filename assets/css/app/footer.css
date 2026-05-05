@@ -7,17 +7,6 @@ footer {
     border-top: 1px solid;
 }
 
-footer::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    height: calc(100vw * tan(1deg));
-    border-top: 5px solid;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-}
-
 footer div.bio {
     font-size: var(--unit-3-2);
     line-height: var(--unit-4);

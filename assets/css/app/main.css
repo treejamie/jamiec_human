@@ -1,13 +1,15 @@
-main {
-    position: relative;
-}
+@layer content {
+    main {
+        position: relative;
+    }
 
-main::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: calc(100vw * tan(4deg));
-    clip-path: polygon(0 0, 100% 0, 0 100%);
+    main::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: calc(100vw * tan(4deg));
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
 }

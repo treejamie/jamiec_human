@@ -23,8 +23,8 @@ defmodule JamieWeb.BlogLive.Index do
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} current_scope={@current_scope}>
+      <h1 class="page-title">Archive</h1>
       <div class="archive">
-        <h1 class="title">Archive</h1>
         <section :for={{year, months} <- @archive} class="archive-year">
           <h2 class="archive-year-label">{year}</h2>
           <div class="archive-year-months">
