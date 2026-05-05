@@ -1,5 +1,3 @@
-# Getting Started with Elixir Pattern Matching
-
 [Pattern matching][1] is one of [Elixir's][1] most powerful features — and also one of the first things that trips up [developers coming from object-oriented languages][2]. This post walks through the essentials.
 
 ## What Is Pattern Matching?

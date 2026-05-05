@@ -1,3 +1,10 @@
+/*
+start light.css
+
+All colours MUST be in this file and only this file.
+
+*/
+
 :root {
     --colour-linkedin: #0072b1;
     --colour-rss: oklch(0.8067 0.1924 72 / 97.3%);
@@ -51,167 +58,153 @@
     --colour-mid-0: var(--colour-light-5);
 }
 
-html,
-body {
-    background-color: var(--colour-dark-3);
-}
-body > main {
-    background-color: var(--colour-light-1);
-    border-bottom-color: var(--colour-light-1);
-}
-main::after {
-    background-color: var(--colour-light-1);
-}
-
-/* typography colours */
-a {
-    color: var(--colour-light-1);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--colour-dark-2);
-}
-
-p a,
-li a {
-    border-bottom-color: var(--colour-mid-0);
-    background: var(--c-accent-light-5);
-}
-
-blockquote {
-    border-left-color: var(--colour-light-3);
-}
-
-:not(pre) > code {
-    border-color: var(--colour-light-3);
-    background-color: var(--colour-code);
-}
-
-a code {
-    color: var(--colour-dark-3);
-}
-
-/* header */
-body > header .header-content svg path {
-    fill: var(--c-accent-dark-6);
-}
-body > header .header-content span {
-    color: var(--c-accent-dark-6);
-}
-
-/* footer structure */
-footer {
-    background-color: var(--colour-dark-2);
-    color: var(--colour-light-3);
-    border-top-color: var(--colour-dark-2);
-}
-
-footer::before {
-    background: inherit;
-    border-top-color: var(--colour-dark-2);
-}
-
-footer div.bio {
-    color: var(--colour-light-3);
-}
-
-footer div.colophon a,
-footer nav.urgh-words a,
-footer div.bio a {
-    color: var(--colour-dark-2);
-    background: var(--c-accent-dark-5);
-}
-footer nav.urgh-words h6 {
-    color: var(--colour-light-4);
-}
-
-/* footer social icons */
-footer nav.ooh-pictures a {
-    color: var(--colour-light-3);
-}
-
-footer nav.ooh-pictures a svg path {
-    fill: var(--colour-light-6);
-}
-
-footer div.colophon {
-    color: var(--colour-light-6);
-}
-
-/* hover states */
-@media (hover: hover) {
-    body > header div.header-content a:hover {
-        background-color: var(--c-accent-dark-6);
+@layer layout {
+    html,
+    body {
+        background-color: var(--colour-light-2);
     }
-    body > header div.header-content a:hover svg path {
-        fill: var(--colour-light-1);
-    }
-    body > header div.header-content a:hover span {
-        color: var(--colour-light-1);
+    body > main section.page-content {
+        background-color: var(--colour-light-1);
+        border-bottom-color: var(--colour-light-1);
     }
 
-    li.post-card a:hover,
-    p a:hover,
-    li a:hover {
-        color: var(--colour-light-1);
-        background: var(--c-accent-light-6);
-        box-shadow: 0 var(--unit-0) var(--colour-dark-1);
+    /* typography colours */
+
+    h1.page-title {
+        color: var(--colour-dark-2);
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--colour-dark-2);
     }
 
-    footer nav.urgh-words a:hover,
-    footer div.bio a:hover {
+    blockquote {
+        border-left-color: var(--colour-light-3);
+    }
+
+    :not(pre) > code {
+        background-color: var(--colour-light-2);
+    }
+
+    a code {
+        color: var(--colour-dark-3);
+    }
+
+    /* header */
+    body > header .header-content svg path {
+        fill: var(--c-accent-dark-6);
+    }
+    body > header .header-content span {
+        color: var(--c-accent-dark-6);
+    }
+
+    /* footer structure */
+    footer {
+        background-color: var(--colour-dark-2);
+        color: var(--colour-light-3);
+        border-top-color: var(--colour-dark-2);
+    }
+
+    footer::before {
+        background: inherit;
+        border-top-color: var(--colour-dark-2);
+    }
+
+    footer div.bio {
+        color: var(--colour-light-3);
+    }
+
+    footer div.colophon a,
+    footer nav.urgh-words a,
+    footer div.bio a {
+        color: var(--colour-dark-2);
         background: var(--c-accent-dark-5);
-        box-shadow: 0 var(--unit-0) var(--colour-light-1);
+    }
+    footer nav.urgh-words h6 {
+        color: var(--colour-light-4);
     }
 
-    footer nav.ooh-pictures a.linkedin:hover svg path {
-        fill: var(--colour-linkedin);
+    /* footer social icons */
+    footer nav.ooh-pictures a {
+        color: var(--colour-light-3);
     }
-    footer nav.ooh-pictures a.github:hover svg path {
-        fill: var(--colour-light-1);
+
+    footer nav.ooh-pictures a svg path {
+        fill: var(--colour-light-6);
     }
-    footer nav.ooh-pictures a.rss:hover svg path {
-        fill: var(--colour-rss);
+
+    footer div.colophon {
+        color: var(--colour-light-6);
+    }
+
+    /* hover states */
+    @media (hover: hover) {
+        body > header div.header-content a:hover {
+            background-color: var(--c-accent-dark-6);
+        }
+        body > header div.header-content a:hover svg path {
+            fill: var(--colour-light-1);
+        }
+        body > header div.header-content a:hover span {
+            color: var(--colour-light-1);
+        }
+
+        footer nav.urgh-words a:hover,
+        footer div.bio a:hover {
+            background: var(--c-accent-dark-5);
+            box-shadow: 0 var(--unit-0) var(--colour-light-1);
+        }
+
+        footer nav.ooh-pictures a.linkedin:hover svg path {
+            fill: var(--colour-linkedin);
+        }
+        footer nav.ooh-pictures a.github:hover svg path {
+            fill: var(--colour-light-1);
+        }
+        footer nav.ooh-pictures a.rss:hover svg path {
+            fill: var(--colour-rss);
+        }
     }
 }
 
-/*posts*/
+@layer content {
+    /*posts*/
+    header p {
+        color: var(--colour-dark-3);
+        border-top: var(--unit-2) solid var(--colour-light-3);
+        border-bottom: var(--unit-2) solid var(--colour-light-3);
+    }
+    /* tables */
+    table caption {
+        color: var(--colour-light-7);
+    }
 
-article header p {
-    color: var(--colour-light-7);
-    border-left-color: var(--colour-light-3);
-}
+    th,
+    td {
+        border-color: var(--colour-dark-2);
+    }
 
-/* tables */
-table caption {
-    color: var(--colour-light-7);
-}
+    thead {
+        background-color: var(--colour-dark-2);
+        color: var(--colour-light-1);
+    }
 
-th,
-td {
-    border-color: var(--colour-dark-2);
-}
+    /*post index*/
+    li.post-card a {
+        background-color: var(--light-0);
+        color: var(--colour-dark-0);
+    }
+    li.post-card time {
+        color: var(--colour-dark-4);
+    }
 
-thead {
-    background-color: var(--colour-dark-2);
-    color: var(--colour-light-1);
+    .archive-year-label,
+    .archive-month-label {
+        background-color: var(--colour-light-1);
+    }
 }
-
-/*post index*/
-li.post-card a {
-    background-color: var(--light-0);
-    color: var(--colour-dark-0);
-}
-li.post-card time {
-    color: var(--colour-dark-4);
-}
-
-.archive-year-label,
-.archive-month-label {
-    background-color: var(--colour-light-1);
-}
+/* end colours css */

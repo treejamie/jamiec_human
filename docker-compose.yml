@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/treejamie/jamiec_human:latest
+    image: ghcr.io/jamiecurle/dotcom:latest
     ports:
       - "4000:4000"
     environment:

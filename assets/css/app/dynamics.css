@@ -1,24 +1,26 @@
-p a,
-li a,
-footer nav.urgh-words a {
-    transition: box-shadow var(--duration-3) ease;
-}
+@layer layout {
+    p a,
+    li a,
+    footer nav.urgh-words a {
+        transition: box-shadow var(--duration-3) ease;
+    }
 
-footer nav.ooh-pictures a svg path {
-    transition: fill var(--duration-2) ease;
-}
+    footer nav.ooh-pictures a svg path {
+        transition: fill var(--duration-2) ease;
+    }
 
-body > header div.header-content a {
-    transition:
-        background-color var(--duration-2) ease,
-        transform var(--duration-3) ease;
-}
-body > header div.header-content a > * {
-    transition: transform var(--duration-3) ease;
-}
-body > header div.header-content a svg path {
-    transition: fill var(--duration-3) ease;
-}
-body > header div.header-content a span {
-    transition: color var(--duration-3) ease;
+    body > header div.header-content a {
+        transition:
+            background-color var(--duration-2) ease,
+            transform var(--duration-3) ease;
+    }
+    body > header div.header-content a > * {
+        transition: transform var(--duration-3) ease;
+    }
+    body > header div.header-content a svg path {
+        transition: fill var(--duration-3) ease;
+    }
+    body > header div.header-content a span {
+        transition: color var(--duration-3) ease;
+    }
 }
