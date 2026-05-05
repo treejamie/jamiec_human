@@ -31,6 +31,7 @@ words = ~w(
 )
 
 post_content = File.read!("priv/repo/post.md")
+post2_content = File.read!("priv/repo/post2.md")
 
 Enum.each(1..288, fn x ->
   # simulate six posts a month from now backwards
@@ -60,7 +61,7 @@ Enum.each(1..288, fn x ->
       status: Enum.random([:published, :published, :draft, :hidden, :published]),
       description:
         Enum.take_random(words, Enum.random(20..45)) |> Enum.join(" ") |> String.capitalize(),
-      markdown: post_content,
+      markdown: Enum.random([post_content, post2_content]),
       published_on: Date.new!(year, month, day),
       edited_on: edited_on
     }

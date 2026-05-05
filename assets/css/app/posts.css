@@ -2,28 +2,35 @@
 
 @layer content {
     header p {
-        font-size: var(--unit-2-3);
-        line-height: var(--unit-3-1);
+        font-size: var(--unit-3-2);
+        line-height: var(--unit-4-3);
         font-weight: 500;
         letter-spacing: -0.5px;
         margin-top: var(--unit-5);
         margin-bottom: var(--unit-4);
         padding: var(--unit-2);
-        border-top: var(--unit-2) solid var(--colour-light-3);
-        border-bottom: var(--unit-2) solid var(--colour-light-3);
     }
     @media (min-width: 750px) {
         h1.page-title {
-            font-size: var(--unit-7);
+            font-size: var(--unit-6);
             letter-spacing: -3px;
-            line-height: calc(var(--unit-7) - var(--unit-1));
+            line-height: var(--unit-6);
             margin-bottom: 0;
         }
-        header p {
-            font-size: var(--unit-4);
-            line-height: var(--unit-4);
-            letter-spacing: -1px;
+    }
+    @media (min-width: 750px) {
+        header p,
+        h1.page-title {
+            padding-left: var(--unit-4);
         }
+    }
+    .post-body h1,
+    .post-body h2,
+    .post-body h3,
+    .post-body h4,
+    .post-body h5,
+    .post-body h6 {
+        border-bottom: 1px solid var(--colour-light-3);
     }
 
     /*index*/

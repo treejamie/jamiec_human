@@ -175,9 +175,17 @@ All colours MUST be in this file and only this file.
     /*posts*/
     header p {
         color: var(--colour-dark-3);
-        border-top: var(--unit-2) solid var(--colour-light-3);
-        border-bottom: var(--unit-2) solid var(--colour-light-3);
+        border-bottom-color: var(--colour-light-3);
     }
+    .post-body h1,
+    .post-body h2,
+    .post-body h3,
+    .post-body h4,
+    .post-body h5,
+    .post-body h6 {
+        border-bottom-color: var(--colour-light-1);
+    }
+
     /* tables */
     table caption {
         color: var(--colour-light-7);
