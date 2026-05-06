@@ -8,9 +8,19 @@ defmodule JamieWeb.BlogLive.Post do
   end
 
   @impl true
+  def handle_info({:post_updated, post}, socket) do
+    {:noreply, assign(socket, :post, post)}
+  end
+
+  @impl true
   def handle_params(%{"slug" => slug}, _url, socket) do
     socket =
       with post <- Jamie.Blog.get_post_by_slug!(slug) do
+        # do the pubsub
+        if connected?(socket) do
+          Phoenix.PubSub.subscribe(Jamie.PubSub, "post:#{post.id}")
+        end
+
         socket
         |> assign(:post, post)
         |> assign(:toc, toc(post.markdown))
