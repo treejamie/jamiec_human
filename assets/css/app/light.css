@@ -225,4 +225,11 @@ All colours MUST be in this file and only this file.
         background-color: var(--colour-light-1);
     }
 }
+
+/*images*/
+img {
+    border-color: 1px solid var(--colour-light-2);
+    box-shadow: 0 0 var(--unit-4) var(--colour-light-4);
+}
+
 /* end colours css */
