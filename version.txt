@@ -1,3 +1,6 @@
+## 0.3.1
+- now with more tasteful tyopgraphy. Neo-brutalism always seemds like a nice idea until you have it.
+
 ## 0.3.0
 - now with a nice UI
 

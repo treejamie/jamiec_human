@@ -20,6 +20,9 @@ stuff to make it "look nice" */
 /*tables*/
 @import "./app/tables.css";
 
+/* images */
+@import "./app/images.css";
+
 /* any non-hover animations */
 @import "./app/dynamics.css";
 
@@ -28,11 +31,11 @@ stuff to make it "look nice" */
 @import "./app/main.css";
 @import "./app/footer.css";
 
+/* post specific rules */
+@import "./app/posts.css";
+
 /* dark and light mode note: dark is todo
 important: this file contains ONLY colours and no other files
 contain any colour.
 */
 @import "./app/light.css";
-
-/* post specific rules */
-@import "./app/posts.css";

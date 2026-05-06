@@ -14,7 +14,7 @@
 
     p {
         font-size: var(--unit-3);
-        line-height: var(--unit-3-2);
+        line-height: var(--unit-4);
     }
     ul,
     ol {
@@ -28,11 +28,14 @@
 
     blockquote {
         margin-left: 0;
+        border-left: var(--unit-3) solid black;
+        padding: var(--unit-2-2) 0 var(--unit-1) var(--unit-3);
+    }
+
+    blockquote p {
         font-size: var(--unit-3-2);
         line-height: var(--unit-3-2);
         font-family: var(--font-serif);
-        border-left: var(--unit-3) solid black;
-        padding: var(--unit-2-2) 0 var(--unit-1) var(--unit-3);
     }
     blockquote em:last-of-type {
         display: block;
@@ -46,8 +49,12 @@
         line-height: calc(var(--unit-6) - var(--unit-2));
         letter-spacing: -1px;
         font-weight: 700;
+        margin-top: var(--unit-3);
+        /*padding: 0 0 0 var(--unit-3);*/
     }
-    h1 {
-        margin-bottom: 0;
+    @media (min-width: 750px) {
+        h1.page-title {
+            margin-left: var(--unit-2);
+        }
     }
 }

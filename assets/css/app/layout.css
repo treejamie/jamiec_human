@@ -9,10 +9,13 @@
         padding: var(--unit-3);
     }
 
+    body > main {
+        padding-top: 0;
+    }
     body > header,
     body > main,
     .footer-content {
-        max-width: 100%;
+        max-width: 75ch;
     }
 
     body > main section.page-content {
@@ -27,13 +30,10 @@
         .footer-content {
             margin-right: var(--unit-6);
         }
-    }
-
-    @media (min-width: 1024px) {
-        body > header,
-        body > main,
-        body > .footer-content {
-            max-width: 1200px;
+        body > main section.page-content {
+            padding: var(--unit-4) var(--unit-6) var(--unit-6);
+            margin: calc(var(--unit-3) * -2);
+            margin-top: var(--unit-2);
         }
     }
 }
