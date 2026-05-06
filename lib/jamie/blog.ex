@@ -48,7 +48,7 @@ defmodule Jamie.Blog do
     |> Post.changeset(attrs)
     |> Repo.update()
     |> case do
-      {:ok, updated_post} = result ->
+      {:ok, updated_post} ->
         Phoenix.PubSub.broadcast(
           Jamie.PubSub,
           "post:#{updated_post.id}",
