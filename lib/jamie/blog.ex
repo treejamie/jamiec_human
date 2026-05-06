@@ -6,6 +6,7 @@ defmodule Jamie.Blog do
   alias Jamie.Blog.Post
   alias Jamie.Repo
   import Ecto.Query
+  alias Jamie.Accounts.Scope
 
   @doc """
   returns a changeset for a post
@@ -27,9 +28,19 @@ defmodule Jamie.Blog do
   @doc """
   Gets a post by slug
   """
+  def get_post_by_slug!(slug, %Scope{user: user}) when not is_nil(user) do
+    Post
+    |> where(slug: ^slug)
+    |> Repo.one!()
+  end
+
+  def get_post_by_slug!(slug, nil), do: get_post_by_slug!(slug)
+
   def get_post_by_slug!(slug) do
     Post
-    |> Repo.get_by!(slug: slug)
+    |> where(status: :published)
+    |> where(slug: ^slug)
+    |> Repo.one!()
   end
 
   @doc """

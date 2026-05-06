@@ -1,10 +1,84 @@
 defmodule Jamie.Blog.Test do
   use Jamie.DataCase, async: true
 
+  alias Jamie.Accounts.Scope
+  alias Jamie.AccountsFixtures
   alias Jamie.Blog
   alias Jamie.Blog.Post
   alias Jamie.Repo
   alias Jamie.Support.BlogFixtures
+
+  describe "get_post_by_slug!" do
+    test "if scope has no user then only published posts work" do
+      # make a scope for a nil user
+      scope = Scope.for_user(nil)
+
+      # make a post
+      {:ok, post} =
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
+        |> Blog.create_post()
+
+      # it's draft so it raises as there's no scope
+      assert_raise Ecto.NoResultsError, fn ->
+        Blog.get_post_by_slug!(post.slug, scope).id
+      end
+
+      # as does hidden
+      Blog.update_post(post, %{status: :hidden})
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Blog.get_post_by_slug!(post.slug, scope).idh
+      end
+
+      # but published is fine
+      Blog.update_post(post, %{status: :published})
+      assert post.id == Blog.get_post_by_slug!(post.slug).id
+    end
+
+    test "if scope has a user they can access any post by slug" do
+      user = AccountsFixtures.user_fixture()
+      scope = Scope.for_user(user)
+
+      # make a post
+      {:ok, post} =
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
+        |> Blog.create_post()
+
+      assert post.id == Blog.get_post_by_slug!(post.slug, scope).id
+
+      # published works too
+      Blog.update_post(post, %{status: :published})
+      assert post.id == Blog.get_post_by_slug!(post.slug, scope).id
+
+      # as does hidden
+      Blog.update_post(post, %{status: :hidden})
+      assert post.id == Blog.get_post_by_slug!(post.slug, scope).id
+    end
+
+    test "but doesn't have to accept a scope" do
+      {:ok, post} =
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :published)
+        |> Blog.create_post()
+
+      assert post.id == Blog.get_post_by_slug!(post.slug).id
+    end
+
+    test "no scope means the post has to be published" do
+      # make a post
+      {:ok, post} =
+        BlogFixtures.blog_attrs(title: "now now, there's no need for that", status: :draft)
+        |> Blog.create_post()
+
+      # it's draft so it raises as there's no scope
+      assert_raise Ecto.NoResultsError, fn ->
+        Blog.get_post_by_slug!(post.slug).id
+      end
+
+      # but update the post and it can be got
+      Blog.update_post(post, %{status: :published})
+      assert post.id == Blog.get_post_by_slug!(post.slug).id
+    end
+  end
 
   describe "publishing_posts for the first time gives them a published date" do
     test "when a post is published, the published date is is filled in" do
