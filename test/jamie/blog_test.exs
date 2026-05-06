@@ -1,11 +1,11 @@
 defmodule Jamie.Blog.Test do
   use Jamie.DataCase, async: true
 
+  alias Jamie.Accounts.Scope
+  alias Jamie.AccountsFixtures
   alias Jamie.Blog
   alias Jamie.Blog.Post
   alias Jamie.Repo
-  alias Jamie.Accounts.Scope
-  alias Jamie.AccountsFixtures
   alias Jamie.Support.BlogFixtures
 
   describe "get_post_by_slug!" do
