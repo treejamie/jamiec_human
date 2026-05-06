@@ -55,6 +55,8 @@ defmodule Jamie.Blog do
           {:post_updated, updated_post}
         )
 
+        {:ok, updated_post}
+
       error ->
         error
     end
