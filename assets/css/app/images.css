@@ -1,0 +1,9 @@
+/*start images.css*/
+
+img {
+    border-radius: 5px;
+    border: 1px solid var(--colour-light-2);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/*end images.css*/

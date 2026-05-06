@@ -58,7 +58,7 @@ All colours MUST be in this file and only this file.
     --colour-mid-0: var(--colour-light-5);
 }
 
-@layer layout {
+@layer content {
     html,
     body {
         background-color: var(--colour-light-2);
@@ -100,6 +100,16 @@ All colours MUST be in this file and only this file.
     }
     body > header .header-content span {
         color: var(--c-accent-dark-6);
+    }
+
+    /*typography*/
+    .post-body h1,
+    .post-body h2,
+    .post-body h3,
+    .post-body h4,
+    .post-body h5,
+    .post-body h6 {
+        text-decoration-color: var(--colour-light-3);
     }
 
     /* footer structure */

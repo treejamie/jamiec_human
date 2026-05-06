@@ -33,7 +33,7 @@
     .post-body h5,
     .post-body h6 {
         text-decoration: underline;
-        text-decoration-color: var(--colour-light-3);
+
         text-decoration-thickness: var(--unit-1);
         text-underline-offset: 0.2em;
         border-bottom: none;
