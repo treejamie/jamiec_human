@@ -49,8 +49,12 @@
         line-height: calc(var(--unit-6) - var(--unit-2));
         letter-spacing: -1px;
         font-weight: 700;
+        margin-top: var(--unit-3);
+        /*padding: 0 0 0 var(--unit-3);*/
     }
-    h1 {
-        margin-bottom: 0;
+    @media (min-width: 750px) {
+        h1.page-title {
+            margin-left: var(--unit-2);
+        }
     }
 }

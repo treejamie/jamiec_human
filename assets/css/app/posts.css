@@ -6,7 +6,7 @@
         line-height: var(--unit-4-3);
         font-weight: 500;
         letter-spacing: -0.5px;
-        margin-top: var(--unit-5);
+        margin-top: var(--unit-4);
         margin-bottom: var(--unit-4);
         padding: var(--unit-2);
     }
@@ -19,9 +19,11 @@
         }
     }
     @media (min-width: 750px) {
-        header p,
-        h1.page-title {
+        header p {
             padding-left: var(--unit-4);
+        }
+        h1.page-title {
+            padding-left: var(--unit-3-2);
         }
     }
     .post-body h1,
@@ -30,8 +32,42 @@
     .post-body h4,
     .post-body h5,
     .post-body h6 {
-        border-bottom: 1px solid var(--colour-light-3);
+        text-decoration: underline;
+        text-decoration-color: var(--colour-light-3);
+        text-decoration-thickness: var(--unit-1);
+        text-underline-offset: 0.2em;
+        border-bottom: none;
     }
+
+    .post-body section.footnotes::before {
+        content: "footnotes";
+        text-transform: uppercase;
+    }
+
+    .post-body section.footnotes {
+        margin-top: var(--unit-5);
+        padding-top: var(--unit-4);
+        border-top: 1px solid var(--colour-light-3);
+        font-size: var(--unit-2-2);
+    }
+    .post-body section.footnotes li p {
+        font-size: var(--unit-2-2);
+    }
+
+    .post-body sup,
+    .post-body sub {
+        font-size: var(--unit-2-2); /* 9px — half base */
+        padding: 0 0 0 var(--unit-0);
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+    .post-body sup {
+        top: -9px;
+    } /* lift by half base */
+    .post-body sub {
+        bottom: -3px;
+    } /* drop by --unit-0 */
 
     /*index*/
     li.post-card {
@@ -85,8 +121,6 @@
         }
         .archive-month-label {
             top: 0;
-            /*padding-bottom: var(--unit-3);
-        margin-bottom: var(--unit-3);*/
         }
 
         section.archive-year h2,
