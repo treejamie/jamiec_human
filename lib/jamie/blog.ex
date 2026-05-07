@@ -74,10 +74,10 @@ defmodule Jamie.Blog do
   end
 
   @doc """
-  Gets published posts
+  Gets published posts ordered by published date descending
   """
   def published_posts do
-    from(p in Post, where: p.status == :published)
+    from(p in Post, where: p.status == :published, order_by: [desc: p.published_on])
     |> Repo.all()
   end
 

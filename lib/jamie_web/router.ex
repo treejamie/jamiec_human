@@ -25,6 +25,7 @@ defmodule JamieWeb.Router do
     pipe_through :browser
 
     get "/health", PageController, :health
+    get "/feed.xml", FeedController, :index
 
     live_session :public,
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do
