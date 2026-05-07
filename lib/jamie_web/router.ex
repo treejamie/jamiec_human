@@ -26,6 +26,7 @@ defmodule JamieWeb.Router do
 
     get "/health", PageController, :health
     get "/feed.xml", FeedController, :index
+    get "/sitemap.xml", SitemapController, :index
 
     live_session :public,
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do

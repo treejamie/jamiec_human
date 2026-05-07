@@ -1,3 +1,11 @@
+## 0.3.2
+- many editor tweaks
+- ATOM feeds
+- sitemap.xml
+- robots.txt, security.txt and humans.txt now in place
+
+## 0.3.1
+- now with more tasteful tyopgraphy. Neo-brutalism always seemds like a nice idea until you have it.
 ## 0.3.1
 - now with more tasteful tyopgraphy. Neo-brutalism always seemds like a nice idea until you have it.
 

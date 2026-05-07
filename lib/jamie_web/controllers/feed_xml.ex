@@ -4,7 +4,7 @@ defmodule JamieWeb.FeedXML do
     updated =
       case List.first(posts) do
         nil -> DateTime.to_iso8601(DateTime.utc_now())
-        post -> to_rfc3339(post.published_on)
+        post -> to_rfc3339(post.edited_on || post.published_on)
       end
 
     entries = Enum.map_join(posts, "\n", &entry_xml(&1, base_url))
@@ -26,13 +26,15 @@ defmodule JamieWeb.FeedXML do
   end
 
   defp entry_xml(post, base_url) do
+    updated = post.edited_on || post.published_on
+
     """
       <entry>
         <title>#{escape(post.title)}</title>
         <link href="#{base_url}/posts/#{post.slug}" />
         <id>#{base_url}/posts/#{post.slug}</id>
         <published>#{to_rfc3339(post.published_on)}</published>
-        <updated>#{to_rfc3339(post.published_on)}</updated>
+        <updated>#{to_rfc3339(updated)}</updated>
         <summary>#{escape(post.description)}</summary>
         <content type="html">#{escape(post.html)}</content>
       </entry>

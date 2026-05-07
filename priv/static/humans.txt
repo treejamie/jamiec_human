@@ -1,0 +1,7 @@
+/* TEAM */
+Developer: Jamie Curle
+Contact: jamie@curle.io
+Location: United Kingdom
+
+/* SITE */
+Language: English
