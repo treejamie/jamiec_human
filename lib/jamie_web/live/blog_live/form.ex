@@ -8,52 +8,60 @@ defmodule JamieWeb.BlogLive.Form do
   def render(assigns) do
     ~H"""
     <Layouts.office flash={@flash} current_scope={@current_scope}>
-      <.form
-        for={@form}
-        id="post-form"
-        phx-change="validate"
-        phx-debounce="1500"
-        phx-submit="save"
-        phx-hook="SaveShortcut"
-      >
-        <.input
-          field={@form[:title]}
-          label="Title"
-          type="text-naked"
-          placeholder="Post title"
-          required
-        />
+      <div class="editor-split">
+        <div class="editor-pane">
+          <.form
+            for={@form}
+            id="post-form"
+            phx-change="validate"
+            phx-debounce="1500"
+            phx-submit="save"
+            phx-hook="SaveShortcut"
+          >
+            <.input
+              field={@form[:title]}
+              label="Title"
+              type="text-naked"
+              placeholder="Post title"
+              required
+            />
 
-        <.input
-          field={@form[:status]}
-          type="select-naked"
-          label="Status"
-          options={Enum.map(Blog.Post.statuses(), &{String.capitalize(to_string(&1)), &1})}
-        />
+            <.input
+              field={@form[:status]}
+              type="select-naked"
+              label="Status"
+              options={Enum.map(Blog.Post.statuses(), &{String.capitalize(to_string(&1)), &1})}
+            />
 
-        <.input
-          type="text-naked"
-          field={@form[:description]}
-          label="Description"
-          placeholder="Brief description"
-        />
+            <.input
+              type="text-naked"
+              field={@form[:description]}
+              label="Description"
+              placeholder="Brief description"
+            />
 
-        <.input
-          field={@form[:markdown]}
-          type="textarea-naked"
-          label="Content (Markdown)"
-          class="textarea w-full flex-1 font-mono min-h-96"
-          placeholder="Write your post in markdown..."
-          phx-hook="SignImageUrl"
-          phx-debounce="1500"
-        />
+            <.input
+              field={@form[:markdown]}
+              type="textarea-naked"
+              label="Content (Markdown)"
+              class="textarea w-full flex-1 font-mono min-h-96"
+              placeholder="Write your post in markdown..."
+              phx-hook="SignImageUrl"
+              phx-debounce="1500"
+            />
 
-        <div class="mt-4">
-          <button type="submit" class="btn btn-primary" phx-disable-with="Saving...">
-            Save Post
-          </button>
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary" phx-disable-with="Saving...">
+                Save Post
+              </button>
+            </div>
+          </.form>
         </div>
-      </.form>
+
+        <div :if={@live_action == :edit} class="preview-pane">
+          <iframe id="post-preview" src={~p"/posts/#{@post.slug}"} title="Post preview" />
+        </div>
+      </div>
     </Layouts.office>
     """
   end
@@ -121,9 +129,11 @@ defmodule JamieWeb.BlogLive.Form do
 
   defp save_post(socket, :edit, post_params) do
     case Blog.update_post(socket.assigns.post, post_params) do
-      {:ok, _post} ->
+      {:ok, post} ->
         {:noreply,
          socket
+         |> assign(:post, post)
+         |> assign(:form, to_form(Blog.change_post(post)))
          |> put_flash(:info, "Post updated successfully.")}
 
       {:error, %Ecto.Changeset{} = changeset} ->

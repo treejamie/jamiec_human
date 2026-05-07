@@ -15,7 +15,7 @@ defmodule JamieWeb.BlogLive.Post do
   @impl true
   def handle_params(%{"slug" => slug}, _url, socket) do
     socket =
-      with post <- Jamie.Blog.get_post_by_slug!(slug) do
+      with post <- Jamie.Blog.get_post_by_slug!(slug, socket.assigns.current_scope) do
         # do the pubsub
         if connected?(socket) do
           Phoenix.PubSub.subscribe(Jamie.PubSub, "post:#{post.id}")
