@@ -5,4 +5,14 @@ defmodule JamieWeb.PageControllerTest do
     conn = get(conn, ~p"/")
     assert html_response(conn, 200)
   end
+
+  test "GET /about", %{conn: conn} do
+    conn = get(conn, ~p"/about")
+    assert html_response(conn, 200) =~ "About"
+  end
+
+  test "GET /privacy", %{conn: conn} do
+    conn = get(conn, ~p"/privacy")
+    assert html_response(conn, 200) =~ "Privacy"
+  end
 end

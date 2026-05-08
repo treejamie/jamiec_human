@@ -6,4 +6,12 @@ defmodule JamieWeb.PageController do
     |> put_root_layout(html: false)
     |> render(:health)
   end
+
+  def about(conn, _params) do
+    render(conn, :about)
+  end
+
+  def privacy(conn, _params) do
+    render(conn, :privacy)
+  end
 end
