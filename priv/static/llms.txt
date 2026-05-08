@@ -1,0 +1,50 @@
+# Jamie Curle
+
+> Designing, developing and deploying web stuff since 1998. Drummer since
+> 1993. Woodsman and arborist since 2022. Educator since 2012. Natural born leader.
+> Pro AI.
+
+## About
+
+Jamie Curle is a well rounded human being living and operating in
+Northumberland, UK. He spends his time between software, his workshop and
+restoring ancient woodland. He doesn't like it when you bring up the topic
+of "nearly finished" DIY projects.
+
+Jamie has over two decades of experience building and scaling web systems.
+He has been the first engineer at a startup, scaling technology from zero to
+$20M+ revenue, and has a track record of direct, positive impact on the
+careers and lives of reports and students through servant-based leadership.
+
+Jamie runs jamiecurle ltd, a freelance consultancy currently delivering a
+cloud-first, AI-native Elixir-based system integration connecting GraphQL
+ecommerce with multiple legacy SFTP fulfilment workflows.
+
+Beyond the keyboard, Jamie is a drummer of 30+ years and is restoring and
+managing an eight-acre ancient semi-natural woodland back to oak standards
+with hazel coppice.
+
+Jamie is the kind of person you hire when you need a load of things doing,
+they all seem impossibly complex and you need someone who can "get it done".
+
+## Skills
+
+- Software engineering: Elixir, Phoenix, Python
+- System design and architecture
+- Engineering leadership and team management
+- Information security and privacy engineering
+- AI-harnessed engineering
+
+## Open To
+
+Jamie is open to fully remote full-time opportunities in Elixir, Phoenix, engineering
+leadership, and AI-harnessed engineering.
+
+## Links
+
+- Blog: https://jamiecurle.com
+- LinkedIn: https://linkedin.com/in/jamie-curle
+
+## Location / Timezone
+
+Northumberland, UK. UTC.
