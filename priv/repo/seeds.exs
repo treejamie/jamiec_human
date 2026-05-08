@@ -47,36 +47,44 @@ Enum.each(1..288, fn x ->
   # started and finisehed another one.
   day = 1..Date.days_in_month(Date.new!(year, month, 1)) |> Enum.random()
 
+  published_on = Date.new!(year, month, day)
+  today = Date.utc_today()
+
   # some posts will be edited - 25% chance
 
   edited_on =
     (Enum.map(1..4, fn _ -> nil end) ++
-       [Date.add(Date.new!(year, month, day), 3)])
+       [Date.add(published_on, 3)])
     |> Enum.random()
 
-  # attrs
-  attrs =
-    %{
-      title: Enum.take_random(words, Enum.random(4..15)) |> Enum.join(" ") |> String.capitalize(),
-      status: Enum.random([:published, :published, :draft, :hidden, :published]),
-      description:
-        Enum.take_random(words, Enum.random(20..45)) |> Enum.join(" ") |> String.capitalize(),
-      markdown: Enum.random([post_content, post2_content]),
-      published_on: Date.new!(year, month, day),
-      edited_on: edited_on
-    }
+  # don't generate posts in the future
+  if Date.compare(published_on, today) != :gt do
+    # attrs
+    attrs =
+      %{
+        title:
+          Enum.take_random(words, Enum.random(4..15)) |> Enum.join(" ") |> String.capitalize(),
+        status: Enum.random([:published, :published, :draft, :hidden, :published]),
+        description:
+          Enum.take_random(words, Enum.random(20..45)) |> Enum.join(" ") |> String.capitalize(),
+        markdown: Enum.random([post_content, post2_content]),
+        published_on: published_on,
+        edited_on: edited_on
+      }
 
-  # Here is to your health
-  # I'm not Homeboy Sandman, I am someone else
-  # Who turned the corner cuz the New World Order needed help
-  # Who’s known to make it so that frozen water doesn't melt
-  # Born again, fostering the knowledge of the self
-  # Like everyone in Boston has the knowledge of the Celts
-  # Kicking in your door, but on the low like I'm an elf
-  # Now I’m in your house, reading every book that's on your shelf
-  # HIT IT!
-  Post.changeset(%Post{}, attrs)
-  |> Jamie.Repo.insert(on_conflict: :nothing, conflict_target: :slug)
+    # Here is to your health
+    # I'm not Homeboy Sandman, I am someone else
+    # Who turned the corner cuz the New World Order needed help
+    # Who’s known to make it so that frozen water doesn't melt
+    # Born again, fostering the knowledge of the self
+    # Like everyone in Boston has the knowledge of the Celts
+    # Kicking in your door, but on the low like I'm an elf
+    # Now I’m in your house, reading every book that's on your shelf
+    # HIT IT!
+    Post.changeset(%Post{}, attrs)
+    |> Ecto.Changeset.put_change(:published_on, published_on)
+    |> Jamie.Repo.insert(on_conflict: :nothing, conflict_target: :slug)
+  end
 end)
 
 #
