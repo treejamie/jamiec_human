@@ -11,6 +11,7 @@ defmodule JamieWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_scope_for_user
+    plug JamieWeb.Plugs.LinkHeaders
   end
 
   pipeline :office do
@@ -27,6 +28,8 @@ defmodule JamieWeb.Router do
     get "/health", PageController, :health
     get "/feed.xml", FeedController, :index
     get "/sitemap.xml", SitemapController, :index
+    get "/posts/:slug/markdown", PostMarkdownController, :show
+    get "/.well-known/api-catalog", ApiCatalogController, :index
 
     live_session :public,
       on_mount: [{JamieWeb.UserAuth, :mount_current_scope}] do

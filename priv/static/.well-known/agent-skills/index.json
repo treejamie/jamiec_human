@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "read-blog-content",
+      "type": "skill-md",
+      "description": "Access and read blog posts and content from jamiecurle.com",
+      "url": "/.well-known/agent-skills/read-blog-content.md",
+      "digest": "sha256:54d43c968473005065e096b0e497f1f4ea5a64bff06f86e9788b1c5306e5c344"
+    },
+    {
+      "name": "contact",
+      "type": "skill-md",
+      "description": "How to contact or reach Jamie Curle directly",
+      "url": "/.well-known/agent-skills/contact.md",
+      "digest": "sha256:6609ce6383ca5885bf62ef192d3c386c26013f8e891f2b5eed5ef1dd2a628fb9"
+    }
+  ]
+}

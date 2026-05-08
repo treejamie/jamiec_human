@@ -1,3 +1,6 @@
+## 0.4.0
+- LLMS now a first class citizen. SKills for contacting me and reading the site have been added.
+
 ## 0.3.2
 - many editor tweaks
 - ATOM feeds
