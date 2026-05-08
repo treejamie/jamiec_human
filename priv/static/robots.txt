@@ -1,4 +1,18 @@
+# Allow all crawlers by default
 User-agent: *
 Allow: /
+
+# Inference crawlers - explicitly welcome
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Signal: accessible for AI, but not for training
+Content-Signal: search=yes, ai-train=no
 
 Sitemap: https://jamiecurle.com/sitemap.xml

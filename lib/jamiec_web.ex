@@ -17,7 +17,8 @@ defmodule JamieWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt humans.txt .well-known)
+  def static_paths,
+    do: ~w(assets fonts images favicon.ico llms.txt robots.txt humans.txt .well-known)
 
   def router do
     quote do
