@@ -1,0 +1,8 @@
+[jamiecurle.com](https://github.com/jamiecurle/dotcom) © 2026 by [Jamie Curle](https://jamiecurle.com)
+is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
+
+![CC](https://mirrors.creativecommons.org/presskit/icons/cc.svg)
+![BY](https://mirrors.creativecommons.org/presskit/icons/by.svg)
+![NC](https://mirrors.creativecommons.org/presskit/icons/nc.svg)
