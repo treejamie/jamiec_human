@@ -124,7 +124,7 @@ defmodule JamieWeb.Layouts do
 
     description =
       assigns.page_description ||
-        "Jamie Curle - software, woodland, workshop. Notes from Northumberland, UK."
+        "Jamie Curle - Writing about technology, software, woodland, trees and stuff from the workshop."
 
     image = assigns.og_image || JamieWeb.Endpoint.url() <> "/images/og-default.jpg"
 
