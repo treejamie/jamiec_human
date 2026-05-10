@@ -1,11 +1,17 @@
+## 0.5.0
+- added in favicons.
+- now has opengraph functionality.
+- mdex now allows iframes through for videos, but strips out potentially privacy invading permissions.
+
 ## 0.4.0
+- LIVE on jamiecurle.com.
 - LLMS now a first class citizen. SKills for contacting me and reading the site have been added.
 
 ## 0.3.2
-- many editor tweaks
-- ATOM feeds
-- sitemap.xml
-- robots.txt, security.txt and humans.txt now in place
+- many editor tweaks.
+- ATOM feeds.
+- sitemap.xml.
+- robots.txt, security.txt and humans.txt now in place.
 
 ## 0.3.1
 - now with more tasteful tyopgraphy. Neo-brutalism always seemds like a nice idea until you have it.
