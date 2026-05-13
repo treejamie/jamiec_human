@@ -1,3 +1,6 @@
+/* flash / toast notifications */
+@import "./app/toasts.css";
+
 /* the reset */
 *,
 *::before,
