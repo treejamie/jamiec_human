@@ -1,0 +1,26 @@
+@layer content {
+    body#home > main {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    body#home > footer {
+        margin-top: 0;
+    }
+    div#alreet {
+        width: 100%;
+        aspect-ratio: 2848 / 1504;
+        background-image: url("/images/jc_widescreen.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
+        div#alreet {
+            min-height: 100svh;
+            aspect-ratio: 4 / 5;
+            background-position: 10% center;
+        }
+    }
+}
