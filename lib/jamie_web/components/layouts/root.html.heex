@@ -51,11 +51,15 @@
     </script>
   </head>
   <Layouts.body_tag body_id={assigns[:body_id]} body_classes={assigns[:body_classes] || []}>
-    <%!-- <header>
+    <header>
       <div class="header-content">
         <.home current_path={@conn.request_path} />
+        <nav class="primary-nav">
+          <a href={~p"/posts"}>Blog</a>
+          <a href={~p"/about"}>About</a>
+        </nav>
       </div>
-    </header> --%>
+    </header>
     <main>
       {@inner_content}
     </main>
