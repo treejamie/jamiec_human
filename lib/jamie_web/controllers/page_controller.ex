@@ -12,6 +12,7 @@ defmodule JamieWeb.PageController do
   def home(conn, _params) do
     conn
     |> assign(:body_id, "home")
+    |> assign(:page_title, "Alreet / Hello. I'm ")
     |> render(:home)
   end
 

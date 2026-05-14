@@ -18,9 +18,9 @@
 
     @media (max-width: 768px) {
         div#alreet {
-            min-height: 100svh;
+            min-height: 80svh;
             aspect-ratio: 4 / 5;
-            background-position: 10% center;
+            background-position: 6% center;
         }
     }
 }
