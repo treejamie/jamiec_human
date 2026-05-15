@@ -250,4 +250,17 @@ img {
     box-shadow: 0 0 var(--unit-4) var(--colour-light-4);
 }
 
+/* 404 page */
+body#error-404 {
+    background-color: var(--c-accent-light-5);
+}
+body#error-404 h1 {
+    color: var(--c-accent-light-5);
+}
+
+body#error-404 .not-found {
+    background-color: var(--colour-light-1);
+    color: var(--colour-dark-1);
+}
+
 /* end colours css */

@@ -1,0 +1,23 @@
+@layer content {
+    body#error-404 {
+        min-height: 100svh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    body#error-404 .not-found {
+        margin-top: calc(var(--unit-6) * 2);
+        padding: var(--unit-3);
+        max-width: 32rem;
+        text-align: center;
+        border-radius: var(--unit-1);
+    }
+    body#error-404 h1 {
+        margin: 0;
+        padding: var(--unit-1);
+        font-size: calc(3 * var(--unit-6));
+        line-height: calc(3 * var(--unit-6));
+    }
+}
