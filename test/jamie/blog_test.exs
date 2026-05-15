@@ -120,6 +120,122 @@ defmodule Jamie.Blog.Test do
     end
   end
 
+  describe "published_posts/1" do
+    test "a scope with a user returns every post regardless of status" do
+      user = AccountsFixtures.user_fixture()
+      scope = Scope.for_user(user)
+
+      {:ok, _published} =
+        BlogFixtures.blog_attrs(title: "published one", status: :published)
+        |> Blog.create_post()
+
+      {:ok, _draft} =
+        BlogFixtures.blog_attrs(title: "draft one", status: :draft)
+        |> Blog.create_post()
+
+      {:ok, _hidden} =
+        BlogFixtures.blog_attrs(title: "hidden one", status: :hidden)
+        |> Blog.create_post()
+
+      posts = Blog.published_posts(scope)
+
+      assert 3 == length(posts)
+      statuses = posts |> Enum.map(& &1.status) |> Enum.sort()
+      assert statuses == [:draft, :hidden, :published]
+    end
+
+    test "a nil scope returns only published posts" do
+      {:ok, _published} =
+        BlogFixtures.blog_attrs(title: "published one", status: :published)
+        |> Blog.create_post()
+
+      {:ok, _draft} =
+        BlogFixtures.blog_attrs(title: "draft one", status: :draft)
+        |> Blog.create_post()
+
+      {:ok, _hidden} =
+        BlogFixtures.blog_attrs(title: "hidden one", status: :hidden)
+        |> Blog.create_post()
+
+      posts = Blog.published_posts(nil)
+
+      assert 1 == length(posts)
+      assert Enum.all?(posts, &(&1.status == :published))
+    end
+
+    test "Scope.for_user(nil) collapses to a nil scope and only returns published posts" do
+      scope = Scope.for_user(nil)
+      assert is_nil(scope)
+
+      {:ok, _published} =
+        BlogFixtures.blog_attrs(title: "published one", status: :published)
+        |> Blog.create_post()
+
+      {:ok, _draft} =
+        BlogFixtures.blog_attrs(title: "draft one", status: :draft)
+        |> Blog.create_post()
+
+      posts = Blog.published_posts(scope)
+
+      assert 1 == length(posts)
+      assert Enum.all?(posts, &(&1.status == :published))
+    end
+  end
+
+  describe "latest_published_posts/2" do
+    # Post.changeset always overwrites :published_on with today when status is
+    # :published, so to test ordering we have to backdate via a raw update.
+    defp create_with_published_on(opts, date) do
+      {:ok, post} = opts |> BlogFixtures.blog_attrs() |> Blog.create_post()
+      post |> Ecto.Changeset.change(published_on: date) |> Repo.update!()
+    end
+
+    test "returns at most n published posts, newest first, for a nil scope" do
+      _oldest = create_with_published_on([title: "oldest", status: :published], ~D[2025-01-01])
+      middle = create_with_published_on([title: "middle", status: :published], ~D[2025-06-01])
+      newest = create_with_published_on([title: "newest", status: :published], ~D[2025-12-01])
+      _draft = create_with_published_on([title: "draft", status: :draft], ~D[2026-01-01])
+
+      posts = Blog.latest_published_posts(nil, 2)
+
+      assert [newest.id, middle.id] == Enum.map(posts, & &1.id)
+    end
+
+    test "an authed scope sees the latest n posts regardless of status" do
+      user = AccountsFixtures.user_fixture()
+      scope = Scope.for_user(user)
+
+      _published =
+        create_with_published_on([title: "published", status: :published], ~D[2025-01-01])
+
+      draft = create_with_published_on([title: "draft", status: :draft], ~D[2026-01-01])
+
+      assert [draft.id] == Blog.latest_published_posts(scope, 1) |> Enum.map(& &1.id)
+    end
+
+    test "returns fewer rows when n exceeds the number of published posts" do
+      {:ok, _post} =
+        BlogFixtures.blog_attrs(status: :published, published_on: ~D[2025-01-01])
+        |> Blog.create_post()
+
+      assert 1 == Blog.latest_published_posts(nil, 10) |> length()
+    end
+
+    test "n = 0 returns an empty list" do
+      {:ok, _post} =
+        BlogFixtures.blog_attrs(status: :published, published_on: ~D[2025-01-01])
+        |> Blog.create_post()
+
+      assert [] == Blog.latest_published_posts(nil, 0)
+    end
+
+    test "a negative n raises" do
+      assert_raise FunctionClauseError, fn ->
+        Blog.latest_published_posts(nil, -1)
+      end
+    end
+  end
+
   describe "update_post/1" do
     test "iframe is allowed when updating a post" do
       # make a post
