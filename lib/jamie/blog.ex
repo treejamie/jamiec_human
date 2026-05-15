@@ -76,8 +76,37 @@ defmodule Jamie.Blog do
   @doc """
   Gets published posts ordered by published date descending
   """
+
+  def published_posts(%Scope{user: user}) when not is_nil(user) do
+    from(p in Post, order_by: [desc: p.published_on])
+    |> Repo.all()
+  end
+
+  def published_posts(nil) do
+    from(p in Post, where: p.status == :published, order_by: [desc: p.published_on])
+    |> Repo.all()
+  end
+
   def published_posts do
     from(p in Post, where: p.status == :published, order_by: [desc: p.published_on])
+    |> Repo.all()
+  end
+
+  @doc """
+  Returns the N most recently published posts, respecting scope.
+  """
+  def latest_published_posts(scope, n) when is_integer(n) and n >= 0 do
+    base =
+      case scope do
+        %Scope{user: user} when not is_nil(user) ->
+          from(p in Post, order_by: [desc: p.published_on])
+
+        nil ->
+          from(p in Post, where: p.status == :published, order_by: [desc: p.published_on])
+      end
+
+    base
+    |> limit(^n)
     |> Repo.all()
   end
 

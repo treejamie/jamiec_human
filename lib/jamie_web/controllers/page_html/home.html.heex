@@ -1,1 +1,16 @@
-<div id="alreet"></div>
+<div id="alreet">
+  <div class="latest-published-posts">
+    <h2>Latest writing</h2>
+    <a
+      :for={post <- @posts}
+      href={~p"/posts/#{post.slug}"}
+      id={"post-#{post.id}"}
+      class="featured-post"
+    >
+      <h3>{post.title}</h3>
+      <p>{post.description}</p>
+      <span class="read-more">Read &rarr;</span>
+    </a>
+    <a href={~p"/posts"} class="all-posts">See all posts &rarr;</a>
+  </div>
+</div>
