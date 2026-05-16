@@ -57,7 +57,7 @@ In todays' AI driven world, two of the main concepts from [Accelerate][d1] remai
 
 ### DEVOPS
 
-I deployed my first server into my bedroom on a saturday night in 2003. I took my only PC and installed Mandrake linux on it. There was no other PC with internet access and iPhones hadn't been invented. It took a day or so of reading man pages to be able to use it. I re-installed windows XP on the following Monday. I don't mind experimenting.
+I deployed my first server into my bedroom on a Saturday night in 2003. I took my only PC and installed Mandrake linux on it. There was no other PC with internet access and iPhones hadn't been invented. It took a day or so of reading man pages to be able to use it. I re-installed windows XP on the following Monday. I don't mind experimenting.
 
 I did however build and deploy my own mandrake webserver into my bedroom a few weeks later. I kept a notebook of all the commands I used to set things up. I used it daily from 2003 to 2007. It eventually filled up. Now it's in my archive of notebooks.
 
@@ -89,7 +89,7 @@ I actually enjoy reading ISO standards.
 
 ### AI
 
-AI is amazing.  As a child of seventies who used to have to go to a library to get books to read, when the internet blew my head off. To now have AI is wild. It is one of the best times to be a human on the planet.
+AI is amazing.  As a child of seventies who used to have to go to a library to get books to read, the internet blew my head off. To now also have AI is wild. It is one of the best times to be a human on the planet.
 
 AI helps me write better code, get [more stuff done and at a much faster speed](/where-i-start-when-prompting-for-writing-a-feature). 
 
@@ -132,7 +132,11 @@ Sadly, the tolerated behaviors and lowest performers on a team will become the d
 
 I draw from my teaching practice to recover performance and pastoral issues. Most situations can be recovered from. If there is an issue in your team, check yourself first because there are no bad teams, only bad leaders.
 
-Sometimes, you just have to let people go.
+Sometimes, you just have to let people go. It's awful and costs a bit of your soul.
+
+I remember second of every situation in which I had to do that. I took no satisfaction or joy from any of it. But, as a leader, your capital with your team depends on it.
+
+Think before leading, it's more than a title.
 
 
 ### TEACHERS
@@ -183,11 +187,16 @@ In 2022 I'd been in tech for nearly quarter of a century and I was approaching m
 
 I continued to meditate and was open to the idea I could go one of two ways, a new field of professional practice or return to tech. I didn't have a preference. Tech won and at the end of 2025, I returned to tech full time; BUT.
 
-[Trees and woodland management][t2] is now a [significant chunk of my life][t3] now.  I'm very grateful for that break I took in 2022 as this endeavour will serve me to the end of my life. 
+[Trees and woodland management][t2] is now a [significant chunk of my life][t3]. I'm very grateful for that break I took in 2022 as this endeavour will serve me to the end of my life. There's no feeling like being up in the canopy of a two hundred year old oak. The tree speaks to you and if it doesn't want you there, it'll tell you.
+
+I didn't get into arboriculture to remove trees, but sadly that's often what it comes down to. Wrong tree, wrong place. It was the humans fault but the tree pays the price. Managing urban tree populations at scale is a truly difficult job. There's a significant
+overlap between infosec risk assessment and tree risk assessment. Weird when my worlds meet in the most unusual of places.
 
 I'm of the firm belief that we, as humans, are not being the best stewards of the planet as we could be. Some of us are doing what we feel is best for the planet and it's ecology and that's wonderful. My small part is restoring an unmanaged, neglected section of ancient semi-natural woodland in rural Northumberland back to it's full ecological potential as an oak standard with hazel coppice.
 
-Trees, especially in their native context as a woodland ecosystem have a lot to say. You just have to be willing to listen.
+Trees, especially in their native context as a woodland ecosystem have a lot to say. You just have to be still enough and open enough to listen.
+
+I have no time for ticks.
 
 [t1]: https://treedom-map.fly.dev/#18/54.93960/-1.86130
 [t2]: https://lifeoftreedom.com/
@@ -203,7 +212,11 @@ Don't be surprised if I'm applying for exec roles, EM roles or IC roles. Every o
 
 I'm not a fifty year old guy stuck in his ways. Mr Mitchinson taught me that it takes seven years to learn something. My new focus is AI and embracing it fully. MCP servers, sub-agents, agent skills, LLM integration applications. Faster engineering workflows. I'm all in.
 
-I'm an insatiable learner, I can lead, I can build.
+I'm an insatiable learner, I can lead, I can build. 
+
+Or shape your hedge.
+
+If you ask nice.
 
 
 
