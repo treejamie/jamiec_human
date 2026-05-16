@@ -19,6 +19,8 @@ defmodule JamieWeb.Plugs.MarkdownNegotiation do
 
   @impl true
   def call(conn, _opts) do
+    conn = fetch_query_params(conn)
+
     cond do
       not prefers_markdown?(conn) ->
         conn
@@ -59,6 +61,13 @@ defmodule JamieWeb.Plugs.MarkdownNegotiation do
 
   @doc false
   def prefers_markdown?(conn) do
+    format_param_markdown?(conn) or accept_header_markdown?(conn)
+  end
+
+  defp format_param_markdown?(%Plug.Conn{query_params: %{"format" => "markdown"}}), do: true
+  defp format_param_markdown?(_), do: false
+
+  defp accept_header_markdown?(conn) do
     conn
     |> get_req_header("accept")
     |> List.first()
