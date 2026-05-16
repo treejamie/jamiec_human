@@ -122,7 +122,7 @@ Leading and being led are sides of the same coin. They both require an active pu
 
 Leading isn't about dominance or control. These things are facets of a broken personality that hasn't come to terms with the work required to put their own house in order.
 
-At a **minimum**, leading is about trusting your team and ensure they have what they need to do your their jobs. Excellent leadership is ensuring blocks are cleared ahead of time and setting the scene for the success of those around you – on a day to day level **and** on a longer burning personal growth level. 
+At a **minimum**, leading is about trusting your team and ensure they have what they need to do their jobs. Excellent leadership is ensuring blocks are cleared ahead of time and setting the scene for the success of those around you – on a day to day level **and** on a longer burning personal growth level. 
 
 You have to be careful with the concept of "hierarchy". It's not a power thing, it's an operational utility like a network cable and a switch.
 
@@ -195,13 +195,13 @@ Trees, especially in their native context as a woodland ecosystem have a lot to 
 
 ### PROFESSIONAL ME
 
-To most people, I don't fit into a nice neat box. I've developed my engineering practice over a twenty year period and I'm a very competant engineer over the full stack. I can teach, I can lead and I'm fully up on infosec, privacy and AI governance. I'm also demonstrably capable in executive roles. I can do strategy and I can lead. 
+To most people, I don't fit into a nice neat box. I've developed my engineering practice over a twenty year period and I'm a very competent engineer over the full stack. I can teach, I can lead and I'm fully up on infosec, privacy and AI governance. I'm also demonstrably capable in executive roles. I can do strategy and I can lead. 
 
 I've been working alone for nearly five years now and I do miss the leadership. I am open to roles if they are the right fit. Just like Mr Gommersaul taught me "don't judge a book by its cover". Talk to me. 
 
 Don't be surprised if I'm applying for exec roles, EM roles or IC roles. Every organisation is different and I can bring significant value in different ways.
 
-I'm not a fifty year old guy stuck in his ways. Mr Mitchinson taught me that it takes seven years to learn something. My new focus is AI and embracing it fully. MCP servers, sub-agents, agent skills, LLM integration applications. Faster enginering workflows. I'm all in.
+I'm not a fifty year old guy stuck in his ways. Mr Mitchinson taught me that it takes seven years to learn something. My new focus is AI and embracing it fully. MCP servers, sub-agents, agent skills, LLM integration applications. Faster engineering workflows. I'm all in.
 
 I'm an insatiable learner, I can lead, I can build.
 

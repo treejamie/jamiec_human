@@ -89,6 +89,35 @@ defmodule JamieWeb.Plugs.MarkdownNegotiationTest do
       assert conn.resp_body =~ "note for AI agents"
     end
 
+    test "GET /about?format=markdown serves markdown without an Accept header", %{conn: conn} do
+      llm_path = Path.join([:code.priv_dir(:jamie), "static_markdown", "about.llm.md"])
+      conn = get(conn, ~p"/about?format=markdown")
+
+      assert conn.status == 200
+      assert response_content_type(conn, :md) =~ "text/markdown"
+      assert conn.resp_body == File.read!(llm_path)
+    end
+
+    test "?format=markdown wins over a browser Accept header", %{conn: conn} do
+      conn =
+        conn
+        |> put_req_header("accept", "text/html,*/*")
+        |> get(~p"/about?format=markdown")
+
+      assert conn.status == 200
+      assert response_content_type(conn, :md) =~ "text/markdown"
+    end
+
+    test "?format=html does not trigger markdown", %{conn: conn} do
+      conn = get(conn, ~p"/about?format=html")
+      assert html_response(conn, 200) =~ "About"
+    end
+
+    test "?format=markdown on an unsupported path downgrades to HTML", %{conn: conn} do
+      conn = get(conn, ~p"/users/log-in?format=markdown")
+      assert html_response(conn, 200)
+    end
+
     test "GET /privacy with no .llm.md falls back to privacy.md", %{conn: conn} do
       md_path = Path.join([:code.priv_dir(:jamie), "static_markdown", "privacy.md"])
       llm_path = Path.join([:code.priv_dir(:jamie), "static_markdown", "privacy.llm.md"])
@@ -169,6 +198,16 @@ defmodule JamieWeb.Plugs.MarkdownNegotiationTest do
         build_conn()
         |> put_req_header("accept", "text/html, text/markdown;q=0.1")
 
+      refute MarkdownNegotiation.prefers_markdown?(conn)
+    end
+
+    test "true for ?format=markdown regardless of accept header" do
+      conn = %{build_conn() | query_params: %{"format" => "markdown"}}
+      assert MarkdownNegotiation.prefers_markdown?(conn)
+    end
+
+    test "false for ?format=html" do
+      conn = %{build_conn() | query_params: %{"format" => "html"}}
       refute MarkdownNegotiation.prefers_markdown?(conn)
     end
   end
