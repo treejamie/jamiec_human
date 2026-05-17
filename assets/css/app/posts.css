@@ -17,12 +17,11 @@
             line-height: var(--unit-6);
             margin-bottom: 0;
         }
-    }
-    @media (min-width: 750px) {
+
         header p {
             padding-left: var(--unit-4);
         }
-        h1.page-title {
+        body#post h1.page-title {
             padding-left: var(--unit-3-2);
         }
     }
@@ -33,7 +32,6 @@
     .post-body h5,
     .post-body h6 {
         text-decoration: underline;
-
         text-decoration-thickness: var(--unit-1);
         text-underline-offset: 0.2em;
         border-bottom: none;
@@ -82,6 +80,22 @@
     }
 
     /* archive index */
+    section.archive-year h2,
+    section.archive-year h3 {
+        font-size: var(--unit-4);
+        text-transform: uppercase;
+        z-index: 10000;
+    }
+    .archive-year,
+    .archive-month {
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+        gap: var(--unit-1);
+        align-items: start;
+    }
+    .archive-month-label {
+        top: 0;
+    }
     .archive-year-label,
     .archive-month-label {
         position: sticky;
@@ -90,11 +104,12 @@
         padding-bottom: var(--unit-3);
         margin-bottom: var(--unit-3);
     }
-    .archive-month-label {
+
+    /*.archive-month-label {
         top: var(--unit-3-2);
         padding-bottom: var(--unit-3);
         margin-bottom: var(--unit-3);
-    }
+    }*/
 
     .archive-posts {
         list-style: none;
@@ -102,33 +117,10 @@
         margin: 0;
     }
 
-    section.archive-year h2,
-    section.archive-year h3 {
-        font-size: var(--unit-3-2);
-        text-transform: uppercase;
-    }
-    section.archive-year h2 {
-        z-index: 10000;
-    }
-    section.archive-year h3 {
-        z-index: 1000;
-    }
-    @media (min-width: 770px) {
+    @media (max-width: 768px) {
         .archive-year,
         .archive-month {
-            display: grid;
-            grid-template-columns: 6rem 1fr;
-            gap: var(--unit-1);
-            align-items: start;
-        }
-        .archive-month-label {
-            top: 0;
-        }
-
-        section.archive-year h2,
-        section.archive-year h3 {
-            font-size: var(--unit-4);
-            text-transform: uppercase;
+            grid-template-columns: 1fr;
         }
     }
 }
