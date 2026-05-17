@@ -10,7 +10,7 @@
     }
     div#alreet {
         width: 100%;
-        position: absoloute;
+        position: relative;
         display: flex;
         top: 0;
         left: 0;
@@ -21,6 +21,26 @@
         background-position: center;
         background-repeat: no-repeat;
         background-blend-mode: hue;
+    }
+
+    /* un-blended photo on top, masked to a soft ellipse around the face */
+    div#alreet::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("/images/jc_widescreen.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        mask-image: radial-gradient(ellipse 28% 60% at 22% 58%, #000 35%, transparent 85%);
+        -webkit-mask-image: radial-gradient(ellipse 28% 60% at 22% 58%, #000 35%, transparent 85%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    div#alreet > * {
+        position: relative;
+        z-index: 1;
     }
 
     /*start claude*/
