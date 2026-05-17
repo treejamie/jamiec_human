@@ -15,10 +15,12 @@
         top: 0;
         left: 0;
         aspect-ratio: 2848 / 1504;
+        background-color: var(--c-accent-dark);
         background-image: url("/images/jc_widescreen.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-blend-mode: hue;
     }
 
     /*start claude*/
