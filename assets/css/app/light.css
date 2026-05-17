@@ -230,6 +230,7 @@ All colours MUST be in this file and only this file.
     /*posts*/
     header p {
         color: var(--colour-dark-3);
+        border-top-color: var(--colour-light-3);
         border-bottom-color: var(--colour-light-3);
     }
     .post-body h1,

@@ -4,11 +4,13 @@
     header p {
         font-size: var(--unit-3-2);
         line-height: var(--unit-4-3);
-        font-weight: 500;
+        font-weight: 400;
         letter-spacing: -0.5px;
         margin-top: var(--unit-4);
         margin-bottom: var(--unit-4);
-        padding: var(--unit-2);
+        padding: var(--unit-4) 0;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
     }
     @media (min-width: 750px) {
         h1.page-title {
@@ -19,10 +21,13 @@
         }
 
         header p {
-            padding-left: var(--unit-4);
+            margin-left: var(--unit-4);
         }
         body#post h1.page-title {
             padding-left: var(--unit-3-2);
+        }
+        div.post-body {
+            padding: 0 var(--unit-4);
         }
     }
     .post-body h1,
@@ -105,22 +110,20 @@
         margin-bottom: var(--unit-3);
     }
 
-    /*.archive-month-label {
-        top: var(--unit-3-2);
-        padding-bottom: var(--unit-3);
-        margin-bottom: var(--unit-3);
-    }*/
-
     .archive-posts {
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 754px) {
         .archive-year,
         .archive-month {
             grid-template-columns: 1fr;
+        }
+        .archive-year-label,
+        .archive-month-label {
+            display: none;
         }
     }
 }
