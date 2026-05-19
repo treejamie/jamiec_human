@@ -17,6 +17,8 @@ services:
       PHX_HOST: ${PHX_HOST}
       PORT: ${PORT:-4000}
       POOL_SIZE: ${POOL_SIZE:-10}
+      RELEASE_COOKIE: ${RELEASE_COOKIE}
+      DNS_CLUSTER_QUERY: tasks.web
     healthcheck:
       test:
         ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:4000/health"]
@@ -25,7 +27,7 @@ services:
       start_period: 10s
       retries: 3
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
         order: start-first
         failure_action: rollback
