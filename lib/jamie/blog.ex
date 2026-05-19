@@ -133,11 +133,8 @@ defmodule Jamie.Blog do
   end
 
   defp finalise_post_update(post_id, applied) do
-    updated = Repo.get!(Post, post_id)
-
     case do_save_revision(post_id, applied.markdown) do
-      {:ok, _} -> updated
-      :ok -> updated
+      {:ok, _} -> Repo.get!(Post, post_id)
       {:error, reason} -> Repo.rollback(reason)
     end
   end
@@ -199,23 +196,24 @@ defmodule Jamie.Blog do
   def save_revision(_current_scope, post_id, new_content) when is_binary(new_content) do
     Repo.transaction(fn ->
       case do_save_revision(post_id, new_content) do
-        :ok -> :noop
-        {:ok, rev} -> rev
+        {:ok, rev_or_nil} -> rev_or_nil
         {:error, reason} -> Repo.rollback(reason)
       end
     end)
     |> case do
-      {:ok, :noop} -> :ok
+      {:ok, nil} -> :ok
       {:ok, %PostRevision{} = rev} -> {:ok, rev}
       {:error, _} = err -> err
     end
   end
 
+  # Returns `{:ok, nil}` when content matches the latest revision (no-op),
+  # `{:ok, %PostRevision{}}` on insert, or `{:error, _}`.
   defp do_save_revision(post_id, new_content) do
     last = latest_revision(post_id)
 
     if last && reconstruct_from(last) == new_content do
-      :ok
+      {:ok, nil}
     else
       insert_revision(post_id, last, new_content)
     end
@@ -233,31 +231,18 @@ defmodule Jamie.Blog do
   defp insert_revision(post_id, last, new_content) do
     next_number = (last && last.revision_number + 1) || 1
     diff = if last, do: :diffy.diff(reconstruct_from(last), new_content), else: nil
-    serialised_diff = if diff, do: encode_diff(diff), else: nil
 
     snapshot? =
       is_nil(last) or
         rem(next_number, @snapshot_every) == 0 or
         diff_payload_size(diff) > byte_size(new_content)
 
-    attrs =
-      if snapshot? do
-        %{
-          post_id: post_id,
-          is_snapshot: true,
-          snapshot: new_content,
-          diff: nil,
-          saved_at: DateTime.utc_now()
-        }
-      else
-        %{
-          post_id: post_id,
-          is_snapshot: false,
-          diff: serialised_diff,
-          snapshot: nil,
-          saved_at: DateTime.utc_now()
-        }
-      end
+    payload =
+      if snapshot?,
+        do: %{is_snapshot: true, snapshot: new_content, diff: nil},
+        else: %{is_snapshot: false, snapshot: nil, diff: encode_diff(diff)}
+
+    attrs = Map.merge(payload, %{post_id: post_id, saved_at: DateTime.utc_now()})
 
     %PostRevision{}
     |> PostRevision.changeset(attrs)
@@ -298,8 +283,8 @@ defmodule Jamie.Blog do
       )
       |> Repo.all()
 
-    Enum.reduce(diffs, snapshot.snapshot, fn rev, _acc ->
-      apply_diff(decode_diff(rev.diff))
+    Enum.reduce(diffs, snapshot.snapshot, fn rev, acc ->
+      apply_diff(acc, decode_diff(rev.diff))
     end)
   end
 
@@ -367,7 +352,10 @@ defmodule Jamie.Blog do
     |> :erlang.binary_to_term([:safe])
   end
 
-  defp apply_diff(diff) when is_list(diff) do
+  # `:diffy` diffs embed the destination text, so reconstruction does not
+  # need the previous content — `_prev` is threaded only to make the fold
+  # in `reconstruct_target/1` explicit.
+  defp apply_diff(_prev, diff) when is_list(diff) do
     :diffy.destination_text(diff)
   end
 
