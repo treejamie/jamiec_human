@@ -1,8 +1,13 @@
+<div class="edit">
+  <a href={~p"/office/posts/#{@post.id}"}>Edit</a>
+</div>
 <header>
   <h1 class="page-title">{@post.title}</h1>
   <p>
     {@post.description}
   </p>
+  <%= if @current_scope do %>
+  <% end %>
 </header>
 <section class="page-content">
   <article>

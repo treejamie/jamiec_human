@@ -84,6 +84,26 @@
         padding-left: var(--unit-1);
     }
 
+    div.edit {
+        position: absolute;
+        top: 50vh;
+        right: calc(2 * var(--unit-6) * -1);
+        a {
+            &:hover {
+                background-color: var(--colour-dark-2);
+                color: var(--colour-light-1);
+            }
+            background-color: var(--c-accent-light);
+            color: var(--colour-light-1);
+            transition: background-color 0.3s;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            padding: var(--unit-3);
+            border-radius: var(--unit-2);
+        }
+    }
+
     /* archive index */
     section.archive-year h2,
     section.archive-year h3 {
